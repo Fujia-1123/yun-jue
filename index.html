@@ -422,6 +422,18 @@ header{padding-top:var(--sbh);}
 .callpage{top:0;padding-top:calc(var(--sbh) + 24px);}
 body:has(.callpage.open) .statusbar{color:#fff;}
 .statusbar{background:transparent;}
+.hw-listen .hw-in,.hw-polaroid .hw-in{background:transparent;box-shadow:none;padding:2px;}
+.pol{transform:rotate(-1deg);margin:2px;box-shadow:0 2px 8px rgba(0,0,0,.22);}
+.lis{position:relative;width:100%;height:100%;color:var(--text);} .lis-w{position:absolute;inset:0;width:100%;height:100%;opacity:.75;overflow:visible;}
+.lis-c{position:absolute;top:6%;width:46px;display:flex;flex-direction:column;align-items:center;gap:2px;} .lis-c.l{left:calc(25% - 23px);} .lis-c.r{left:calc(75% - 23px);}
+.lis-av{width:46px;height:46px;border-radius:50%;background:linear-gradient(160deg,#c9ced8,#9aa1b0) center/cover;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;box-shadow:0 1px 4px rgba(0,0,0,.2);}
+.lis-n{font-size:calc(var(--fs)*.857);max-width:64px;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.eb{position:absolute;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:#fff;border:1.5px solid currentColor;box-sizing:border-box;}
+.lis-dev{position:absolute;left:50%;top:67%;transform:translateX(-50%);width:26px;height:38px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.25));} .lis-dev svg{width:100%;height:100%;}
+.lis-t{position:absolute;left:0;right:0;bottom:1%;text-align:center;font-size:calc(var(--fs)*.786);color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.tstamp{align-self:center;font-size:calc(var(--fs)*.786);color:var(--sub);margin:10px 0 4px;}
+.tm-side{font-size:calc(var(--fs)*.714);color:var(--sub);align-self:flex-end;margin:0 4px 5px;white-space:nowrap;}
+.tm-av{font-size:calc(var(--fs)*.643);color:var(--sub);text-align:center;margin-top:2px;white-space:nowrap;}
 </style>
 </head>
 <body>
@@ -615,6 +627,13 @@ body:has(.callpage.open) .statusbar{color:#fff;}
       <option value="all">每条消息都显示</option>
       <option value="first">只显示该话题的第一条</option>
       <option value="last">只显示该话题的最后一条</option>
+      <option value="none">不显示</option>
+    </select></div>
+    <div class="sec-title">时间戳</div>
+    <div class="field-row"><label>显示方式</label><select id="timeStyle" style="flex:1;background:var(--input-bg);border:none;border-radius:10px;padding:8px 10px;color:var(--text);font-size:calc(var(--fs)*1.000);">
+      <option value="wechat">居中（像微信，间隔久了才显示）</option>
+      <option value="side">每条消息的气泡旁边</option>
+      <option value="avatar">头像下面</option>
       <option value="none">不显示</option>
     </select></div>
     <div class="sec-title">引用样式</div>
@@ -884,7 +903,7 @@ let decor = Object.assign({wallpaper:'', icons:{}, vinylImage:'', fontSrc:'', fo
 decor.fontSize=Math.min(30,Math.max(12,Number(decor.fontSize)||14));
 function saveRoles(){ safeSet('app_roles', roles); }
 function saveShared(){ safeSet('app_shared_cards', sharedCards); }
-function saveDecor(){ safeSet('app_decor', decor); applyDecor(); applyFont(); applyNames(); applyColors(); }
+function saveDecor(){ safeSet('app_decor', decor); applyDecor(); applyFont(); applyNames(); applyColors(); syncVinyls(); }
 function defaultRole(name){ return {id:uid(), name:name||'新角色', avatar:'', myName:'我', myAvatar:'',
   delayMin:2, delayMax:8, replyCountMin:1, replyCountMax:1, mergeCards:false, mergeMin:2, mergeMax:3,
   wallpaper:'', customCSS:'', ownCards:[],
@@ -1002,13 +1021,13 @@ function shouldShowAvatar(i){
   return false;
 }
 /* 头像列：始终占位同宽，无头像的消息也与有头像的那条对齐 */
-function avCol(who,show,sender){
+function avCol(who,show,sender,ts){
   const r=curRole(); if(!r.showAvatar||r.avatarShow==='none') return null;
   const sr=sender||r, col=el('div','av-col'); col.style.width=r.avatarSize+'px';
   if(show){ const a=el('div','avatar msg'); a.style.width=a.style.height=r.avatarSize+'px'; a.style.borderRadius=r.avatarRadius+'%';
     a.innerHTML = who==='me' ? avatarHTML(r.myName,r.myAvatar) : avatarHTML(sr.name,sr.avatar); a.style.cursor='pointer';
     let t=null; a.addEventListener('click',()=>{ if(t){ clearTimeout(t); t=null; doPat(who,sr); } else { t=setTimeout(()=>{ t=null; if(who==='them'&&!sr.isGroup) openProfile(sr.id,'screen-chat'); },280); } });
-    col.appendChild(a); }
+    col.appendChild(a); if(ts&&(r.timeStyle||'wechat')==='avatar'){ col.style.flexDirection='column'; col.style.alignItems='center'; const t=el('div','tm-av'); t.textContent=hhmm(ts); col.appendChild(t); } }
   return col;
 }
 function fmtTime(ts){ const d=new Date(ts); return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); }
@@ -1025,7 +1044,7 @@ function bubbleRow(m,i){
   if(m.type==='sys'){ const sd=el('div','sysmsg'); sd.textContent=m.recalled?'一条提示已撤回':m.text; attachLongPress(sd,m); return sd; }
   const row=el('div','msg-group '+m.who); row.dataset.id=m.id;
   if(r.showAvatar && r.avatarShow==='first') row.style.alignItems='flex-start';
-  const av=avCol(m.who, shouldShowAvatar(i), (r.isGroup&&m.who==='them')?roleById(m.by):null);
+  const av=avCol(m.who, shouldShowAvatar(i), (r.isGroup&&m.who==='them')?roleById(m.by):null, m.ts);
   const wrap=el('div','bubble-wrap'); let body;
   if(r.isGroup&&m.who==='them'&&m.by){ const sn=el('div','sname'); sn.textContent=nm('them',m.by); wrap.appendChild(sn); }
   if(m.recalled){
@@ -1062,6 +1081,7 @@ function bubbleRow(m,i){
   attachLongPress(body,m);
   if((m.type==='text'||m.type==='sticker')&&!m.recalled){ let dt=null; body.addEventListener('click',()=>{ if(selMode||lpFired) return; if(dt){ clearTimeout(dt); dt=null; openMsgMenu(m); } else dt=setTimeout(()=>{ dt=null; },300); }); }
   if(av){ if(m.who==='me') row.append(wrap,av); else row.append(av,wrap); } else row.appendChild(wrap);
+  if((r.timeStyle||'wechat')==='side'&&m.ts){ const t=el('div','tm-side'); t.textContent=hhmm(m.ts); if(m.who==='me') row.insertBefore(t,wrap); else row.insertBefore(t,wrap.nextSibling); }
   if(selMode) decorateSel(row,m);
   return row;
 }
@@ -1107,7 +1127,7 @@ function setAnswer(m,a){ m.answer=a; saveHistory(); renderChat(); }
 function renderChat(){
   const c=$('chat'); c.innerHTML='';
   if(curHistory.length===0) c.innerHTML='<div class="empty">还没有消息</div>';
-  curHistory.forEach((m,i)=>c.appendChild(bubbleRow(m,i))); if(typingOn) showTyping(); scrollBottom();
+  curHistory.forEach((m,i)=>{ const sp=((curRole().timeStyle||'wechat')==='wechat'&&m.type!=='sys'&&m.ts)?stampSep(m,i):null; if(sp) c.appendChild(sp); c.appendChild(bubbleRow(m,i)); }); if(typingOn) showTyping(); scrollBottom();
 }
 function scrollBottom(){ requestAnimationFrame(()=>{ $('chat').scrollTop=$('chat').scrollHeight; }); }
 function addMsg(o){
@@ -1296,7 +1316,7 @@ $('settingsBtn').addEventListener('click', ()=>{
   const r=curRole();
   $('theirName').value=r.name; $('grpRow').style.display=r.isGroup?'':'none'; $('myName').value=r.myName;
   $('theirAvatarPreview').innerHTML=avatarHTML(r.name,r.avatar); $('myAvatarPreview').innerHTML=avatarHTML(r.myName,r.myAvatar);
-  $('showAvatar').checked=r.showAvatar; $('avatarSize').value=r.avatarSize; $('avatarRadius').value=r.avatarRadius; $('avatarShow').value=r.avatarShow; $('quoteStyle').value=r.quoteStyle||'above'; const rv=(v,d)=>v==null?d:v; $('transferChance').value=rv(r.transferChance,10); $('questionChance').value=rv(r.questionChance,10); $('reactChance').value=rv(r.reactChance,15); $('momentChance').value=rv(r.momentChance,30); $('avatarChance').value=rv(r.avatarChance,5); $('inviteChance').value=rv(r.inviteChance,5); $('letterReplyChance').value=rv(r.letterReplyChance,80); $('letterMin').value=rv(r.letterMin,1); $('letterMax').value=rv(r.letterMax,8); $('letterChance').value=rv(r.letterChance,15); $('patChance').value=rv(r.patChance,8); $('proMin').value=rv(r.proMin,30); $('proMax').value=rv(r.proMax,120); $('proChance').value=rv(r.proChance,0); $('callChance').value=rv(r.callChance,0); $('voiceChance').value=rv(r.voiceChance,0); 
+  $('showAvatar').checked=r.showAvatar; $('avatarSize').value=r.avatarSize; $('avatarRadius').value=r.avatarRadius; $('avatarShow').value=r.avatarShow; $('quoteStyle').value=r.quoteStyle||'above'; $('timeStyle').value=r.timeStyle||'wechat'; const rv=(v,d)=>v==null?d:v; $('transferChance').value=rv(r.transferChance,10); $('questionChance').value=rv(r.questionChance,10); $('reactChance').value=rv(r.reactChance,15); $('momentChance').value=rv(r.momentChance,30); $('avatarChance').value=rv(r.avatarChance,5); $('inviteChance').value=rv(r.inviteChance,5); $('letterReplyChance').value=rv(r.letterReplyChance,80); $('letterMin').value=rv(r.letterMin,1); $('letterMax').value=rv(r.letterMax,8); $('letterChance').value=rv(r.letterChance,15); $('patChance').value=rv(r.patChance,8); $('proMin').value=rv(r.proMin,30); $('proMax').value=rv(r.proMax,120); $('proChance').value=rv(r.proChance,0); $('callChance').value=rv(r.callChance,0); $('voiceChance').value=rv(r.voiceChance,0); 
   $('delayMin').value=r.delayMin; $('delayMax').value=r.delayMax;
   $('replyCountMin').value=r.replyCountMin; $('replyCountMax').value=r.replyCountMax;
   $('mergeCards').checked=!!r.mergeCards; $('mergeMin').value=r.mergeMin; $('mergeMax').value=r.mergeMax;
@@ -1306,7 +1326,7 @@ $('settingsBtn').addEventListener('click', ()=>{
 });
 $('closeSettings').addEventListener('click', ()=>$('settingsOverlay').classList.remove('open'));
 $('settingsOverlay').addEventListener('click', e=>{ if(e.target===$('settingsOverlay')) $('settingsOverlay').classList.remove('open'); });
-function upd(field,val){ const r=curRole(); r[field]=val; saveRoles(); applyRoleTheme(); if(field.startsWith('avatar')||field==='showAvatar'||field==='quoteStyle') renderChat(); renderRolesList(); }
+function upd(field,val){ const r=curRole(); r[field]=val; saveRoles(); applyRoleTheme(); if(field.startsWith('avatar')||field==='showAvatar'||field==='quoteStyle'||field==='timeStyle') renderChat(); renderRolesList(); }
 $('theirName').addEventListener('input', e=>{ upd('name',e.target.value); $('theirAvatarPreview').innerHTML=avatarHTML(curRole().name,curRole().avatar); });
 $('myName').addEventListener('input', e=>{ upd('myName',e.target.value); $('myAvatarPreview').innerHTML=avatarHTML(curRole().myName,curRole().myAvatar); renderChat(); });
 $('theirAvatarBtn').addEventListener('click', ()=>pickImage(url=>{ upd('avatar',url); $('theirAvatarPreview').innerHTML=avatarHTML(curRole().name,url); renderChat(); }));
@@ -1315,7 +1335,7 @@ $('showAvatar').addEventListener('change', e=>upd('showAvatar',e.target.checked)
 $('avatarSize').addEventListener('change', e=>upd('avatarSize',Number(e.target.value)||26));
 $('avatarRadius').addEventListener('change', e=>upd('avatarRadius',Number(e.target.value)||50));
 $('avatarShow').addEventListener('change', e=>upd('avatarShow',e.target.value));
-$('quoteStyle').addEventListener('change', e=>upd('quoteStyle',e.target.value));
+$('quoteStyle').addEventListener('change', e=>upd('quoteStyle',e.target.value)); $('timeStyle').addEventListener('change', e=>upd('timeStyle',e.target.value));
 ['transferChance','questionChance','reactChance','momentChance','avatarChance','inviteChance','letterReplyChance','letterMin','letterMax','letterChance','patChance','proMin','proMax','proChance','callChance','voiceChance'].forEach(k=>$(k).addEventListener('change',e=>upd(k,Math.max(0,Number(e.target.value)||0))));
 function renderQbank(){ const r=curRole(); r.qbank=r.qbank||[]; const l=$('qbList'); l.innerHTML='';
   if(!r.qbank.length){ l.innerHTML='<div class="empty" style="padding:14px">还没有问题</div>'; return; }
@@ -1398,7 +1418,7 @@ $('expShared').addEventListener('click',()=>exportData('通用字卡/表情包',
 $('impShared').addEventListener('click',()=>importData('通用字卡/表情包',['cards'],o=>{ addFrom(o,sharedCards,sharedStickers); saveShared(); saveSticks(); renderSharedList(); renderSharedStick(); }));
 $('expRoleCards').addEventListener('click',()=>{ const r=curRole(); exportData('本角色字卡/表情包',{kind:'cards',cards:r.ownCards.map(c=>c.text),stickers:(r.ownStickers||[]).map(x=>x.src)}); });
 $('impRoleCards').addEventListener('click',()=>importData('本角色字卡/表情包',['cards'],o=>{ const r=curRole(); r.ownStickers=r.ownStickers||[]; addFrom(o,r.ownCards,r.ownStickers); saveRolesChk(); renderMenuCards(); renderStickers(); }));
-const BKEYS=['wallpaper','customCSS','showAvatar','avatarSize','avatarRadius','avatarShow','quoteStyle'];
+const BKEYS=['wallpaper','customCSS','showAvatar','avatarSize','avatarRadius','avatarShow','quoteStyle','timeStyle'];
 $('expRoleBeauty').addEventListener('click',()=>{ const r=curRole(), d={}; BKEYS.forEach(k=>d[k]=r[k]); exportData('聊天美化',{kind:'beauty-role',data:d}); });
 $('impRoleBeauty').addEventListener('click',()=>importData('聊天美化',['beauty-role'],o=>{ const r=curRole(); BKEYS.forEach(k=>{ if(o.data&&k in o.data) r[k]=o.data[k]; }); saveRolesChk(); applyRoleTheme(); renderChat(); $('settingsOverlay').classList.remove('open'); }));
 $('expDecor').addEventListener('click',()=>exportData('全局美化',{kind:'beauty-global',data:decor}));
@@ -1432,7 +1452,7 @@ header 顶栏（含 #headerAvatar 顶栏头像、.name 昵称、.status 在线�
 .sticker 表情包图片
 .tcard 转账卡片（.top .ic .amt .sub .foot；已处理时带 .done）
 .qcard 提问便签（.qh 标题 .qt 问题 .qo 选项 .qf 底部状态）
-.sname 群聊里的发言人名字；.rcard 聊天记录卡片；.reacts 贴表情容器；.react 单个贴的表情；.sysmsg 系统提示；.icard 头像邀请卡片
+.sname 群聊里的发言人名字；.tstamp 居中的时间；.tm-side 气泡旁的时间；.tm-av 头像下的时间；.rcard 聊天记录卡片；.reacts 贴表情容器；.react 单个贴的表情；.sysmsg 系统提示；.icard 头像邀请卡片
 .dot “正在输入”的圆点
 footer 底部输入栏；.input-wrap 输入框外壳；#msgInput 输入框；#sendBtn 发送按钮；#menuBtn 左侧 ＋ 按钮
 .plus-panel 加号展开面板；.tile 转账/提问按钮；.pcard 字卡条目
@@ -1785,7 +1805,7 @@ function findSpot(it,tx,ty){ const maxP=homeLayout.reduce((m,o)=>Math.max(m,o.p|
   for(let y=0;y<=Math.max(0,ROWS-it.h);y++) for(let x=0;x<=4-it.w;x++) c.push([x,y,Math.abs(x-tx)+Math.abs(y-ty)]);
   c.sort((a,b)=>a[2]-b[2]); for(let pg=(it.p||0);pg<=maxP+1;pg++) for(const q of c) if(!occupied(it,q[0],q[1],pg)) return [q[0],q[1],pg]; return [0,0,maxP+1]; }
 ['chat','cards','decor','letters','music','settings'].forEach(a=>{ if(!homeLayout.some(i=>i.type==='app'&&i.app===a)){ const it={id:'app-'+a,type:'app',app:a,w:1,h:1,x:0,y:0}; const sp=findSpot(it,0,0); it.x=sp[0]; it.y=sp[1]; it.p=sp[2]; homeLayout.push(it); } });
-function itemEl(it){ if(it.type==='app') return document.querySelector('.app-tile[data-app="'+it.app+'"]'); if(it.type==='vinyl') return document.querySelector('.vinyl-cell');
+function itemEl(it){ if(it.type==='app') return document.querySelector('.app-tile[data-app="'+it.app+'"]'); if(it.type==='vinyl'){ if(it.id==='vinyl') return document.querySelector('.vinyl-cell'); if(!widgetEls[it.id]){ const c=document.querySelector('.vinyl-cell').cloneNode(true); c.querySelectorAll('[id]').forEach(x=>x.removeAttribute('id')); c.querySelectorAll('.hx').forEach(x=>x.remove()); widgetEls[it.id]=c; } return widgetEls[it.id]; }
   if(!widgetEls[it.id]){ const e=document.createElement('div'); e.className='hw hw-'+it.type; e.innerHTML='<div class="hw-in"></div>'; widgetEls[it.id]=e; } return widgetEls[it.id]; }
 function widgetDays(d){ const t=new Date(d+'T00:00:00'); if(isNaN(t)) return null; const n=new Date(); n.setHours(0,0,0,0); return Math.round((t-n)/86400000); }
 function refreshWidget(it,e){ if(it.type==='app'||it.type==='vinyl') return; if(it.type==='listen'||it.type==='polaroid'){ renderFancy(it,e); return; } if(it.type==='countdown'&&it.cal==='lunar'){ renderLunarCd(it,e); return; } const b=e.querySelector('.hw-in'), d=new Date(), wk='日一二三四五六'[d.getDay()];
@@ -1818,7 +1838,7 @@ function renderHome(){
   let rows=0;
   homeLayout.forEach(it=>{ if((it.p||0)!==homePage) return; const e=itemEl(it); if(!e) return; if(e.parentNode!==HG) HG.appendChild(e); e.classList.add('hitem'); e.style.display=''; e.style.position='absolute';
     if(!e.classList.contains('dragging')){ e.style.left=it.x*cw+'px'; e.style.top=it.y*ch+'px'; } e.style.width=it.w*cw+'px'; e.style.height=it.h*ch+'px'; rows=Math.max(rows,it.y+it.h); bindItem(e,it); refreshWidget(it,e); });
-  HG.style.height=ROWS*ch+'px'; HG.classList.toggle('editing',editMode); renderDots();
+  HG.style.height=ROWS*ch+'px'; HG.classList.toggle('editing',editMode); renderDots(); syncVinyls();
 }
 function enterEdit(){ if(editMode) return; editMode=true; $('homeEditBar').style.display='flex'; renderHome(); }
 function exitEdit(){ editMode=false; $('homeEditBar').style.display='none'; renderHome(); }
@@ -1829,8 +1849,8 @@ HM.addEventListener('pointermove',ev=>{ if(Math.abs(ev.clientX-hx0)>10||Math.abs
 ['pointerup','pointercancel'].forEach(t=>HM.addEventListener(t,()=>clearTimeout(lpHome)));
 HM.addEventListener('click',ev=>{ if(editMode||ev.target.closest('.hitem')) return; const n=Date.now(); htaps=htaps.filter(t=>n-t<600); htaps.push(n); if(htaps.length>=3){ htaps=[]; enterEdit(); } });
 $('addWidgetBtn').addEventListener('click',()=>{ const l=$('widgetList'); l.innerHTML='';
-  Object.keys(WIDGETS).forEach(k=>{ if(k==='vinyl'&&homeLayout.some(i=>i.type==='vinyl')) return; const w=WIDGETS[k], d=el('div','list-row'); d.innerHTML='<div class="meta"><div class="n"></div><div class="p"></div></div>'; d.querySelector('.n').textContent=w.name; d.querySelector('.p').textContent=w.w+' × '+w.h;
-    d.addEventListener('click',()=>{ const it={id:k==='vinyl'?'vinyl':'w-'+uid(),type:k,x:0,y:0,p:homePage,w:w.w,h:w.h}; const sp=findSpot(it,0,0); it.x=sp[0]; it.y=sp[1]; it.p=sp[2]; homeLayout.push(it); saveHome(); renderHome(); $('widgetOverlay').classList.remove('open'); }); l.appendChild(d); });
+  Object.keys(WIDGETS).forEach(k=>{ const w=WIDGETS[k], d=el('div','list-row'); d.innerHTML='<div class="meta"><div class="n"></div><div class="p"></div></div>'; d.querySelector('.n').textContent=w.name; d.querySelector('.p').textContent=w.w+' × '+w.h;
+    d.addEventListener('click',()=>{ const it={id:(k==='vinyl'&&!homeLayout.some(o=>o.id==='vinyl'))?'vinyl':'w-'+uid(),type:k,x:0,y:0,p:homePage,w:w.w,h:w.h}; const sp=findSpot(it,0,0); it.x=sp[0]; it.y=sp[1]; it.p=sp[2]; homeLayout.push(it); saveHome(); renderHome(); $('widgetOverlay').classList.remove('open'); }); l.appendChild(d); });
   $('widgetOverlay').classList.add('open'); });
 $('closeWidget').addEventListener('click',()=>$('widgetOverlay').classList.remove('open'));
 window.addEventListener('resize',renderHome);
@@ -1968,7 +1988,7 @@ function cdTap(it){ showLinkModal('倒数日名称',t=>{ setTimeout(()=>showChoi
   {label:'公历日期',onClick:()=>setTimeout(()=>showLinkModal('目标日期',d=>{ if(widgetDays(d)===null){ toast('日期格式不对'); return; } it.title=t; it.date=d; it.cal='solar'; saveHome(); renderHome(); },'如 2026-12-31'),80)},
   {label:'农历日期（每年）',onClick:()=>setTimeout(()=>showLinkModal('农历 月-日',d=>{ const m=d.match(/^(\d{1,2})\D+(\d{1,2})$/); if(!m){ toast('格式如 8-15'); return; } it.title=t; it.cal='lunar'; it.lm=+m[1]; it.ld=+m[2]; it.date=''; saveHome(); renderHome(); },'如 8-15（农历八月十五）'),80)}]),80); },'如：生日',it.title||''); }
 const HP='<svg class="lis-hp" viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 36V26a26 26 0 0 1 52 0v10"/><rect x="2" y="26" width="9" height="14" rx="3" fill="currentColor"/><rect x="53" y="26" width="9" height="14" rx="3" fill="currentColor"/></svg>';
-function renderFancy(it,e){ const b=e.querySelector('.hw-in');
+function renderFancy(it,e){ const b=e.querySelector('.hw-in'); if(it.type==='listen'){ renderListen(it,e); return; }
   if(it.type==='polaroid'){ b.innerHTML='<div class="pol"><div class="pol-ph"></div><div class="pol-cap"></div></div>'; const ph=b.querySelector('.pol-ph');
     if(it.img) ph.style.backgroundImage='url("'+it.img.replace(/"/g,'%22')+'")'; else ph.innerHTML='<span>点一下换照片</span>'; b.querySelector('.pol-cap').textContent=it.cap||'写一句话'; return; }
   b.innerHTML='<div class="lis"><div class="lis-row"></div><svg class="lis-cable" viewBox="0 0 100 24" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 0C14 26 86 26 86 0"/></svg><div class="lis-t"></div></div>';
@@ -1978,13 +1998,13 @@ function renderFancy(it,e){ const b=e.querySelector('.hw-in');
 function fancyTap(it){ const ask=(t,k,ph,next)=>setTimeout(()=>showLinkModal(t,v=>{ it[k]=v; saveHome(); renderHome(); if(next) next(); },ph,it[k]||''),70);
   if(it.type==='polaroid') showChoiceSheet([{label:'更换照片',onClick:()=>pickImage(u=>{ it.img=u; saveHome(); renderHome(); })},{label:'修改文案',onClick:()=>ask('文案','cap','写一句话')}]);
   else showChoiceSheet([{label:'更换左边头像',onClick:()=>pickImage(u=>{ it.a1=u; saveHome(); renderHome(); })},{label:'更换右边头像',onClick:()=>pickImage(u=>{ it.a2=u; saveHome(); renderHome(); })},
-    {label:'修改昵称',onClick:()=>ask('左边昵称','n1','昵称',()=>setTimeout(()=>ask('右边昵称','n2','昵称'),90))},{label:'修改歌名',onClick:()=>ask('正在听的歌','song','歌名')}]); }
+    {label:'修改昵称',onClick:()=>ask('左边昵称','n1','昵称',()=>setTimeout(()=>ask('右边昵称','n2','昵称'),90))},{label:'修改歌名',onClick:()=>ask('正在听的歌','song','歌名')},{label:'更换设备（手机 / MP3）',onClick:()=>{ it.dev=it.dev==='mp3'?'phone':'mp3'; saveHome(); renderHome(); }}]); }
 function pageCount(){ return Math.max(1,homeLayout.reduce((m,o)=>Math.max(m,(o.p||0)+1),0)); }
 function renderDots(){ let d=$('homeDots'); if(!d){ d=document.createElement('div'); d.id='homeDots'; d.className='hdots'; HM.appendChild(d); }
   const n=pageCount()+(editMode?1:0); d.innerHTML=''; for(let i=0;i<n;i++){ const x=document.createElement('button'); x.className='hd'+(i===homePage?' on':''); x.addEventListener('click',()=>{ homePage=i; renderHome(); }); d.appendChild(x); } d.style.display=n>1?'flex':'none'; }
 let sx0=0, sy0=0;
 HM.addEventListener('pointerdown',ev=>{ sx0=ev.clientX; sy0=ev.clientY; });
-HM.addEventListener('pointerup',ev=>{ if(editMode) return; const dx=ev.clientX-sx0, dy=ev.clientY-sy0; if(Math.abs(dx)>60&&Math.abs(dy)<45){ const n=pageCount(); homePage=dx<0?Math.min(n-1,homePage+1):Math.max(0,homePage-1); renderHome(); } });
+HM.addEventListener('pointerup',ev=>{ if(editMode||ev.pointerType==='touch') return; const dx=ev.clientX-sx0, dy=ev.clientY-sy0; if(Math.abs(dx)>60&&Math.abs(dy)<45){ const n=pageCount(); homePage=dx<0?Math.min(n-1,homePage+1):Math.max(0,homePage-1); renderHome(); } });
 
 /* ===== 音频引擎：曲库 / 歌单 / 白噪音合成 ===== */
 const mkI=(i,f)=>'<svg class="ic" viewBox="0 0 24 24" fill="'+(f?'currentColor':'none')+'" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+i+'</svg>';
@@ -2231,6 +2251,21 @@ $('voRec').addEventListener('click',async()=>{ if(recS){ recS.mr.stop(); return;
 const vf2=document.createElement('input'); vf2.type='file'; vf2.accept='audio/*'; vf2.style.display='none'; document.body.appendChild(vf2);
 vf2.addEventListener('change',async()=>{ const f=(vf2.files||[])[0]; vf2.value=''; if(!f) return; const id=uid(); try{ await auPut(id,f); }catch(e){ memBlobs[id]=URL.createObjectURL(f); } sendVoice({src:'idb:'+id,text:f.name.replace(/\.[^.]+$/,'')}); });
 $('voSendFile').addEventListener('click',()=>vf2.click());
+
+/* ===== 时间戳 / 一起听 / 唱片同步 ===== */
+const hhmm=ts=>{ const d=new Date(ts); return pad2(d.getHours())+':'+pad2(d.getMinutes()); };
+function fmtStamp(ts){ const d=new Date(ts), n=new Date(), y=new Date(n.getTime()-86400000), same=(a,b)=>a.toDateString()===b.toDateString();
+  if(same(d,n)) return hhmm(ts); if(same(d,y)) return '昨天 '+hhmm(ts); if(d.getFullYear()===n.getFullYear()) return (d.getMonth()+1)+'月'+d.getDate()+'日 '+hhmm(ts); return d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日 '+hhmm(ts); }
+function stampSep(m,i){ const prev=curHistory[i-1]; if(prev&&prev.ts&&m.ts-prev.ts<300000&&new Date(m.ts).toDateString()===new Date(prev.ts).toDateString()) return null; const d=el('div','tstamp'); d.textContent=fmtStamp(m.ts); return d; }
+function syncVinyls(){ const src=$('vinylLabel'); if(!src) return; document.querySelectorAll('#homeGrid .vinyl-label').forEach(l=>{ if(l!==src) l.innerHTML=src.innerHTML; }); }
+const PHONESVG='<svg viewBox="0 0 24 36"><rect x="2" y="1" width="20" height="34" rx="4" fill="#2f3138"/><rect x="4.5" y="5" width="15" height="21" rx="1.5" fill="#dbe6ff"/><path d="M10 20V12l5-1v7" fill="none" stroke="#5a7bd8" stroke-width="1.4" stroke-linecap="round"/><circle cx="9" cy="20" r="1.4" fill="#5a7bd8"/><circle cx="14" cy="18" r="1.4" fill="#5a7bd8"/><circle cx="12" cy="31" r="1.5" fill="#777"/></svg>';
+const MP3SVG='<svg viewBox="0 0 24 36"><rect x="3" y="1" width="18" height="34" rx="3" fill="#cfd2da"/><rect x="5.5" y="4" width="13" height="10" rx="1" fill="#2f3138"/><circle cx="12" cy="24.5" r="6.5" fill="#b4b8c2"/><circle cx="12" cy="24.5" r="2.4" fill="#cfd2da"/></svg>';
+function renderListen(it,e){ const b=e.querySelector('.hw-in');
+  b.innerHTML='<div class="lis"><svg class="lis-w" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path vector-effect="non-scaling-stroke" d="M38 21C38 40 50 38 50 57"/><path vector-effect="non-scaling-stroke" d="M62 21C62 40 50 38 50 57"/><path vector-effect="non-scaling-stroke" d="M50 57V67"/></svg><div class="lis-c l"><div class="lis-av"></div><div class="lis-n"></div></div><div class="lis-c r"><div class="lis-av"></div><div class="lis-n"></div></div><i class="eb" style="left:38%;top:21%"></i><i class="eb" style="left:62%;top:21%"></i><div class="lis-dev"></div><div class="lis-t"></div></div>';
+  [['a1','n1','我','l'],['a2','n2','TA','r']].forEach(([a,n,df,side])=>{ const c=b.querySelector('.lis-c.'+side), av=c.firstChild; if(it[a]) av.style.backgroundImage='url("'+it[a].replace(/"/g,'%22')+'")'; else av.textContent=(it[n]||df).charAt(0); c.lastChild.textContent=it[n]||df; });
+  b.querySelector('.lis-dev').innerHTML=it.dev==='mp3'?MP3SVG:PHONESVG; b.querySelector('.lis-t').textContent=it.song?'正在听 · '+it.song:''; }
+(function(){ let tsx=0, tsy=0; HM.addEventListener('touchstart',ev=>{ const t=ev.touches[0]; tsx=t.clientX; tsy=t.clientY; },{passive:true});
+  HM.addEventListener('touchend',ev=>{ if(editMode) return; const t=ev.changedTouches[0], dx=t.clientX-tsx, dy=t.clientY-tsy; if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){ const n=pageCount(); homePage=dx<0?Math.min(n-1,homePage+1):Math.max(0,homePage-1); renderHome(); } },{passive:true}); })();
 function applyNames(){ const d={chat:'诉爱聆心',cards:'字卡',decor:'装饰',letters:'写信',music:'音乐',settings:'设置'}, nmz=decor.names||{};
   document.querySelectorAll('.app-tile').forEach(t=>{ const k=t.dataset.app; t.querySelector('.app-label').textContent=nmz[k]||d[k]; });
   document.querySelector('#screen-cardapp .title').textContent=nmz.cards||d.cards; document.querySelector('#screen-decor .title').textContent=nmz.decor||d.decor; document.querySelector('#screen-letters .title').textContent=nmz.letters||d.letters; document.querySelector('#screen-music .title').textContent=nmz.music||d.music; }
