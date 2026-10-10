@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="color-scheme" content="light dark"><meta name="theme-color" id="themeColor" content="#ffffff"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#ffffff"><meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>诉爱聆心</title>
 <style>
 :root{
@@ -484,6 +484,100 @@ html.ic-glass .app-icon::before{content:"";position:absolute;left:6%;right:6%;to
 html.ic-glass .app-icon::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 1px 0 2px rgba(255,255,255,.5),inset -1px 0 2px rgba(255,255,255,.25);pointer-events:none;}
 html.ic-glass .app-icon .ic{position:relative;z-index:1;filter:drop-shadow(0 1px 2px rgba(0,0,0,.28));} html.ic-glass .app-icon:has(img)::before,html.ic-glass .app-icon:has(img)::after{display:none;}
 html.ic-glass .app-icon.mini{box-shadow:inset 0 1px 1px rgba(255,255,255,.8),0 2px 6px rgba(0,0,0,.15);}
+html.ic-glass .app-tile .app-icon,html.ic-glass .app-icon.mini{-webkit-backdrop-filter:blur(var(--gblur,4px)) saturate(1.4);backdrop-filter:blur(var(--gblur,4px)) saturate(1.4);border:1px solid rgba(255,255,255,.55);box-shadow:inset 0 1.5px 1px rgba(255,255,255,.8),inset 0 -6px 10px rgba(255,255,255,.08),inset 0 0 12px rgba(255,255,255,.06),0 8px 18px rgba(0,0,0,.14),0 1px 2px rgba(0,0,0,.1);}
+html.ic-glass .app-icon::before{background:linear-gradient(180deg,rgba(255,255,255,.42),rgba(255,255,255,0));}
+.plx{height:100%;display:flex;flex-direction:column;gap:5px;transform:rotate(-1.5deg);padding:2px;box-sizing:border-box;} .plx.paper{background:#fff;padding:7px 7px 4px;gap:4px;box-shadow:0 2px 8px rgba(0,0,0,.22);}
+.plx-ph{flex:1;min-height:0;background-position:center;background-repeat:no-repeat;background-size:contain;filter:drop-shadow(0 3px 6px rgba(0,0,0,.28));} .plx.cover .plx-ph{background-size:cover;border-radius:8px;}
+.plx-ph.empty{border:1.5px dashed rgba(255,255,255,.9);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:calc(var(--fs)*.857);text-shadow:0 1px 3px rgba(0,0,0,.45);filter:none;}
+.plx-cap{text-align:center;font-size:calc(var(--fs)*.964);color:var(--text);text-shadow:0 0 6px rgba(255,255,255,.9);font-family:"Kaiti SC","STKaiti","KaiTi",serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;} .plx.paper .plx-cap{text-shadow:none;color:#444;}
+.lis-w{filter:drop-shadow(0 1px 2px rgba(0,0,0,.35));opacity:1;}
+.lis-c.l{left:calc(30% - 27px);top:7%;} .lis-c.r{left:calc(70% - 27px);top:7%;}
+.lis-av{width:54px;height:54px;border:2.5px solid #fff;box-shadow:0 3px 10px rgba(0,0,0,.25);font-size:calc(var(--fs)*1.286);}
+.lis-n{background:rgba(255,255,255,.6);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-radius:10px;padding:1px 9px;font-size:calc(var(--fs)*.786);color:#333;max-width:70px;}
+.eb{position:absolute;top:40%;width:9px;height:15px;margin:0;border:none;border-radius:5px 5px 6px 6px;background:linear-gradient(180deg,#fff,#dfe3ea);box-shadow:0 1px 3px rgba(0,0,0,.4),inset 0 0 0 1px rgba(0,0,0,.12);} .eb::after{content:"";position:absolute;left:2px;right:2px;bottom:2px;height:5px;border-radius:3px;background:#2f3138;}
+.eb.l{left:-6px;transform:rotate(-14deg);} .eb.r{right:-6px;transform:rotate(14deg);}
+.lis-nt{position:absolute;width:13px;height:13px;color:#fff;opacity:.85;filter:drop-shadow(0 1px 2px rgba(0,0,0,.3));} .lis-nt.a{left:44%;top:6%;transform:rotate(-12deg);} .lis-nt.b{left:51%;top:15%;width:10px;height:10px;transform:rotate(10deg);}
+.lis-dev{top:70%;width:25px;height:44px;filter:drop-shadow(0 3px 6px rgba(0,0,0,.35));}
+.lis-t{bottom:0;color:var(--text);text-shadow:0 0 5px rgba(255,255,255,.9);font-size:calc(var(--fs)*.714);}
+.hw-polaroid .hw-in{background:transparent!important;box-shadow:none!important;padding:0;display:flex;align-items:center;justify-content:center;overflow:visible;}
+.hw-polaroid .pol{height:auto;width:80%;aspect-ratio:.86;margin:0 auto;transform:rotate(-4deg);box-shadow:none;filter:drop-shadow(0 3px 6px rgba(0,0,0,.22));padding:8px 8px 3px;gap:5px;border-radius:2px;background:#fff;}
+.hw-listen .hw-in{background:transparent!important;box-shadow:none!important;padding:0;overflow:visible;}
+.lis{position:relative;width:100%;height:100%;color:var(--text);} .lis-w{position:absolute;inset:0;width:100%;height:100%;overflow:visible;opacity:1;}
+.lis-c{position:absolute;top:4%;width:54px;display:flex;flex-direction:column;align-items:center;gap:3px;} .lis-c.l{left:calc(30% - 27px);} .lis-c.r{left:calc(70% - 27px);}
+.lis-av{width:54px;height:54px;border-radius:50%;border:3px solid #fff;box-sizing:border-box;background:linear-gradient(160deg,#c9ced8,#9aa1b0) center/cover;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:calc(var(--fs)*1.14);filter:drop-shadow(0 2px 4px rgba(0,0,0,.28));}
+.lis-n{font-size:calc(var(--fs)*.857);font-weight:600;max-width:64px;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-shadow:0 0 4px #fff,0 0 8px rgba(255,255,255,.9);}
+.eb{position:absolute;top:21%;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.35),inset 0 -2px 2px rgba(0,0,0,.08);border:none;} .eb::after{content:"";position:absolute;left:50%;top:70%;width:3px;height:12px;margin-left:-1.5px;border-radius:2px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);}
+.lis-bead{position:absolute;left:50%;top:60.5%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.35);}
+.lis-note{position:absolute;top:8%;font-size:calc(var(--fs)*1.14);color:var(--ic2,#ff6b8f);text-shadow:0 0 4px #fff;} .lis-note.n1{left:46%;} .lis-note.n2{left:52%;top:16%;font-size:calc(var(--fs)*.929);opacity:.8;}
+.lis-dev{position:absolute;left:50%;top:67%;transform:translateX(-50%) rotate(5deg);width:27px;height:46px;filter:drop-shadow(0 3px 5px rgba(0,0,0,.3));} .lis-dev svg{width:100%;height:100%;}
+.lis-t{position:absolute;left:0;right:0;bottom:0;text-align:center;font-size:calc(var(--fs)*.786);color:var(--text);text-shadow:0 0 4px #fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.lis-n{background:none!important;box-shadow:none!important;padding:0!important;border-radius:0!important;} .lis-note{display:none!important;}
+html{background:var(--bg);}
+.bubble.bq{padding:4px 5px 5px;} .bq .rt{padding:3px 4px 0;line-height:1.28;}
+.quote-card{padding:4px 8px 5px;min-width:0;max-width:210px;border-radius:9px;}
+.qc-h{font-size:calc(var(--fs)*.786);gap:5px;} .qc-x{font-size:calc(var(--fs)*.893);margin-top:1px;line-height:1.25;} .qc-i{width:12px;height:12px;}
+.msg-group.gb{display:grid;grid-template-columns:auto 1fr;align-items:end;column-gap:6px;} .msg-group.gb.me{grid-template-columns:1fr auto;}
+.msg-group.gb .av-col{grid-row:1;align-self:end;}
+.msg-group.gb.them .av-col{grid-column:1;} .msg-group.gb.them .bubble-wrap{grid-column:2;grid-row:1;} .msg-group.gb.them .quote-ref{grid-column:2;grid-row:2;}
+.msg-group.gb.me .av-col{grid-column:2;} .msg-group.gb.me .bubble-wrap{grid-column:1;grid-row:1;justify-self:end;} .msg-group.gb.me .quote-ref{grid-column:1;grid-row:2;justify-self:end;}
+html.ic-glass .app-tile .app-icon,html.ic-glass .app-icon.mini{border:none!important;background:linear-gradient(145deg,var(--ic1a,rgba(255,159,183,.2)),var(--ic2a,rgba(255,107,143,.12)))!important;-webkit-backdrop-filter:blur(var(--gblur,4px)) saturate(1.9) brightness(1.06)!important;backdrop-filter:blur(var(--gblur,4px)) saturate(1.9) brightness(1.06)!important;box-shadow:inset 0 0 0 .5px rgba(255,255,255,.35),inset 0 1px 1.5px rgba(255,255,255,.55),inset 0 -1px 2px rgba(0,0,0,.07),inset 0 -10px 18px -8px rgba(255,255,255,.18),0 10px 22px -8px rgba(0,0,0,.28),0 2px 4px rgba(0,0,0,.08)!important;}
+html.ic-glass .app-icon::before{content:"";position:absolute;inset:0!important;top:0!important;left:0!important;right:0!important;height:auto!important;border-radius:inherit!important;background:linear-gradient(135deg,rgba(255,255,255,.36) 0%,rgba(255,255,255,.1) 34%,rgba(255,255,255,0) 52%),radial-gradient(90% 70% at 88% 108%,rgba(255,255,255,.2),transparent 62%)!important;pointer-events:none;}
+html.ic-glass .app-icon::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;box-sizing:border-box;background:linear-gradient(135deg,rgba(255,255,255,.95),rgba(255,255,255,.14) 38%,rgba(255,255,255,.06) 62%,rgba(255,255,255,.72))!important;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;box-shadow:none!important;pointer-events:none;}
+html.ic-glass .app-icon .ic{filter:drop-shadow(0 1px 1.5px rgba(0,0,0,.25));}
+.hw-listen .hw-in{background:transparent!important;box-shadow:none!important;padding:0;}
+.l2{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:var(--text);}
+.l2-avs{display:flex;align-items:center;} .l2-av{width:58px;height:58px;border-radius:50%;border:3px solid #fff;box-sizing:border-box;background:linear-gradient(160deg,#c9ced8,#9aa1b0) center/cover;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:calc(var(--fs)*1.2);filter:drop-shadow(0 3px 6px rgba(0,0,0,.25));} .l2-av.b{margin-left:-12px;}
+.l2-n{font-size:calc(var(--fs)*.893);font-weight:600;text-shadow:0 0 5px rgba(255,255,255,.95);} .l2-t{font-size:calc(var(--fs)*.786);opacity:.75;max-width:90%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 0 5px rgba(255,255,255,.9);}
+.l2-ctl{display:flex;align-items:center;gap:14px;margin-top:2px;} .l2-ctl button{border:none;background:none;color:var(--text);padding:4px;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 0 4px rgba(255,255,255,.9));cursor:pointer;} .l2-ctl .ic{width:20px;height:20px;} .l2-ctl .lc-p{width:40px;height:40px;border-radius:50%;border:1.8px solid currentColor;padding:0;} .l2-ctl .lc-p .ic{width:18px;height:18px;}
+.quote-card{min-width:0;width:max-content;max-width:210px;padding:4px 8px 5px;border-radius:9px;} .qc-h{font-size:calc(var(--fs)*.786);gap:6px;} .qc-x{font-size:calc(var(--fs)*.893);-webkit-line-clamp:1;margin-top:1px;line-height:1.3;}
+.bubble.bq{padding:5px;} .bq .rt{padding:4px 4px 0;}
+.bholder.qb{margin-bottom:24px;} .q-below{position:absolute;top:100%;margin-top:3px;white-space:nowrap;max-width:230px;} .me .q-below{right:0;} .them .q-below{left:0;}
+html.ic-glass .app-tile .app-icon,html.ic-glass .app-icon.mini{background:linear-gradient(150deg,var(--ic1a,rgba(255,159,183,.3)),var(--ic2a,rgba(255,107,143,.16)));-webkit-backdrop-filter:blur(var(--gblur,4px)) saturate(1.9) brightness(1.06);backdrop-filter:blur(var(--gblur,4px)) saturate(1.9) brightness(1.06);border:none;
+ box-shadow:inset 0 0 0 .5px rgba(255,255,255,.35),inset 2px 2px 2px -1.5px rgba(255,255,255,.95),inset -2px -2px 2px -1.5px rgba(255,255,255,.55),inset 0 0 16px rgba(255,255,255,.1),0 12px 22px -8px rgba(0,0,0,.4),0 2px 4px rgba(0,0,0,.08);}
+html.ic-glass .app-icon::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.2px;background:linear-gradient(135deg,rgba(255,255,255,.95),rgba(255,255,255,.1) 38%,rgba(255,255,255,.04) 62%,rgba(255,255,255,.65));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;top:0;height:auto;left:0;right:0;}
+html.ic-glass .app-icon::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(130% 75% at 18% -8%,rgba(255,255,255,.3),rgba(255,255,255,0) 55%),radial-gradient(90% 60% at 90% 110%,rgba(255,255,255,.18),rgba(255,255,255,0) 60%);box-shadow:none;pointer-events:none;}
+.lis{position:relative;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--text);}
+.lis-top{display:flex;align-items:center;justify-content:center;} .lis-top .lis-c{position:static;width:auto;left:auto;} .lis-top .lis-c.r2{margin-left:-14px;}
+.lis-av{width:60px;height:60px;border-radius:50%;border:3px solid #fff;box-sizing:border-box;background:linear-gradient(160deg,#c9ced8,#9aa1b0) center/cover;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:calc(var(--fs)*1.2);filter:drop-shadow(0 3px 6px rgba(0,0,0,.28));}
+.lis-names{font-size:calc(var(--fs)*.857);font-weight:600;text-shadow:0 0 4px #fff,0 0 8px rgba(255,255,255,.9);white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis;}
+.lis-t{position:static;font-size:calc(var(--fs)*.786);color:var(--text);opacity:.8;text-shadow:0 0 4px #fff;max-width:92%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.lis-ctl{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:2px;} .lc{border:none;background:none;color:var(--text);padding:4px;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 0 3px #fff);} .lc .ic{width:20px;height:20px;}
+.lc.play{width:42px;height:42px;border-radius:50%;background:var(--ic2,#ff6b8f);color:#fff;filter:drop-shadow(0 3px 6px rgba(0,0,0,.25));} .lc.play .ic{width:20px;height:20px;}
+.lis-bead,.lis-dev,.lis-w,.eb,.lis-note{display:none!important;}
+html,body{height:var(--vvh,100%);}
+.screen{position:fixed!important;top:var(--vvt,0px)!important;left:0;right:0;bottom:auto!important;height:var(--vvh,100%)!important;}
+.overlay{top:var(--vvt,0px);bottom:auto;height:var(--vvh,100%);}
+.callpage,.recpage{top:var(--vvt,0px)!important;bottom:auto!important;height:var(--vvh,100%);}
+.btn-mini{border:1.3px solid var(--bubble-me);background:transparent;border-radius:10px;padding:6px 12px;}
+.clear-link,#clearHistBtn,#deleteRoleBtn{border:1.3px solid var(--danger);}
+.ie-row{display:flex;gap:8px;margin-top:6px;padding-top:12px;border-top:1px solid var(--divider);}
+.hw-polaroid .pol{width:78%;height:auto;aspect-ratio:.82;padding:9px 9px 28px;background:linear-gradient(180deg,#fffefb,#f3f0e8);border-radius:3px;border:none!important;transform:rotate(-3deg);filter:drop-shadow(0 4px 8px rgba(0,0,0,.28));position:relative;gap:0;}
+.hw-polaroid .pol-ph{flex:1;min-height:0;border:none!important;outline:none!important;border-radius:1px;background:#d9dbe0 center/cover;box-shadow:inset 0 0 7px rgba(0,0,0,.28);color:#8a8d96;}
+.hw-polaroid .pol-cap{position:absolute;left:8px;right:8px;bottom:6px;text-align:center;font-size:calc(var(--fs)*.929);color:#4a4a4a;font-family:"Kaiti SC","STKaiti","KaiTi",cursive,serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cd-t{font-size:calc(var(--fs)*.857);color:var(--sub);} .cd-n b{font-size:calc(var(--fs)*2.43);font-weight:700;line-height:1.1;} .cd-n span{font-size:calc(var(--fs)*.929);margin-left:3px;} .cd-d{font-size:calc(var(--fs)*.786);color:var(--sub);}
+.cd-big{align-items:center;text-align:center;} .cd-big .cd-t{font-size:calc(var(--fs)*1.07);} .cd-big .cd-n b{font-size:calc(var(--fs)*4.6);} .cd-big .cd-d{font-size:calc(var(--fs)*.929);}
+.hw-in.cd-bg{background-size:cover;background-position:center;} .cd-bg .cd-t,.cd-bg .cd-n,.cd-bg .cd-d{color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.45);}
+.hw-polaroid .plx{position:relative;width:78%;height:auto;aspect-ratio:.82;margin:0 auto;padding:9px 9px 30px;box-sizing:border-box;background:linear-gradient(180deg,#fffefb,#f3f0e8)!important;border:none!important;border-radius:3px;transform:rotate(-3deg);filter:drop-shadow(0 4px 8px rgba(0,0,0,.28));display:flex;flex-direction:column;gap:0;box-shadow:none!important;overflow:visible!important;}
+.hw-polaroid .plx-ph{flex:1;min-height:0;width:auto;height:auto;border:none!important;outline:none!important;border-radius:1px;background-color:#d9dbe0;background-size:cover;background-position:center;box-shadow:inset 0 0 7px rgba(0,0,0,.28)!important;display:flex;align-items:center;justify-content:center;text-align:center;color:#8a8d96;font-size:calc(var(--fs)*.786);}
+.hw-polaroid .plx-cap{position:absolute;left:8px;right:8px;bottom:6px;top:auto;text-align:center;font-size:calc(var(--fs)*.929);color:#4a4a4a;font-family:"Kaiti SC","STKaiti","KaiTi",cursive,serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:none!important;}
+.switch,.field-row .switch,.field-row label.switch{position:relative;display:inline-block;width:48px!important;height:28px!important;flex:0 0 48px!important;}
+.slider{border-radius:14px;background:rgba(120,120,128,.32);} .slider:before{width:24px;height:24px;left:2px;top:2px;}
+.switch input:checked+.slider{background:var(--bubble-me);} .switch input:checked+.slider:before{transform:translateX(20px);}
+.btn-mini{border:none!important;background:rgba(11,132,255,.14)!important;color:var(--bubble-me);}
+.clear-link,#clearHistBtn,#deleteRoleBtn{border:none!important;background:rgba(255,59,48,.12)!important;color:var(--danger);}
+.callpage .btn-mini{background:rgba(255,255,255,.16)!important;color:#fff;}
+.p-cover{cursor:pointer;} .p-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.4);font-size:calc(var(--fs)*.929);pointer-events:none;}
+.cd-in{width:100%;box-sizing:border-box;border:none;border-radius:12px;padding:12px 14px;background:var(--input-bg);color:var(--text);outline:none;font-size:calc(var(--fs)*1.07);}
+.cd-hint{font-size:calc(var(--fs)*.821);color:var(--sub);line-height:1.7;padding:6px 2px 0;}
+.cd-prev{font-size:calc(var(--fs)*.929);padding:10px 12px;border-radius:12px;background:rgba(52,199,89,.12);color:var(--text);} .cd-prev.bad{background:rgba(255,59,48,.1);color:var(--danger);}
+.wheels{position:relative;display:flex;gap:4px;background:var(--input-bg);border-radius:14px;overflow:hidden;} .wheels::after{content:"";position:absolute;left:8px;right:8px;top:68px;height:34px;border-radius:9px;background:rgba(120,120,128,.18);pointer-events:none;}
+.wheel{flex:1;height:170px;overflow-y:auto;scroll-snap-type:y mandatory;scrollbar-width:none;position:relative;z-index:1;} .wheel::-webkit-scrollbar{display:none;} .wheel-in{padding:68px 0;} .wi{height:34px;line-height:34px;text-align:center;scroll-snap-align:center;font-size:calc(var(--fs)*1.07);}
+.clear-link{display:inline-flex!important;align-items:center;gap:6px;align-self:flex-start;width:auto!important;margin:2px 0 12px!important;padding:6px 14px 6px 11px!important;border-radius:999px!important;border:none!important;background:var(--input-bg)!important;color:var(--sub)!important;font-size:calc(var(--fs)*.893);font-weight:500;text-align:left;cursor:pointer;}
+.clear-link::before,.btn-reset::before{content:"";width:13px;height:13px;flex-shrink:0;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 12a9 9 0 1 0 3-6.7'/%3E%3Cpath d='M3 4v5h5'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 12a9 9 0 1 0 3-6.7'/%3E%3Cpath d='M3 4v5h5'/%3E%3C/svg%3E") center/contain no-repeat;}
+.btn-reset{display:inline-flex;align-items:center;gap:5px;border:none;border-radius:999px;padding:6px 12px 6px 9px;background:var(--input-bg);color:var(--sub);font-size:calc(var(--fs)*.857);font-weight:500;cursor:pointer;flex-shrink:0;}
+#clearHistBtn,#deleteRoleBtn{display:block!important;width:100%!important;align-self:stretch;text-align:center!important;background:rgba(255,59,48,.1)!important;color:var(--danger)!important;border-radius:12px!important;padding:12px!important;font-weight:600;}
+#clearHistBtn::before,#deleteRoleBtn::before{display:none;}
+.p-av{cursor:pointer;}
 </style>
 </head>
 <body>
@@ -500,6 +594,7 @@ html.ic-glass .app-icon.mini{box-shadow:inset 0 1px 1px rgba(255,255,255,.8),0 2
       <button class="app-tile" data-app="letters"><div class="app-icon" id="iconLetters"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg></div><div class="app-label">写信</div></button>
       <button class="app-tile" data-app="music"><div class="app-icon" id="iconMusic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg></div><div class="app-label">音乐</div></button>
       <button class="app-tile" data-app="settings"><div class="app-icon" id="iconSettings"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div><div class="app-label">设置</div></button>
+      <button class="app-tile" data-app="global"><div class="app-icon" id="iconGlobal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></div><div class="app-label">总控台</div></button>
     </div>
   </main>
   <div class="home-edit" id="homeEditBar" style="display:none;"><button class="btn-mini" id="addWidgetBtn">添加小组件</button><button class="btn-primary" id="doneEditBtn">完成</button></div>
@@ -590,11 +685,14 @@ html.ic-glass .app-icon.mini{box-shadow:inset 0 1px 1px rgba(255,255,255,.8),0 2
       <div class="field-row"><label>试读文字</label><input type="text" id="ttsTestText" value="你好呀，今天也很想你。" placeholder="输入一段话来试听"></div>
       <div style="display:flex;gap:8px;margin:6px 0 12px;"><button class="btn-mini" id="ttsSave">保存</button><button class="btn-mini" id="ttsTest">测试朗读</button></div></details>
     <details class="acc"><summary>备份与恢复</summary>
-      <div class="field-row"><label style="width:auto;flex:1;">包含上传的音频（体积大）</label><label class="switch"><input type="checkbox" id="bkAudio"><span class="slider"></span></label></div>
-      <div class="field-row"><label style="width:auto;flex:1;">精简备份（不含上传的图片/音频，体积小很多）</label><label class="switch"><input type="checkbox" id="bkLite"><span class="slider"></span></label></div>
-      <div class="sheet-sub">备份包含所有聊天、字卡、角色、桌面布局、美化、朋友圈、信件等。恢复会覆盖现有数据。</div>
+      <div class="sheet-sub">备份包含所有聊天、字卡、角色、桌面布局、美化、朋友圈、信件等。点“保存备份”后再选择要导出的内容和方式（单个文件 / 分卷 / 压缩包）。恢复完整备份会覆盖现有数据。</div>
       <div style="display:flex;gap:8px;margin:6px 0 12px;"><button class="btn-mini" id="bkSave">保存备份</button><button class="btn-mini" id="bkLoad">导入备份</button></div></details>
   </div>
+</div>
+
+<div class="screen" id="screen-global">
+  <header><div class="header-inner"><button class="icon-btn" id="backHome7">‹</button><div class="title">总控台</div></div></header>
+  <div class="list-body" id="globalBody"></div>
 </div>
 
 <div class="screen" id="screen-music">
@@ -640,6 +738,7 @@ html.ic-glass .app-icon.mini{box-shadow:inset 0 1px 1px rgba(255,255,255,.8),0 2
     <div class="field-row"><label>唱片颜色</label><div class="avpick"><input type="color" id="vinylColor" value="#ff9fb7"><button class="btn-mini" id="resetVinylColor">恢复默认</button></div></div>
     <div class="sheet-sub">只改外圈的胶片，中间的封面图不变</div>
     <div class="sec-title">状态栏与全屏</div>
+    <div class="field-row"><label>页面主题</label><div class="seg" id="themeSeg" style="flex:1;"></div></div>
     <div class="field-row"><label>显示状态栏</label><label class="switch"><input type="checkbox" id="sbToggle" checked><span class="slider"></span></label></div>
     <div class="field-row"><label>顶部避让</label><input type="range" id="topOff" min="0" max="140" step="2" value="0" style="flex:1;"><span id="topOffVal" style="width:46px;text-align:right;font-size:calc(var(--fs)*0.929);color:var(--sub);">0px</span></div>
     <div class="sheet-sub">如果顶部被浏览器或查看器的标题栏挡住，把“顶部避让”拉大，内容会整体下移。想要真正的全屏：用浏览器打开链接，再“添加到主屏幕”，从桌面图标打开就是无边框全屏（这时可以关掉上面的状态栏）。</div>
@@ -648,6 +747,8 @@ html.ic-glass .app-icon.mini{box-shadow:inset 0 1px 1px rgba(255,255,255,.8),0 2
     <div class="field-row"><label>图标颜色</label><div class="avpick"><input type="color" id="iconColor" value="#ff6b8f"><button class="btn-mini" id="resetIconColor">恢复默认</button></div></div>
     <div class="field-row"><label>图案颜色</label><div class="avpick"><input type="color" id="iconGlyph" value="#ffffff"><button class="btn-mini" id="resetIconGlyph">自动</button></div></div>
     <div class="field-row"><label>图标样式</label><div class="seg" id="iconStyleSeg" style="flex:1;"></div></div>
+    <div class="field-row"><label>玻璃透明度</label><input type="range" id="glassTrans" min="0" max="100" step="1" style="flex:1;"><span id="glassTransVal" style="width:46px;text-align:right;font-size:calc(var(--fs)*0.929);color:var(--sub);">70%</span></div>
+    <div class="field-row"><label>玻璃模糊</label><input type="range" id="glassBlur" min="0" max="24" step="1" style="flex:1;"><span id="glassBlurVal" style="width:46px;text-align:right;font-size:calc(var(--fs)*0.929);color:var(--sub);">4px</span></div>
     <div class="sheet-sub">“自动”会根据底色深浅，浅底色用深色图案、深底色用白色图案，不会再看不见；也可以自己选图案颜色。仅对默认图标生效；上传了自定义图标的不受影响。液态玻璃在有壁纸时效果最好。</div>
     <div id="iconEditors"></div>
     <div class="sec-title">全局字体</div>
@@ -699,6 +800,8 @@ html.ic-glass .app-icon.mini{box-shadow:inset 0 1px 1px rgba(255,255,255,.8),0 2
       <option value="qq">气泡内包裹（含时间，可跳转）</option>
     </select></div>
     <div class="sec-title">回复规则</div>
+    <div class="field-row"><label>跟随全局</label><label class="switch"><input type="checkbox" id="gReplyToggle"><span class="slider"></span></label></div>
+    <div class="sheet-sub">打开后使用“总控台”里的全局回复设置，各角色不用再调一遍。</div>
     <div class="field-row"><label>最短延迟(秒)</label><input type="number" id="delayMin" class="small-num" min="0"></div>
     <div class="field-row"><label>最长延迟(秒)</label><input type="number" id="delayMax" class="small-num" min="0"></div>
     <div class="field-row"><label>最少条数</label><input type="number" id="replyCountMin" class="small-num" min="1"></div>
@@ -719,6 +822,8 @@ html.ic-glass .app-icon.mini{box-shadow:inset 0 1px 1px rgba(255,255,255,.8),0 2
     <button class="btn-mini" id="copyCssDoc" style="align-self:flex-start;">复制类名说明</button>
     <div class="sec-title">对方主动发起</div>
     <div class="sheet-sub">对方每次回复结束后，按概率主动向你转账、提问，或给你的消息贴表情（提问从问题库里随机抽）</div>
+    <div class="field-row"><label>跟随全局</label><label class="switch"><input type="checkbox" id="gActToggle"><span class="slider"></span></label></div>
+    <div class="sheet-sub">打开后使用“总控台”里的全局主动行为设置。</div>
     <div class="field-row"><label>转账概率(%)</label><input type="number" id="transferChance" class="small-num" min="0" max="100"></div>
     <div class="field-row"><label>提问概率(%)</label><input type="number" id="questionChance" class="small-num" min="0" max="100"></div>
     <div class="field-row"><label>贴表情概率(%)</label><input type="number" id="reactChance" class="small-num" min="0" max="100"></div>
@@ -884,6 +989,21 @@ html.ic-glass .app-icon.mini{box-shadow:inset 0 1px 1px rgba(255,255,255,.8),0 2
   <div style="margin-top:auto;display:flex;gap:70px;"><button class="hang" id="inNo" style="margin-top:0;"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></button><button class="hang" id="inYes" style="margin-top:0;background:#34c759;"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></button></div>
 </div>
 
+<div class="overlay" id="bkExpOverlay"><div class="sheet">
+  <div class="sheet-head"><h2>导出备份</h2><button id="bkExpClose">取消</button></div>
+  <div id="bkExpBody"></div>
+  <button class="btn-primary" id="bkExpGo">开始导出</button>
+</div></div>
+<div class="overlay" id="cdOverlay"><div class="sheet">
+  <div class="sheet-head"><h2>倒数日 / 纪念日</h2><button id="cdCancel">取消</button></div>
+  <div class="field-row"><label>名称</label><input type="text" id="cdName" placeholder="如：生日、纪念日"></div>
+  <div class="seg" id="cdCal"></div>
+  <div class="seg" id="cdMode"></div>
+  <div id="cdInputBox"></div>
+  <div class="seg" id="cdRep"></div>
+  <div class="cd-prev" id="cdPrev"></div>
+  <button class="btn-primary" id="cdSave">保存</button>
+</div></div>
 <div class="modal-dialog" id="linkModal">
   <div class="modal-box">
     <div class="modal-title" id="linkModalTitle">粘贴链接</div>
@@ -980,6 +1100,7 @@ document.querySelectorAll('.app-tile').forEach(t=>t.addEventListener('click', ()
   if(a==='letters'){ openLetters(); }
   if(a==='music'){ renderMusic(); show('screen-music'); }
   if(a==='settings'){ openSettingsApp(); }
+  if(a==='global'){ openGlobal(); }
 }));
 $('backHome1').addEventListener('click', goHome);
 $('backHome2').addEventListener('click', goHome);
@@ -1002,8 +1123,8 @@ function applyFont(){
 function applyDecor(){
   $('homeMain').style.backgroundImage = decor.wallpaper ? 'url("'+decor.wallpaper.replace(/"/g,'&quot;')+'")' : 'none';
   $('vinylLabel').innerHTML = decor.vinylImage ? '<img src="'+decor.vinylImage.replace(/"/g,'&quot;')+'">' : ICON.music;
-  const map={chat:'iconChat',cards:'iconCards',decor:'iconDecor',letters:'iconLetters',music:'iconMusic',settings:'iconSettings'};
-  Object.keys(map).forEach(k=>{ const el=$(map[k]); el.innerHTML = decor.icons[k] ? '<img src="'+decor.icons[k].replace(/"/g,'&quot;')+'">' : ICON[{chat:'chat',cards:'cards',decor:'palette',letters:'mail',music:'music',settings:'gear'}[k]]; });
+  const map={chat:'iconChat',cards:'iconCards',decor:'iconDecor',letters:'iconLetters',music:'iconMusic',settings:'iconSettings',global:'iconGlobal'};
+  Object.keys(map).forEach(k=>{ const el=$(map[k]); el.innerHTML = decor.icons[k] ? '<img src="'+decor.icons[k].replace(/"/g,'&quot;')+'">' : ICON[{chat:'chat',cards:'cards',decor:'palette',letters:'mail',music:'music',settings:'gear',global:'sliders'}[k]]; });
 }
 function renderDecor(){ syncSBInputs(); syncIconCtl(); renderDecorPresets(); $('iconColor').value=decor.iconColor||'#ff6b8f'; $('vinylColor').value=decor.vinylColor||'#ff9fb7';
   $('wallPreview').innerHTML = decor.wallpaper ? '<img src="'+decor.wallpaper+'">' : ICON.image;
@@ -1011,14 +1132,14 @@ function renderDecor(){ syncSBInputs(); syncIconCtl(); renderDecorPresets(); $('
   $('fontStatus').textContent = decor.fontSrc ? '已设置自定义字体' : '默认字体';
   $('fontSize').value = decor.fontSize; $('fontSizeVal').textContent=decor.fontSize+'px';
   const wrap=$('iconEditors'); wrap.innerHTML='';
-  [['chat','诉爱聆心'],['cards','字卡'],['decor','装饰'],['letters','写信'],['music','音乐'],['settings','设置']].forEach(([key,label])=>{
+  [['chat','诉爱聆心'],['cards','字卡'],['decor','装饰'],['letters','写信'],['music','音乐'],['settings','设置'],['global','总控台']].forEach(([key,label])=>{
     const row=document.createElement('div'); row.className='field-row';
-    row.innerHTML='<label>'+label+'</label><div class="avpick"><div class="avatar small apprev" id="prev_'+key+'">'+(decor.icons[key]?'<img src="'+decor.icons[key]+'">':ICON[{chat:'chat',cards:'cards',decor:'palette',letters:'mail',music:'music',settings:'gear'}[key]])+'</div><button class="btn-mini" id="btn_'+key+'">上传/更换</button></div>';
+    row.innerHTML='<label>'+label+'</label><div class="avpick"><div class="avatar small apprev" id="prev_'+key+'">'+(decor.icons[key]?'<img src="'+decor.icons[key]+'">':ICON[{chat:'chat',cards:'cards',decor:'palette',letters:'mail',music:'music',settings:'gear',global:'sliders'}[key]])+'</div><button class="btn-mini" id="btn_'+key+'">上传/更换</button></div>';
     wrap.appendChild(row);
     $('btn_'+key).addEventListener('click', ()=>pickImage(url=>{ decor.icons[key]=url; saveDecor(); renderDecor(); }));
   });
   decor.names=decor.names||{};
-  [['chat','诉爱聆心'],['cards','字卡'],['decor','装饰'],['letters','写信'],['music','音乐'],['settings','设置']].forEach(([key,label])=>{ const row=document.createElement('div'); row.className='field-row'; row.innerHTML='<label>'+label+'名称</label><input type="text" maxlength="8">';
+  [['chat','诉爱聆心'],['cards','字卡'],['decor','装饰'],['letters','写信'],['music','音乐'],['settings','设置'],['global','总控台']].forEach(([key,label])=>{ const row=document.createElement('div'); row.className='field-row'; row.innerHTML='<label>'+label+'名称</label><input type="text" maxlength="8">';
     const inp=row.querySelector('input'); inp.value=decor.names[key]||''; inp.placeholder=label; inp.addEventListener('change',()=>{ decor.names[key]=inp.value.trim(); saveDecor(); }); wrap.appendChild(row); });
 }
 $('homeWallBtn').addEventListener('click', ()=>pickImage(url=>{ decor.wallpaper=url; saveDecor(); renderDecor(); }));
@@ -1051,7 +1172,7 @@ $('newRoleAvBtn').addEventListener('click', ()=>pickImage(url=>{ pendingAvatar=u
 $('newRoleName').addEventListener('input', e=>{ if(!pendingAvatar) $('newRoleAvPreview').innerHTML=avatarHTML(e.target.value,''); });
 $('createRoleBtn').addEventListener('click', ()=>{
   const name=$('newRoleName').value.trim(); if(!name){ toast('请给角色起个名字'); return; }
-  const r=defaultRole(name); r.avatar=pendingAvatar; roles.push(r); saveRoles(); pendingAvatar='';
+  const r=defaultRole(name); if(G.newFollow){ r.gReply=true; r.gAct=true; pullGlobal(r,'reply'); pullGlobal(r,'act'); } r.avatar=pendingAvatar; roles.push(r); saveRoles(); pendingAvatar='';
   $('addRoleOverlay').classList.remove('open'); renderRolesList();
 });
 
@@ -1131,7 +1252,7 @@ function bubbleRow(m,i){
       if(m.quoted){ q=el('div','quote-ref'); q.textContent=nm(m.quoted.who,m.quoted.by)+': '+m.quoted.text; if(qs==='below') q.style.margin='2px 0 0'; }
       if(q&&qs==='above') wrap.appendChild(q);
       wrap.appendChild(body);
-      if(q&&qs==='below') wrap.appendChild(q);
+      if(q&&qs==='below'){ row.classList.add('gb'); row._q=q; }
     }
   }
   const myR=m.reacts||[], thR=m.reactsThem||[];
@@ -1142,7 +1263,8 @@ function bubbleRow(m,i){
   attachLongPress(body,m);
   if((m.type==='text'||m.type==='sticker')&&!m.recalled){ let dt=null; body.addEventListener('click',()=>{ if(selMode||lpFired) return; if(dt){ clearTimeout(dt); dt=null; openMsgMenu(m); } else dt=setTimeout(()=>{ dt=null; },300); }); }
   if(av){ if(m.who==='me') row.append(wrap,av); else row.append(av,wrap); } else row.appendChild(wrap);
-  if((r.timeStyle||'wechat')==='side'&&m.ts){ const t=el('div','tm-side'); t.textContent=hhmm(m.ts); if(m.who==='me') row.insertBefore(t,wrap); else row.insertBefore(t,wrap.nextSibling); }
+  if(row._q) row.appendChild(row._q);
+  if((r.timeStyle||'wechat')==='side'&&m.ts&&!row.classList.contains('gb')){ const t=el('div','tm-side'); t.textContent=hhmm(m.ts); if(m.who==='me') row.insertBefore(t,wrap); else row.insertBefore(t,wrap.nextSibling); }
   if(selMode) decorateSel(row,m);
   return row;
 }
@@ -1598,13 +1720,13 @@ function renderMoments(){
   const ps=moments.slice().sort((a,c)=>c.ts-a.ts);
   if(!ps.length) b.insertAdjacentHTML('beforeend','<div class="empty">还没有朋友圈<br>点右上角的相机图标发一条。对方会用他的字卡和表情包发动态</div>'); else ps.forEach(p=>b.appendChild(renderPost(p)));
 }
-function coverEl(url,btns){ const c=el('div','p-cover'); if(url) c.style.backgroundImage='url("'+url.replace(/"/g,'%22')+'")';
-  const b=el('div','p-cbtns'); btns.forEach(([l,fn])=>{ const x=el('button','btn-mini'); x.textContent=l; x.addEventListener('click',fn); b.appendChild(x); }); c.appendChild(b); return c; }
+function coverEl(url,btns){ const c=el('div','p-cover'); if(url) c.style.backgroundImage='url("'+url.replace(/"/g,'%22')+'")'; else { const h=el('div','p-hint'); h.textContent='点一下更换背景'; c.appendChild(h); }
+  c.addEventListener('click',()=>showChoiceSheet(btns.map(([l,fn])=>({label:l==='更换背景'?'更换图片':l,onClick:fn})))); return c; }
 function renderMine(){
   const b=$('minePane'); b.innerHTML='';
   b.appendChild(coverEl(myProf.cover,[['更换背景',()=>pickImage(u=>{ myProf.cover=u; saveMe(); renderMine(); })],['恢复默认',()=>{ myProf.cover=''; saveMe(); renderMine(); }]]));
   const h=el('div','p-head'); h.innerHTML='<div class="avatar p-av"></div><div class="p-info"><input class="p-nm" type="text" placeholder="我的昵称"><input class="p-sig" type="text" placeholder="点这里编辑个性签名"></div>';
-  const av=h.querySelector('.p-av'); av.innerHTML=avatarHTML(myProf.name,myProf.avatar); av.style.cursor='pointer'; av.addEventListener('click',()=>pickImage(u=>{ myProf.avatar=u; saveMe(); renderMine(); }));
+  const av=h.querySelector('.p-av'); av.innerHTML=avatarHTML(myProf.name,myProf.avatar); av.style.cursor='pointer'; av.addEventListener('click',()=>showChoiceSheet([{label:'更换头像',onClick:()=>pickImage(u=>{ myProf.avatar=u; saveMe(); renderMine(); })},{label:'恢复默认',onClick:()=>{ myProf.avatar=''; saveMe(); renderMine(); }}]));
   const nm2=h.querySelector('.p-nm'); nm2.value=myProf.name; nm2.addEventListener('change',()=>{ myProf.name=nm2.value.trim()||'我'; saveMe(); });
   const sg=h.querySelector('.p-sig'); sg.value=myProf.sig||''; sg.addEventListener('change',()=>{ myProf.sig=sg.value; saveMe(); }); b.appendChild(h);
   const bar=el('div','sec-bar'); bar.innerHTML='<span>我的朋友圈</span>'; const pb=el('button','btn-mini'); pb.textContent='＋ 发一条'; pb.addEventListener('click',openPost); bar.appendChild(pb); b.appendChild(bar);
@@ -1625,7 +1747,8 @@ function renderProfile(){
       const val=c.querySelector('b'), i=c.querySelector('input'); i.value=rvv(r[k],df); val.textContent=i.value+'%'; i.addEventListener('input',()=>{ val.textContent=i.value+'%'; r[k]=Number(i.value); saveRoles(); }); b.appendChild(c); }); return; }
   b.appendChild(coverEl(r.cover,[['更换背景',()=>pickImage(u=>{ r.cover=u; saveRolesChk(); renderProfile(); })],['恢复默认',()=>{ r.cover=''; saveRoles(); renderProfile(); }]]));
   const h=el('div','p-head'); h.innerHTML='<div class="avatar p-av"></div><div class="p-info"><div class="p-name"></div><input class="p-sig" type="text" placeholder="点这里编辑个性签名"></div>';
-  h.querySelector('.p-av').innerHTML=avatarHTML(r.name,r.avatar); h.querySelector('.p-name').textContent=r.name;
+  h.querySelector('.p-av').innerHTML=avatarHTML(r.name,r.avatar); h.querySelector('.p-av').style.cursor='pointer'; h.querySelector('.p-av').addEventListener('click',()=>{ const done=()=>{ saveRolesChk(); renderProfile(); if(curRoleId===r.id){ applyRoleTheme(); renderChat(); } };
+    showChoiceSheet([{label:'更换头像',onClick:()=>pickImage(u=>{ r.avatar=u; done(); })},{label:'恢复默认',onClick:()=>{ r.avatar=''; done(); }}]); }); h.querySelector('.p-name').textContent=r.name;
   const si=h.querySelector('.p-sig'); si.value=r.sig||''; si.addEventListener('change',()=>{ r.sig=si.value; saveRoles(); }); b.appendChild(h);
   const mkc=(ic,t,sub,v)=>{ const d=el('div','p-card'); d.innerHTML='<div class="p-ci"></div><div class="p-ct"><div class="p-ctt"></div><div class="p-cts"></div></div><span class="p-cc">›</span>'; d.querySelector('.p-ci').innerHTML=ICON[ic]; d.querySelector('.p-ctt').textContent=t; d.querySelector('.p-cts').textContent=sub; d.addEventListener('click',()=>{ profView=v; renderProfile(); }); b.appendChild(d); };
   const lt=mine[0]&&(mine[0].text||'[图片]'); mkc('image','朋友圈',mine.length?mine.length+' 条动态 · '+lt:'还没有动态','moments'); mkc('gear','朋友圈设置','发布、点赞、评论、回复的概率','msettings');
@@ -1872,7 +1995,7 @@ function findSpot(it,tx,ty){ const maxP=homeLayout.reduce((m,o)=>Math.max(m,o.p|
 function itemEl(it){ if(it.type==='app') return document.querySelector('.app-tile[data-app="'+it.app+'"]'); if(it.type==='vinyl'){ if(it.id==='vinyl') return document.querySelector('.vinyl-cell'); if(!widgetEls[it.id]){ const c=document.querySelector('.vinyl-cell').cloneNode(true); c.querySelectorAll('[id]').forEach(x=>x.removeAttribute('id')); c.querySelectorAll('.hx').forEach(x=>x.remove()); widgetEls[it.id]=c; } return widgetEls[it.id]; }
   if(!widgetEls[it.id]){ const e=document.createElement('div'); e.className='hw hw-'+it.type; e.innerHTML='<div class="hw-in"></div>'; widgetEls[it.id]=e; } return widgetEls[it.id]; }
 function widgetDays(d){ const t=new Date(d+'T00:00:00'); if(isNaN(t)) return null; const n=new Date(); n.setHours(0,0,0,0); return Math.round((t-n)/86400000); }
-function refreshWidget(it,e){ if(it.type==='app'||it.type==='vinyl') return; if(it.type==='listen'||it.type==='polaroid'){ renderFancy(it,e); return; } if(it.type==='countdown'&&it.cal==='lunar'){ renderLunarCd(it,e); return; } const b=e.querySelector('.hw-in'), d=new Date(), wk='日一二三四五六'[d.getDay()];
+function refreshWidget(it,e){ if(it.type==='app'||it.type==='vinyl') return; if(it.type==='listen'||it.type==='polaroid'){ renderFancy(it,e); return; } if(it.type==='countdown'){ renderCountdown(it,e); return; } const b=e.querySelector('.hw-in'), d=new Date(), wk='日一二三四五六'[d.getDay()];
   if(it.type==='clock'){ b.innerHTML='<div class="w-big"></div><div class="w-sub"></div>'; b.children[0].textContent=pad2(d.getHours())+':'+pad2(d.getMinutes()); b.children[1].textContent=(d.getMonth()+1)+'月'+d.getDate()+'日 周'+wk; }
   else if(it.type==='date'){ b.innerHTML='<div class="w-sub"></div><div class="w-huge"></div><div class="w-sub"></div>'; b.children[0].textContent=d.getFullYear()+'年'+(d.getMonth()+1)+'月'; b.children[1].textContent=d.getDate(); b.children[2].textContent='星期'+wk+(it.lunar?' · '+lunarText(d):''); b.style.alignItems='center'; }
   else if(it.type==='note'){ b.innerHTML='<div class="w-note"></div>'; b.firstChild.textContent=it.text||'点一下，写点什么'; }
@@ -1880,7 +2003,7 @@ function refreshWidget(it,e){ if(it.type==='app'||it.type==='vinyl') return; if(
   else if(it.type==='countdown'){ b.innerHTML='<div class="w-sub"></div><div class="w-big"></div>'; if(!it.date){ b.children[0].textContent='倒数日'; b.children[1].textContent='点一下设置'; b.children[1].style.fontSize='15px'; } else { const n=widgetDays(it.date); b.children[0].textContent=(it.title||'倒数日')+(n!==null&&n<0?' 已过':' 还有'); b.children[1].textContent=n===null?'--':Math.abs(n)+' 天'; } }
   else if(it.type==='quote'){ const cards=sharedCards.map(c=>c.text); b.innerHTML='<div class="w-note"></div>'; const k=d.getFullYear()*372+d.getMonth()*31+d.getDate(); b.firstChild.textContent=it.cur||(cards.length?cards[k%cards.length]:'在“字卡”里添加一些话，这里会每天显示一句'); }
 }
-function widgetTap(it){ if(editMode) return; if(it.type==='listen'||it.type==='polaroid'){ fancyTap(it); return; } if(it.type==='countdown'){ cdTap(it); return; } if(it.type==='date'){ it.lunar=!it.lunar; saveHome(); renderHome(); toast(it.lunar?'已显示农历':'已隐藏农历'); return; }
+function widgetTap(it){ if(editMode) return; if(it.type==='listen'||it.type==='polaroid'){ fancyTap(it); return; } if(it.type==='countdown'){ cdMenu(it); return; } if(it.type==='date'){ it.lunar=!it.lunar; saveHome(); renderHome(); toast(it.lunar?'已显示农历':'已隐藏农历'); return; }
   if(it.type==='note') dataModal('便签','',it.text||'',false,[['保存','confirm',()=>{ it.text=$('dataText').value; saveHome(); closeData(); renderHome(); }],['取消','cancel',closeData]]);
   else if(it.type==='photo') pickImage(u=>{ it.img=u; saveHome(); renderHome(); });
   else if(it.type==='countdown') showLinkModal('倒数日名称',t=>{ setTimeout(()=>showLinkModal('目标日期',d=>{ if(widgetDays(d)===null){ toast('日期格式不对'); return; } it.title=t; it.date=d; saveHome(); renderHome(); },'如 2026-12-31'),80); },'如：生日',it.title||'');
@@ -1927,7 +2050,8 @@ function mixc(h,t,f){ const a=hex2rgb(h), b=t==='w'?[255,255,255]:[0,0,0]; retur
 function applyColors(){ const ic=decor.iconColor||'#ff6b8f', vc=decor.vinylColor||'#ff9fb7', st=document.documentElement.style, glass=decor.iconStyle==='glass', rg=(h,a)=>{ const c=hex2rgb(h); return 'rgba('+c[0]+','+c[1]+','+c[2]+','+a+')'; };
   st.setProperty('--ic1',mixc(ic,'w',.28)); st.setProperty('--ic2',ic); st.setProperty('--vc1',mixc(vc,'b',.16)); st.setProperty('--vc2',mixc(vc,'w',.08)); st.setProperty('--vcb',mixc(vc,'b',.3));
   const c=hex2rgb(ic), L0=(0.299*c[0]+0.587*c[1]+0.114*c[2])/255, L=glass?L0*.65+.35:L0; st.setProperty('--icg',decor.iconGlyph||(L>(glass?0.8:0.68)?'#2b2d33':'#ffffff'));
-  const lc=hex2rgb(ic).map(v=>Math.round(v+(255-v)*.3)); st.setProperty('--ic1a','rgba('+lc.join(',')+',.62)'); st.setProperty('--ic2a',rg(ic,.4)); document.documentElement.classList.toggle('ic-glass',glass); }
+  const lc=hex2rgb(ic).map(v=>Math.round(v+(255-v)*.3)), ga=(100-(decor.glassTrans==null?70:decor.glassTrans))/100*.8;
+  st.setProperty('--ic1a','rgba('+lc.join(',')+','+Math.min(1,ga*1.4).toFixed(3)+')'); st.setProperty('--ic2a',rg(ic,ga.toFixed(3))); st.setProperty('--gblur',(decor.glassBlur==null?4:decor.glassBlur)+'px'); document.documentElement.classList.toggle('ic-glass',glass); }
 $('iconColor').addEventListener('input',e=>{ decor.iconColor=e.target.value; saveDecor(); });
 $('vinylColor').addEventListener('input',e=>{ decor.vinylColor=e.target.value; saveDecor(); });
 $('resetIconColor').addEventListener('click',()=>{ delete decor.iconColor; saveDecor(); renderDecor(); });
@@ -2010,11 +2134,12 @@ $('bkSave').addEventListener('click',()=>{ const o={app:'suaililingxin-backup',v
   const fin=()=>bigExport('备份',JSON.stringify(o),'suaililingxin-backup.json');
   if(!$('bkAudio').checked){ fin(); return; }
   idbAll().then(all=>Promise.all(Object.keys(all).map(k=>blobToDataURL(all[k]).then(d=>{ o.audio[k]=d; })))).then(fin).catch(()=>{ toast('读取音频失败，已不含音频'); fin(); }); });
-function restoreBackup(o){ if(!o||o.app!=='suaililingxin-backup'||!o.data){ toast('这不是有效的备份'); return; }
+function restoreBackup(o){ if(o&&o.partial){ mergeBackup(o); return; } if(!o||o.app!=='suaililingxin-backup'||!o.data){ toast('这不是有效的备份'); return; }
   showConfirm('用这份备份覆盖现有的全部数据？此操作无法撤销。',()=>{ const del=[]; for(let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); if(k&&k.indexOf('app_')===0) del.push(k); } del.forEach(k=>localStorage.removeItem(k));
     Object.keys(o.data).forEach(k=>{ try{ localStorage.setItem(k,o.data[k]); }catch(e){} });
     const ks=Object.keys(o.audio||{}); Promise.all(ks.map(k=>idbPut(k,dataURLToBlob(o.audio[k])))).catch(()=>{}).then(()=>{ toast('已恢复，正在刷新…'); setTimeout(()=>location.reload(),600); }); }); }
-$('bkLoad').addEventListener('click',()=>{ dataModal('导入备份','粘贴备份文本，或选择 .json 备份文件','',false,[
+$('bkLoad').addEventListener('click',()=>{ dataModal('导入备份','粘贴备份文本，或选择 .json 备份文件 / .zip 压缩包','',false,[
+  ['选择压缩包(.zip)','cancel',()=>zipIn.click()],
   ['选择文件','cancel',()=>triggerFilePicker('.json,.txt,application/json',du=>{ try{ $('dataText').value=new TextDecoder().decode(Uint8Array.from(atob(du.split(',')[1]),c=>c.charCodeAt(0))); }catch(e){ toast('文件读取失败'); } })],
   ['恢复','confirm',()=>{ let o; try{ o=JSON.parse($('dataText').value.trim()); }catch(e){ toast('内容格式不对'); return; } closeData(); restoreBackup(o); }],
   ['取消','cancel',closeData]]); });
@@ -2054,7 +2179,7 @@ function cdTap(it){ showLinkModal('倒数日名称',t=>{ setTimeout(()=>showChoi
   {label:'公历日期',onClick:()=>setTimeout(()=>showLinkModal('目标日期',d=>{ if(widgetDays(d)===null){ toast('日期格式不对'); return; } it.title=t; it.date=d; it.cal='solar'; saveHome(); renderHome(); },'如 2026-12-31'),80)},
   {label:'农历日期（每年）',onClick:()=>setTimeout(()=>showLinkModal('农历 月-日',d=>{ const m=d.match(/^(\d{1,2})\D+(\d{1,2})$/); if(!m){ toast('格式如 8-15'); return; } it.title=t; it.cal='lunar'; it.lm=+m[1]; it.ld=+m[2]; it.date=''; saveHome(); renderHome(); },'如 8-15（农历八月十五）'),80)}]),80); },'如：生日',it.title||''); }
 const HP='<svg class="lis-hp" viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 36V26a26 26 0 0 1 52 0v10"/><rect x="2" y="26" width="9" height="14" rx="3" fill="currentColor"/><rect x="53" y="26" width="9" height="14" rx="3" fill="currentColor"/></svg>';
-function renderFancy(it,e){ const b=e.querySelector('.hw-in'); if(it.type==='listen'){ renderListen(it,e); return; }
+function renderFancy(it,e){ const b=e.querySelector('.hw-in'); if(it.type==='listen'){ renderListen2(it,e); return; } if(it.type==='polaroid'){ renderPolaroid(it,e); return; }
   if(it.type==='polaroid'){ b.innerHTML='<div class="pol"><div class="pol-ph"></div><div class="pol-cap"></div></div>'; const ph=b.querySelector('.pol-ph');
     if(it.img) ph.style.backgroundImage='url("'+it.img.replace(/"/g,'%22')+'")'; else ph.innerHTML='<span>点一下换照片</span>'; b.querySelector('.pol-cap').textContent=it.cap||'写一句话'; return; }
   b.innerHTML='<div class="lis"><div class="lis-row"></div><svg class="lis-cable" viewBox="0 0 100 24" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 0C14 26 86 26 86 0"/></svg><div class="lis-t"></div></div>';
@@ -2062,9 +2187,9 @@ function renderFancy(it,e){ const b=e.querySelector('.hw-in'); if(it.type==='lis
     const av=c.firstChild; if(it[a]) av.style.backgroundImage='url("'+it[a].replace(/"/g,'%22')+'")'; else { const t=document.createElement('span'); t.textContent=(it[n]||df).charAt(0); av.insertBefore(t,av.firstChild); }
     c.lastChild.textContent=it[n]||df; row.appendChild(c); }); b.querySelector('.lis-t').textContent=it.song?'正在听 · '+it.song:'一起听'; }
 function fancyTap(it){ const ask=(t,k,ph,next)=>setTimeout(()=>showLinkModal(t,v=>{ it[k]=v; saveHome(); renderHome(); if(next) next(); },ph,it[k]||''),70);
-  if(it.type==='polaroid') showChoiceSheet([{label:'更换照片',onClick:()=>pickImage(u=>{ it.img=u; saveHome(); renderHome(); })},{label:'修改文案',onClick:()=>ask('文案','cap','写一句话')}]);
+  if(it.type==='polaroid') showChoiceSheet([{label:'更换照片',onClick:()=>pickImage(u=>{ it.img=u; saveHome(); renderHome(); })},{label:'修改文案',onClick:()=>ask('文案','cap','写一句话')},{label:it.cover?'照片完整显示':'照片铺满',onClick:()=>{ it.cover=!it.cover; saveHome(); renderHome(); }}]);
   else showChoiceSheet([{label:'更换左边头像',onClick:()=>pickImage(u=>{ it.a1=u; saveHome(); renderHome(); })},{label:'更换右边头像',onClick:()=>pickImage(u=>{ it.a2=u; saveHome(); renderHome(); })},
-    {label:'修改昵称',onClick:()=>ask('左边昵称','n1','昵称',()=>setTimeout(()=>ask('右边昵称','n2','昵称'),90))},{label:'修改歌名',onClick:()=>ask('正在听的歌','song','歌名')},{label:'更换设备（手机 / MP3）',onClick:()=>{ it.dev=it.dev==='mp3'?'phone':'mp3'; saveHome(); renderHome(); }}]); }
+    {label:'修改昵称',onClick:()=>ask('左边昵称','n1','昵称',()=>setTimeout(()=>ask('右边昵称','n2','昵称'),90))},{label:'修改歌名',onClick:()=>ask('正在听的歌','song','歌名')},{label:'清除歌名（显示正在播放的曲目）',onClick:()=>{ delete it.song; saveHome(); renderHome(); }}]); }
 function pageCount(){ return Math.max(1,homeLayout.reduce((m,o)=>Math.max(m,(o.p||0)+1),0)); }
 function renderDots(){ let d=$('homeDots'); if(!d){ d=document.createElement('div'); d.id='homeDots'; d.className='hdots'; HM.appendChild(d); }
   const n=pageCount()+(editMode?1:0); d.innerHTML=''; for(let i=0;i<n;i++){ const x=document.createElement('button'); x.className='hd'+(i===homePage?' on':''); x.addEventListener('click',()=>{ homePage=i; renderHome(); }); d.appendChild(x); } d.style.display=n>1?'flex':'none'; }
@@ -2115,7 +2240,7 @@ function nextTrack(auto){ const n=player.queue.length; if(!n) return; const m=pl
   if(m==='shuffle') player.idx=Math.floor(Math.random()*n); else { player.idx++; if(player.idx>=n){ if(m==='order'&&auto){ stopMusic(); return; } player.idx=0; } } loadCur(); }
 function prevTrack(){ const n=player.queue.length; if(!n) return; player.idx=(player.idx-1+n)%n; loadCur(); }
 player.audio.addEventListener('ended',()=>nextTrack(true)); player.audio.addEventListener('play',()=>renderMini()); player.audio.addEventListener('pause',()=>renderMini());
-function renderMini(){ const m=$('musicMini'); if(!m) return; const t=MUS.tracks.find(x=>x.id===player.queue[player.idx]), playing=!player.audio.paused&&player.idx>=0;
+function renderMini(){ refreshListens(); const m=$('musicMini'); if(!m) return; const t=MUS.tracks.find(x=>x.id===player.queue[player.idx]), playing=!player.audio.paused&&player.idx>=0;
   m.innerHTML='<div class="mm-now"></div><button id="mpPrev"></button><button id="mpPlay"></button><button id="mpNext"></button><button id="mpMode"></button>';
   m.querySelector('.mm-now').textContent=noiseNode?'白噪音 · '+noiseLabel(noiseNode.kind):(t?t.name:'未在播放');
   $('mpPrev').innerHTML=ICON.prev; $('mpNext').innerHTML=ICON.next; $('mpPlay').innerHTML=(playing||noiseNode)?ICON.pause:ICON.play; $('mpMode').textContent=(MODES.find(x=>x[0]===player.mode)||MODES[0])[1];
@@ -2329,7 +2454,7 @@ $('voRec').addEventListener('click',async()=>{ if(recS){ recS.mr.stop(); return;
     mr.ondataavailable=e=>chunks.push(e.data);
     mr.onstop=async()=>{ st.getTracks().forEach(t=>t.stop()); const dur=Math.max(1,Math.round((Date.now()-recS.t0)/1000)); recS=null; $('voRec').classList.remove('rec'); const blob=new Blob(chunks,{type:mr.mimeType||'audio/mp4'}), id=uid();
       try{ await auPut(id,blob); }catch(e){ memBlobs[id]=URL.createObjectURL(blob); } sendVoice({src:'idb:'+id,text:'',dur}); };
-    mr.start(); }catch(e){ recS=null; toast('无法使用麦克风（权限被拒绝或当前环境不支持），可以用“上传音频发送”'); } });
+    mr.start(); }catch(e){ recS=null; showConfirm('这个页面里不能直接用麦克风（在 Claude 里打开的页面没有麦克风权限）。要改用手机自带的录音/文件选择来发一条语音吗？\n\n小提示：用 Safari 或 Chrome 直接打开这个链接，就能在页面里直接录音。',()=>vfCap.click()); } });
 const vf2=document.createElement('input'); vf2.type='file'; vf2.accept='audio/*'; vf2.style.display='none'; document.body.appendChild(vf2);
 vf2.addEventListener('change',async()=>{ const f=(vf2.files||[])[0]; vf2.value=''; if(!f) return; const id=uid(); try{ await auPut(id,f); }catch(e){ memBlobs[id]=URL.createObjectURL(f); } sendVoice({src:'idb:'+id,text:f.name.replace(/\.[^.]+$/,'')}); });
 
@@ -2341,21 +2466,25 @@ function stampSep(m,i){ const prev=curHistory[i-1]; if(prev&&prev.ts&&m.ts-prev.
 function syncVinyls(){ const src=$('vinylLabel'); if(!src) return; document.querySelectorAll('#homeGrid .vinyl-label').forEach(l=>{ if(l!==src) l.innerHTML=src.innerHTML; }); }
 const PHONESVG='<svg viewBox="0 0 34 60"><defs><linearGradient id="pb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a4e5a"/><stop offset="1" stop-color="#1c1e24"/></linearGradient><linearGradient id="ps" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb3cf"/><stop offset="1" stop-color="#8fa8ff"/></linearGradient></defs><rect x="1" y="1" width="32" height="58" rx="7" fill="url(#pb)"/><rect x="3" y="3" width="28" height="54" rx="5" fill="url(#ps)"/><rect x="12" y="5" width="10" height="3" rx="1.5" fill="#1c1e24"/><circle cx="17" cy="26" r="8.5" fill="#fff" opacity=".9"/><circle cx="17" cy="26" r="3" fill="#ff7aa5"/><rect x="7" y="40" width="20" height="2" rx="1" fill="#fff" opacity=".5"/><rect x="7" y="40" width="9" height="2" rx="1" fill="#fff"/><path d="M12 48l5-3v6zM20 45h2v6h-2zM24 45h2v6h-2z" fill="#fff"/><path d="M3 12L18 3H31L3 30z" fill="#fff" opacity=".12"/></svg>';
 const MP3SVG='<svg viewBox="0 0 34 60"><defs><linearGradient id="mb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eceef3"/><stop offset="1" stop-color="#b4b9c6"/></linearGradient></defs><rect x="1" y="1" width="32" height="58" rx="6" fill="url(#mb)"/><rect x="4" y="4" width="26" height="20" rx="2.5" fill="#26303f"/><rect x="6" y="7" width="22" height="3" rx="1" fill="#6ea8ff"/><rect x="6" y="13" width="14" height="2" rx="1" fill="#fff" opacity=".6"/><rect x="6" y="18" width="22" height="2" rx="1" fill="#fff" opacity=".3"/><circle cx="17" cy="42" r="13" fill="#f6f7fa" stroke="#aeb3c0"/><circle cx="17" cy="42" r="4.5" fill="#cfd3dc" stroke="#aeb3c0" stroke-width=".8"/></svg>';
+function renderPolaroid(it,e){ const b=e.querySelector('.hw-in'); b.innerHTML='<div class="plx"><div class="plx-ph"></div><div class="plx-cap"></div></div>'; const x=b.firstChild, ph=x.firstChild;
+  x.classList.toggle('paper',!!it.paper); x.classList.toggle('cover',!!it.cover);
+  if(it.img) ph.style.backgroundImage='url("'+it.img.replace(/"/g,'%22')+'")'; else { ph.classList.add('empty'); ph.textContent='点一下换照片'; } x.lastChild.textContent=it.cap||'写一句话'; }
+const NOTE='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 18V6l11-2v12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="3"/><circle cx="17.5" cy="16" r="3"/></svg>';
 function renderListen(it,e){ const b=e.querySelector('.hw-in');
-  b.innerHTML='<div class="lis"><svg class="lis-w" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path vector-effect="non-scaling-stroke" d="M19 23C10 47 34 57 50 62"/><path vector-effect="non-scaling-stroke" d="M81 23C90 47 66 57 50 62"/><path vector-effect="non-scaling-stroke" d="M50 62V70"/></svg><div class="lis-c l"><div class="lis-av"></div><div class="lis-n"></div></div><div class="lis-c r"><div class="lis-av"></div><div class="lis-n"></div></div><i class="eb" style="left:19%;top:20%"></i><i class="eb" style="left:81%;top:20%"></i><div class="lis-dev"></div><div class="lis-t"></div></div>';
-  [['a1','n1','我','l'],['a2','n2','TA','r']].forEach(([a,n,df,side])=>{ const c=b.querySelector('.lis-c.'+side), av=c.firstChild; if(it[a]) av.style.backgroundImage='url("'+it[a].replace(/"/g,'%22')+'")'; else av.textContent=(it[n]||df).charAt(0); c.lastChild.textContent=it[n]||df; });
-  b.querySelector('.lis-dev').innerHTML=it.dev==='mp3'?MP3SVG:PHONESVG; b.querySelector('.lis-t').textContent=it.song?'正在听 · '+it.song:''; }
+  b.innerHTML='<div class="lis"><svg class="lis-w" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path vector-effect="non-scaling-stroke" d="M13 27C4 54 33 65 50 68"/><path vector-effect="non-scaling-stroke" d="M87 27C96 54 67 65 50 68"/><path vector-effect="non-scaling-stroke" d="M50 68V73"/></svg><i class="lis-nt a">'+NOTE+'</i><i class="lis-nt b">'+NOTE+'</i><div class="lis-c l"><div class="lis-av"><i class="eb l"></i></div><div class="lis-n"></div></div><div class="lis-c r"><div class="lis-av"><i class="eb r"></i></div><div class="lis-n"></div></div><div class="lis-dev"></div><div class="lis-t"></div></div>';
+  [['a1','n1','我','l'],['a2','n2','TA','r']].forEach(([a,n,df,side])=>{ const c=b.querySelector('.lis-c.'+side), av=c.firstChild; if(it[a]) av.style.backgroundImage='url("'+it[a].replace(/"/g,'%22')+'")'; else av.insertAdjacentText('afterbegin',(it[n]||df).charAt(0)); c.lastChild.textContent=it[n]||df; });
+  b.querySelector('.lis-dev').innerHTML=it.dev==='mp3'?MP3SVG:PHONESVG; const t=b.querySelector('.lis-t'); t.textContent=it.song?'正在听 · '+it.song:''; if(!it.song) t.style.display='none'; }
 (function(){ let sx=0,sy=0,t0=0,dx=0,mode=0; const apply=v=>HG.style.setProperty('--sw',v+'px');
-  HM.addEventListener('touchstart',ev=>{ if(editMode) return; const t=ev.touches[0]; sx=t.clientX; sy=t.clientY; t0=Date.now(); dx=0; mode=0; },{passive:true});
-  HM.addEventListener('touchmove',ev=>{ if(editMode) return; const t=ev.touches[0], mx=t.clientX-sx, my=t.clientY-sy; if(!mode){ if(Math.abs(mx)>8&&Math.abs(mx)>Math.abs(my)*1.2) mode=1; else if(Math.abs(my)>8) mode=2; }
-    if(mode!==1) return; const n=pageCount(); let d=mx; if((homePage===0&&d>0)||(homePage===n-1&&d<0)) d*=.35; dx=d; HG.classList.add('swiping'); apply(d); if(ev.cancelable) ev.preventDefault(); },{passive:false});
-  const end=()=>{ if(mode!==1) return; const W=HG.clientWidth, v=Math.abs(dx)/Math.max(1,Date.now()-t0), n=pageCount(); let np=homePage; if(Math.abs(dx)>W*.22||v>.4) np=dx<0?Math.min(n-1,homePage+1):Math.max(0,homePage-1);
+  HM.addEventListener('touchstart',ev=>{ if(editMode&&ev.target.closest&&ev.target.closest('.hitem')){ mode=3; return; } const t=ev.touches[0]; sx=t.clientX; sy=t.clientY; t0=Date.now(); dx=0; mode=0; },{passive:true});
+  HM.addEventListener('touchmove',ev=>{ if(mode===3) return; const t=ev.touches[0], mx=t.clientX-sx, my=t.clientY-sy; if(!mode){ if(Math.abs(mx)>8&&Math.abs(mx)>Math.abs(my)*1.2) mode=1; else if(Math.abs(my)>8) mode=2; }
+    if(mode!==1) return; const n=pageCount()+(editMode?1:0); let d=mx; if((homePage===0&&d>0)||(homePage===n-1&&d<0)) d*=.35; dx=d; HG.classList.add('swiping'); apply(d); if(ev.cancelable) ev.preventDefault(); },{passive:false});
+  const end=()=>{ if(mode!==1) return; const W=HG.clientWidth, v=Math.abs(dx)/Math.max(1,Date.now()-t0), n=pageCount()+(editMode?1:0); let np=homePage; if(Math.abs(dx)>W*.22||v>.4) np=dx<0?Math.min(n-1,homePage+1):Math.max(0,homePage-1);
     HG.classList.remove('swiping'); apply(0); homePage=np; mode=0; suppressHome=true; setTimeout(()=>{ suppressHome=false; },320); renderHome(); };
   HM.addEventListener('touchend',end); HM.addEventListener('touchcancel',end); })();
 
 /* ===== 状态栏开关 / 顶部避让 / 字卡全局搜索 ===== */
-function applySB(){ const rt=document.documentElement; rt.style.setProperty('--topoff',(decor.topOff||0)+'px'); rt.classList.toggle('nosb',decor.showStatus===false); }
-function syncSBInputs(){ $('sbToggle').checked=decor.showStatus!==false; $('topOff').value=decor.topOff||0; $('topOffVal').textContent=(decor.topOff||0)+'px'; }
+function applySB(){ applyTheme(); const rt=document.documentElement; rt.style.setProperty('--topoff',(decor.topOff||0)+'px'); rt.classList.toggle('nosb',decor.showStatus===false); }
+function syncSBInputs(){ syncThemeSeg(); $('sbToggle').checked=decor.showStatus!==false; $('topOff').value=decor.topOff||0; $('topOffVal').textContent=(decor.topOff||0)+'px'; }
 $('sbToggle').addEventListener('change',e=>{ decor.showStatus=e.target.checked; saveDecor(); });
 $('topOff').addEventListener('input',e=>{ decor.topOff=Number(e.target.value)||0; $('topOffVal').textContent=decor.topOff+'px'; saveDecor(); });
 $('fsBtn').addEventListener('click',()=>{ const d=document.documentElement; if(d.requestFullscreen) d.requestFullscreen().catch(()=>toast('这里不允许全屏，请用“添加到主屏幕”打开')); else toast('这个浏览器不支持网页全屏，请用“添加到主屏幕”打开'); });
@@ -2378,11 +2507,238 @@ $('cardAppSearch').addEventListener('input',runCardSearch);
   root.style.overflow='hidden'; root.appendChild(tabs); root.appendChild(wrap);
   const upd=()=>{ const i=Math.round(wrap.scrollLeft/Math.max(1,wrap.clientWidth)); Array.from(tabs.children).forEach((b,j)=>b.classList.toggle('on',j===i)); }; wrap.addEventListener('scroll',upd); upd(); })();
 /* ===== 图标：自动对比色 / 自选图案色 / 液态玻璃 ===== */
-function syncIconCtl(){ const lum=h=>{ const a=hex2rgb(h); return (0.299*a[0]+0.587*a[1]+0.114*a[2])/255; }, ic=decor.iconColor||'#ff6b8f', L=decor.iconStyle==='glass'?lum(ic)*.65+.35:lum(ic);
+function syncIconCtl(){ $('glassTrans').value=decor.glassTrans==null?70:decor.glassTrans; $('glassTransVal').textContent=$('glassTrans').value+'%'; $('glassBlur').value=decor.glassBlur==null?4:decor.glassBlur; $('glassBlurVal').textContent=$('glassBlur').value+'px'; const lum=h=>{ const a=hex2rgb(h); return (0.299*a[0]+0.587*a[1]+0.114*a[2])/255; }, ic=decor.iconColor||'#ff6b8f', L=decor.iconStyle==='glass'?lum(ic)*.65+.35:lum(ic);
   $('iconGlyph').value=decor.iconGlyph||(L>(decor.iconStyle==='glass'?0.8:0.68)?'#2b2d33':'#ffffff'); renderSeg('iconStyleSeg',[['flat','渐变'],['glass','液态玻璃']],decor.iconStyle||'flat',k=>{ decor.iconStyle=k; saveDecor(); syncIconCtl(); }); }
+$('glassTrans').addEventListener('input',e=>{ decor.glassTrans=Number(e.target.value); $('glassTransVal').textContent=e.target.value+'%'; saveDecor(); });
+$('glassBlur').addEventListener('input',e=>{ decor.glassBlur=Number(e.target.value); $('glassBlurVal').textContent=e.target.value+'px'; saveDecor(); });
 $('iconGlyph').addEventListener('input',e=>{ decor.iconGlyph=e.target.value; saveDecor(); });
 $('resetIconGlyph').addEventListener('click',()=>{ delete decor.iconGlyph; saveDecor(); syncIconCtl(); });
-function applyNames(){ const d={chat:'诉爱聆心',cards:'字卡',decor:'装饰',letters:'写信',music:'音乐',settings:'设置'}, nmz=decor.names||{};
+
+/* ===== 一起听：重画 ===== */
+function renderListen(it,e){ const b=e.querySelector('.hw-in');
+  b.innerHTML='<div class="lis"><svg class="lis-w" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke-linecap="round"><g stroke="rgba(0,0,0,.22)" stroke-width="3.2"><path vector-effect="non-scaling-stroke" d="M15 33C14 54 38 60 50 61"/><path vector-effect="non-scaling-stroke" d="M85 33C86 54 62 60 50 61"/><path vector-effect="non-scaling-stroke" d="M50 61V69"/></g><g stroke="#fff" stroke-width="1.8"><path vector-effect="non-scaling-stroke" d="M15 33C14 54 38 60 50 61"/><path vector-effect="non-scaling-stroke" d="M85 33C86 54 62 60 50 61"/><path vector-effect="non-scaling-stroke" d="M50 61V69"/></g></svg><div class="lis-c l"><div class="lis-av"></div><div class="lis-n"></div></div><div class="lis-c r"><div class="lis-av"></div><div class="lis-n"></div></div><i class="eb" style="left:15%"></i><i class="eb" style="left:85%"></i><i class="lis-bead"></i><div class="lis-note n1">♪</div><div class="lis-note n2">♫</div><div class="lis-dev"></div><div class="lis-t"></div></div>';
+  [['a1','n1','我','l'],['a2','n2','TA','r']].forEach(([a,n,df,side])=>{ const c=b.querySelector('.lis-c.'+side), av=c.firstChild; if(it[a]) av.style.backgroundImage='url("'+it[a].replace(/"/g,'%22')+'")'; else av.textContent=(it[n]||df).charAt(0); c.lastChild.textContent=it[n]||df; });
+  b.querySelector('.lis-dev').innerHTML=it.dev==='mp3'?MP3SVG:PHONESVG; b.querySelector('.lis-t').textContent=it.song?'正在听 · '+it.song:''; }
+
+/* ===== 一起听（新）/ 状态栏主题色 ===== */
+function listenToggle(){ if(noiseNode){ stopNoise(); renderMini(); return; } if(player.idx>=0){ if(player.audio.paused) player.audio.play(); else player.audio.pause(); return; }
+  const ids=MUS.tracks.map(t=>t.id); if(!ids.length){ toast('音乐软件里还没有曲目'); return; } playQueue(ids,0); }
+function renderListen2(it,e){ const b=e.querySelector('.hw-in');
+  b.innerHTML='<div class="l2"><div class="l2-avs"><div class="l2-av a"></div><div class="l2-av b"></div></div><div class="l2-n"></div><div class="l2-t"></div><div class="l2-ctl"><button class="lc-a"></button><button class="lc-p"></button><button class="lc-b"></button></div></div>';
+  [['a1','n1','我','.a'],['a2','n2','TA','.b']].forEach(([a,n,df,sel])=>{ const av=b.querySelector('.l2-av'+sel); if(it[a]) av.style.backgroundImage='url("'+it[a].replace(/"/g,'%22')+'")'; else av.textContent=(it[n]||df).charAt(0); });
+  b.querySelector('.l2-n').textContent=(it.n1||'我')+' & '+(it.n2||'TA');
+  const cur=MUS.tracks.find(x=>x.id===player.queue[player.idx]), playing=!!noiseNode||(!player.audio.paused&&player.idx>=0);
+  b.querySelector('.l2-t').textContent=noiseNode?noiseLabel(noiseNode.kind):(cur?cur.name:(it.song||'一起听'));
+  const pa=b.querySelector('.lc-a'), pp=b.querySelector('.lc-p'), nb=b.querySelector('.lc-b'); pa.innerHTML=ICON.prev; pp.innerHTML=playing?ICON.pause:ICON.play; nb.innerHTML=ICON.next;
+  const st=f=>ev=>{ ev.stopPropagation(); f(); }; pa.onclick=st(prevTrack); nb.onclick=st(()=>nextTrack(false)); pp.onclick=st(listenToggle); }
+function refreshListens(){ try{ homeLayout.forEach(it=>{ if(it.type==='listen'&&widgetEls[it.id]) renderListen2(it,widgetEls[it.id]); }); }catch(e){} }
+function syncThemeColor(){ const m=$('themeColor'); if(!m) return; try{ const c=getComputedStyle(document.body).backgroundColor; m.setAttribute('content',c); }catch(e){} }
+syncThemeColor(); try{ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>setTimeout(syncThemeColor,50)); }catch(e){}
+
+/* ===== 页面主题 / theme-color ===== */
+function applyTheme(){ const rt=document.documentElement, t=decor.theme||'auto'; if(t==='auto') rt.removeAttribute('data-theme'); else rt.setAttribute('data-theme',t);
+  setTimeout(()=>{ const m=document.querySelector('meta[name="theme-color"]'); if(m) m.setAttribute('content',getComputedStyle(document.body).backgroundColor); },30); }
+function syncThemeSeg(){ renderSeg('themeSeg',[['auto','跟随手机'],['light','浅色'],['dark','深色']],decor.theme||'auto',k=>{ decor.theme=k; saveDecor(); syncThemeSeg(); }); }
+try{ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',applyTheme); }catch(e){}
+ICON.sliders='<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>';
+
+/* ===== 键盘弹出时跟随可视区域 ===== */
+(function(){ const vv=window.visualViewport, rt=document.documentElement; const set=()=>{ rt.style.setProperty('--vvh',(vv?vv.height:window.innerHeight)+'px'); rt.style.setProperty('--vvt',(vv?vv.offsetTop:0)+'px'); if(window.scrollY) window.scrollTo(0,0); };
+  if(vv){ vv.addEventListener('resize',set); vv.addEventListener('scroll',set); } window.addEventListener('resize',set); document.addEventListener('focusout',()=>setTimeout(set,120)); set(); })();
+/* ===== 手机自带录音（文件输入 capture） ===== */
+const vfCap=document.createElement('input'); vfCap.type='file'; vfCap.accept='audio/*'; vfCap.setAttribute('capture','user'); vfCap.style.display='none'; document.body.appendChild(vfCap);
+vfCap.addEventListener('change',async()=>{ const f=(vfCap.files||[])[0]; vfCap.value=''; if(!f) return; const id=uid(); try{ await auPut(id,f); }catch(e){ memBlobs[id]=URL.createObjectURL(f); }
+  let dur=Math.max(1,Math.round(f.size/16000)); try{ const a=new Audio(URL.createObjectURL(f)); await new Promise(r=>{ a.onloadedmetadata=r; setTimeout(r,1500); }); if(isFinite(a.duration)&&a.duration>0) dur=Math.max(1,Math.round(a.duration)); }catch(e){} sendVoice({src:'idb:'+id,text:'',dur}); });
+/* ===== 倒数日 / 纪念日 ===== */
+function cdDays(it){ if(it.cal==='lunar') return daysToLunar(it.lm,it.ld); return it.date?widgetDays(it.date):null; }
+function renderCountdown(it,e){ const b=e.querySelector('.hw-in'), big=(it.h||1)>=2; b.className='hw-in'+(big?' cd-big':'')+(it.bg?' cd-bg':'');
+  b.style.backgroundImage=it.bg?'linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.42)),url("'+it.bg.replace(/"/g,'%22')+'")':'';
+  if(!(it.date||(it.cal==='lunar'&&it.lm))){ b.innerHTML='<div class="cd-t">倒数日 / 纪念日</div><div class="cd-n"><span>点一下设置</span></div>'; return; }
+  const n=cdDays(it), past=n!==null&&n<0&&it.cal!=='lunar';
+  b.innerHTML='<div class="cd-t"></div><div class="cd-n"><b></b><span>天</span></div><div class="cd-d"></div>';
+  b.querySelector('.cd-t').textContent=(it.title||'倒数日')+(past?' 已过':' 还有'); b.querySelector('b').textContent=n===null?'--':Math.abs(n); b.querySelector('.cd-d').textContent=it.cal==='lunar'?'农历 '+it.lm+'月'+it.ld:it.date; }
+function cdMenu(it){ const o=[{label:'设置名称和日期',onClick:()=>cdTap(it)},{label:'更换背景图',onClick:()=>pickImage(u=>{ it.bg=u; saveHome(); renderHome(); })}];
+  if(it.bg) o.push({label:'清除背景图',onClick:()=>{ delete it.bg; saveHome(); renderHome(); }});
+  o.push({label:(it.h>=2?'改为 2×1 小尺寸':'改为 2×2 大尺寸'),onClick:()=>{ it.h=it.h>=2?1:2; const sp=findSpot(it,it.x,it.y); it.x=sp[0]; it.y=sp[1]; it.p=sp[2]; saveHome(); renderHome(); }}); showChoiceSheet(o); }
+/* ===== 字卡：每个类型单独导入/导出，也能整体导入/导出 ===== */
+const TYPE_META={cards:'字卡',stickers:'表情包',pats:'拍一拍字卡',voices:'语音字卡'}, TYPE_FIELD={cards:'cards',stickers:'stickers',pats:'pats',voices:'voices'};
+function sharedSnapshot(types){ const o={kind:'cards'}; if(types.indexOf('cards')>=0) o.cards=sharedCards.map(c=>c.text); if(types.indexOf('stickers')>=0) o.stickers=sharedStickers.map(x=>x.src);
+  if(types.indexOf('pats')>=0) o.pats=sharedPats.map(c=>({text:c.text,suffix:c.suffix||''})); if(types.indexOf('voices')>=0) o.voices=sharedVoices.filter(c=>c.src&&c.src.indexOf('idb:')!==0).map(c=>({text:c.text,src:c.src})); return o; }
+function importSharedObj(o,only){ let n=0, sk=0; const has=(arr,t)=>arr.some(c=>c.text===t), use=f=>!only||only===f;
+  if(use('cards')) (o.cards||[]).forEach(t=>{ if(typeof t==='string'&&t.trim()&&!has(sharedCards,t)){ sharedCards.push({id:uid(),text:t}); n++; } else sk++; });
+  if(use('stickers')) (o.stickers||[]).forEach(x=>{ if(typeof x==='string'&&x&&!sharedStickers.some(y=>y.src===x)){ sharedStickers.push({id:uid(),src:x}); n++; } else sk++; });
+  if(use('pats')) (o.pats||[]).forEach(c=>{ const t=c&&c.text; if(t&&!has(sharedPats,t)){ sharedPats.push({id:uid(),text:t,suffix:c.suffix||undefined}); n++; } else sk++; });
+  if(use('voices')) (o.voices||[]).forEach(c=>{ const t=c&&c.text; if(t&&c.src&&!sharedVoices.some(y=>y.text===t&&y.src===c.src)){ sharedVoices.push({id:uid(),text:t,src:c.src}); n++; } else sk++; });
+  saveShared(); saveSticks(); safeSet('app_shared_pats',sharedPats); safeSet('app_shared_voices',sharedVoices); renderSharedList(); renderSharedStick(); renderSharedPats(); renderSharedVo(); toast('导入 '+n+' 条'+(sk?'，跳过重复或无效 '+sk+' 条':'')); }
+(function(){ const nE=$('expShared').cloneNode(true), nI=$('impShared').cloneNode(true); $('expShared').replaceWith(nE); $('impShared').replaceWith(nI);
+  nE.textContent='导出全部类型'; nI.textContent='导入全部类型'; nE.addEventListener('click',()=>exportData('全部通用字卡',sharedSnapshot(['cards','stickers','pats','voices']))); nI.addEventListener('click',()=>importData('全部通用字卡',['cards'],o=>importSharedObj(o)));
+  const pages=document.querySelectorAll('#screen-cardapp .cpage'), ts=['cards','stickers','pats','voices'];
+  ts.forEach((t,i)=>{ const pg=pages[i]; if(!pg) return; const row=document.createElement('div'); row.className='ie-row'; row.innerHTML='<button class="btn-mini">导出本类型</button><button class="btn-mini">导入本类型</button>';
+    row.children[0].addEventListener('click',()=>exportData('通用'+TYPE_META[t],sharedSnapshot([t]))); row.children[1].addEventListener('click',()=>importData('通用'+TYPE_META[t],['cards'],o=>importSharedObj(o,TYPE_FIELD[t]))); pg.appendChild(row); }); })();
+/* ===== 备份：点“保存备份”后再选类型和方式（单个文件 / 分卷 / 压缩包） ===== */
+const CRC_T=(()=>{ const t=new Uint32Array(256); for(let n=0;n<256;n++){ let c=n; for(let k=0;k<8;k++) c=c&1?0xEDB88320^(c>>>1):c>>>1; t[n]=c>>>0; } return t; })();
+function crc32(u){ let c=0xFFFFFFFF; for(let i=0;i<u.length;i++) c=CRC_T[(c^u[i])&255]^(c>>>8); return (c^0xFFFFFFFF)>>>0; }
+async function deflateRaw(u){ if(typeof CompressionStream==='undefined') return null; try{ const cs=new CompressionStream('deflate-raw'), w=cs.writable.getWriter(); w.write(u); w.close(); return new Uint8Array(await new Response(cs.readable).arrayBuffer()); }catch(e){ return null; } }
+async function makeZip(files){ const enc=new TextEncoder(), parts=[], cd=[]; let off=0;
+  for(const f of files){ const nm=enc.encode(f.name), crc=crc32(f.data); let comp=f.store?null:await deflateRaw(f.data); const useD=comp&&comp.length<f.data.length, body=useD?comp:f.data, meth=useD?8:0;
+    const lh=new DataView(new ArrayBuffer(30)); lh.setUint32(0,0x04034b50,true); lh.setUint16(4,20,true); lh.setUint16(6,0x0800,true); lh.setUint16(8,meth,true); lh.setUint16(12,0x21,true); lh.setUint32(14,crc,true); lh.setUint32(18,body.length,true); lh.setUint32(22,f.data.length,true); lh.setUint16(26,nm.length,true);
+    parts.push(new Uint8Array(lh.buffer),nm,body);
+    const ch=new DataView(new ArrayBuffer(46)); ch.setUint32(0,0x02014b50,true); ch.setUint16(4,20,true); ch.setUint16(6,20,true); ch.setUint16(8,0x0800,true); ch.setUint16(10,meth,true); ch.setUint16(14,0x21,true); ch.setUint32(16,crc,true); ch.setUint32(20,body.length,true); ch.setUint32(24,f.data.length,true); ch.setUint16(28,nm.length,true); ch.setUint32(42,off,true);
+    cd.push(new Uint8Array(ch.buffer),nm); off+=30+nm.length+body.length; }
+  let cdl=0; cd.forEach(x=>{ cdl+=x.length; }); const e=new DataView(new ArrayBuffer(22)); e.setUint32(0,0x06054b50,true); e.setUint16(8,files.length,true); e.setUint16(10,files.length,true); e.setUint32(12,cdl,true); e.setUint32(16,off,true);
+  return new Blob(parts.concat(cd,[new Uint8Array(e.buffer)]),{type:'application/zip'}); }
+async function readZip(buf){ const u=new Uint8Array(buf), dv=new DataView(buf); let e=u.length-22; while(e>=0&&dv.getUint32(e,true)!==0x06054b50) e--; if(e<0) throw new Error('not zip');
+  const n=dv.getUint16(e+10,true); let p=dv.getUint32(e+16,true); const out={}, dec=new TextDecoder();
+  for(let i=0;i<n;i++){ const meth=dv.getUint16(p+10,true), csz=dv.getUint32(p+20,true), nl=dv.getUint16(p+28,true), xl=dv.getUint16(p+30,true), cl=dv.getUint16(p+32,true), lo=dv.getUint32(p+42,true), name=dec.decode(u.subarray(p+46,p+46+nl)); p+=46+nl+xl+cl;
+    const ds=lo+30+dv.getUint16(lo+26,true)+dv.getUint16(lo+28,true); let data=u.subarray(ds,ds+csz);
+    if(meth===8){ const d=new DecompressionStream('deflate-raw'), w=d.writable.getWriter(); w.write(data); w.close(); data=new Uint8Array(await new Response(d.readable).arrayBuffer()); } out[name]=data; }
+  return out; }
+async function bkDeliver(files){ const fl=files.map(f=>new File([f.blob],f.name,{type:f.blob.type||'application/octet-stream'}));
+  try{ if(navigator.canShare&&navigator.canShare({files:fl})){ await navigator.share({files:fl,title:'诉爱聆心备份'}); return true; } }catch(e){ if(e&&e.name==='AbortError') return true; }
+  try{ fl.forEach((f,i)=>setTimeout(()=>{ const a=document.createElement('a'); a.href=URL.createObjectURL(f); a.download=f.name; document.body.appendChild(a); a.click(); a.remove(); },i*600)); return true; }catch(e){ return false; } }
+const BK_G=[['chat','聊天记录',k=>/^app_msgs_/.test(k)],['roles','角色与各项设置',k=>/^app_(roles|global|pro_next|set)/.test(k)],['cards','通用字卡、表情包、拍一拍、语音',k=>/^app_shared_/.test(k)],['moments','朋友圈与“我的”资料',k=>k==='app_moments'||k==='app_me'],['letters','信件',k=>k==='app_letters'],['decor','装饰、桌面与预设',k=>/^app_(decor|home|beauty|font|css)|preset/.test(k)],['music','音乐曲库与歌单',k=>k==='app_music'],['other','其他',()=>true]];
+let bkMethod='single', bkSel={};
+function auAll(){ return auDB.then(db=>new Promise(res=>{ const out={}; const rq=db.transaction('f').objectStore('f').openCursor(); rq.onsuccess=()=>{ const c=rq.result; if(c){ out[c.key]=c.value; c.continue(); } else res(out); }; rq.onerror=()=>res(out); })).catch(()=>({})); }
+function bkGroups(){ const keys=[]; for(let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); if(k&&k.indexOf('app_')===0) keys.push(k); }
+  const gs=BK_G.map(g=>({id:g[0],label:g[1],keys:[]})); keys.forEach(k=>{ for(const g of BK_G){ if(g[2](k)){ gs.find(x=>x.id===g[0]).keys.push(k); break; } } }); return gs.filter(g=>g.keys.length); }
+function bkDialog(){ const gs=bkGroups(), body=$('bkExpBody'); body.innerHTML='';
+  const kb=n=>n>1048576?(n/1048576).toFixed(1)+' MB':Math.max(1,Math.round(n/1024))+' KB';
+  const sec=t=>{ const h=el('div','sub-h'); h.textContent=t; body.appendChild(h); };
+  sec('要导出的内容'); const all=[...gs,{id:'audio',label:'上传的音频文件（可能很大）',keys:[]}];
+  all.forEach(g=>{ if(bkSel[g.id]==null) bkSel[g.id]=g.id!=='audio'; const row=el('div','field-row'), sz=g.keys.reduce((a,k)=>a+(localStorage.getItem(k)||'').length,0); row.innerHTML='<label style="width:auto;flex:1;"></label><span style="color:var(--sub);font-size:calc(var(--fs)*0.857);margin-right:8px;"></span><label class="switch"><input type="checkbox"><span class="slider"></span></label>';
+    row.children[0].textContent=g.label; row.children[1].textContent=g.id==='audio'?'':kb(sz); const cb=row.querySelector('input'); cb.checked=bkSel[g.id]; cb.addEventListener('change',()=>{ bkSel[g.id]=cb.checked; }); body.appendChild(row); });
+  sec('导出方式'); const mm=[['single','单个文件','最简单；文件大时手机可能保存不了'],['split','分卷','拆成几个小文件，每个都能单独导入'],['zip','压缩包 (.zip)','体积小，音频也能打包，推荐文件大时用']];
+  mm.forEach(([k,t,d])=>{ const row=el('div','field-row'); row.style.cursor='pointer'; row.innerHTML='<label style="width:auto;flex:1;"><b></b><div style="font-size:calc(var(--fs)*0.857);color:var(--sub);"></div></label><span class="gm-ck"></span>'; row.querySelector('b').textContent=t; row.querySelector('div').textContent=d; const ck=row.querySelector('.gm-ck'); const u=()=>{ ck.textContent=bkMethod===k?'✓':''; ck.classList.toggle('on',bkMethod===k); }; u(); row.addEventListener('click',()=>{ bkMethod=k; bkDialog(); }); body.appendChild(row); });
+  $('bkExpOverlay').classList.add('open'); }
+const bkSaveBtn=$('bkSave').cloneNode(true); $('bkSave').replaceWith(bkSaveBtn); bkSaveBtn.addEventListener('click',bkDialog); $('bkExpClose').addEventListener('click',()=>$('bkExpOverlay').classList.remove('open'));
+$('bkExpGo').addEventListener('click',async()=>{ const gs=bkGroups().filter(g=>bkSel[g.id]); const wantA=!!bkSel.audio; if(!gs.length&&!wantA){ toast('至少选一项'); return; }
+  const stamp=new Date().toISOString().slice(0,10); $('bkExpGo').disabled=true; $('bkExpGo').textContent='正在打包…';
+  try{ const enc=new TextEncoder(), data={}; gs.forEach(g=>g.keys.forEach(k=>{ data[k]=localStorage.getItem(k); }));
+    let a1={}, a2={}; if(wantA){ try{ a1=await idbAll(); }catch(e){} a2=await auAll(); }
+    if(bkMethod==='zip'){ const files=[{name:'manifest.json',data:enc.encode(JSON.stringify({app:'suaililingxin-backup',v:2,ts:Date.now(),groups:gs.map(g=>g.label)}))}];
+      Object.keys(data).forEach(k=>files.push({name:'data/'+k,data:enc.encode(data[k])})); Object.keys(a1).forEach(k=>files.push({name:'audio/'+k,data:new Uint8Array(null),store:true,blob:a1[k]})); Object.keys(a2).forEach(k=>files.push({name:'audio2/'+k,data:new Uint8Array(null),store:true,blob:a2[k]}));
+      for(const f of files){ if(f.blob){ f.data=new Uint8Array(await f.blob.arrayBuffer()); delete f.blob; } }
+      const z=await makeZip(files); await bkDeliver([{name:'诉爱聆心备份-'+stamp+'.zip',blob:z}]); }
+    else { const audio={}; for(const k of Object.keys(a1)) audio['i:'+k]=await blobToDataURL(a1[k]); for(const k of Object.keys(a2)) audio['a:'+k]=await blobToDataURL(a2[k]);
+      if(bkMethod==='single'){ const text=JSON.stringify({app:'suaililingxin-backup',v:2,ts:Date.now(),data,audio}); if(text.length>3e6) await bkDeliver([{name:'诉爱聆心备份-'+stamp+'.json',blob:new Blob([text],{type:'application/json'})}]); else bigExport('备份',text,'诉爱聆心备份-'+stamp+'.json'); }
+      else { const LIM=1500000, parts=[]; let cur={data:{},audio:{}}, sz=0; const push=()=>{ if(sz){ parts.push(cur); cur={data:{},audio:{}}; sz=0; } };
+        Object.keys(data).forEach(k=>{ const l=(data[k]||'').length; if(sz+l>LIM) push(); cur.data[k]=data[k]; sz+=l; }); Object.keys(audio).forEach(k=>{ const l=audio[k].length; if(sz+l>LIM) push(); cur.audio[k]=audio[k]; sz+=l; }); push();
+        const files=parts.map((pt,i)=>({name:'诉爱聆心备份-'+stamp+'-第'+(i+1)+'卷（共'+parts.length+'卷）.json',blob:new Blob([JSON.stringify({app:'suaililingxin-backup',v:2,partial:true,part:i+1,of:parts.length,data:pt.data,audio:pt.audio})],{type:'application/json'})})); await bkDeliver(files); toast('已生成 '+files.length+' 个分卷，导入时每个都要导一遍'); } }
+    $('bkExpOverlay').classList.remove('open'); }catch(e){ toast('导出失败：'+(e&&e.message?e.message:'未知错误')); }
+  $('bkExpGo').disabled=false; $('bkExpGo').textContent='开始导出'; });
+function mergeBackup(o){ Object.keys(o.data||{}).forEach(k=>{ try{ localStorage.setItem(k,o.data[k]); }catch(e){} }); const ks=Object.keys(o.audio||{});
+  Promise.all(ks.map(k=>{ const b=dataURLToBlob(o.audio[k]); return k.indexOf('a:')===0?auPut(k.slice(2),b):idbPut(k.replace(/^i:/,''),b); })).catch(()=>{}).then(()=>{ toast('已导入这一卷，正在刷新…'); setTimeout(()=>location.reload(),700); }); }
+const zipIn=document.createElement('input'); zipIn.type='file'; zipIn.accept='.zip,application/zip'; zipIn.style.display='none'; document.body.appendChild(zipIn);
+zipIn.addEventListener('change',async()=>{ const f=(zipIn.files||[])[0]; zipIn.value=''; if(!f) return; try{ const z=await readZip(await f.arrayBuffer()), dec=new TextDecoder(), o={app:'suaililingxin-backup',data:{},audio:{}}; closeData();
+    Object.keys(z).forEach(n=>{ if(n.indexOf('data/')===0) o.data[n.slice(5)]=dec.decode(z[n]); });
+    showConfirm('用这个压缩包覆盖现有的对应数据？此操作无法撤销。',async()=>{ Object.keys(o.data).forEach(k=>{ try{ localStorage.setItem(k,o.data[k]); }catch(e){} });
+      for(const n of Object.keys(z)){ try{ if(n.indexOf('audio2/')===0) await auPut(n.slice(7),new Blob([z[n]])); else if(n.indexOf('audio/')===0) await idbPut(n.slice(6),new Blob([z[n]])); }catch(e){} } toast('已恢复，正在刷新…'); setTimeout(()=>location.reload(),600); }); }catch(e){ toast('这个压缩包读不了：'+(e&&e.message?e.message:'')); } });
+/* ===== 总控台：全局回复设置 / 对方主动行为 ===== */
+const G_REPLY=[['delayMin','最短延迟(秒)',2],['delayMax','最长延迟(秒)',8],['replyCountMin','最少条数',1],['replyCountMax','最多条数',1],['mergeCards','合并为一条',false],['mergeMin','合并最少张',2],['mergeMax','合并最多张',3]];
+const G_ACT=[['transferChance','转账概率(%)',10],['questionChance','提问概率(%)',10],['reactChance','贴表情概率(%)',15],['patChance','拍一拍概率(%)',8],['avatarChance','换头像概率(%)',5],['inviteChance','邀我换头像(%)',5],['proMin','主动联系最短间隔(分)',30],['proMax','主动联系最长间隔(分)',120],['proChance','主动发消息概率(%)',0],['callChance','来电概率(%)',0],['voiceChance','对方发语音(%)',0],['letterChance','主动来信(%)',15],['letterReplyChance','回信概率(%)',80],['letterMin','回信最快(分)',1],['letterMax','回信最慢(分)',8],['momentChance','发朋友圈概率(%)',30],['likeChance','点赞我的朋友圈(%)',50],['commentChance','评论我的朋友圈(%)',30],['replyChance','回复我的评论(%)',60]];
+const G=Object.assign({reply:{},act:{},newFollow:false},safeGet('app_global',{})); G.reply=G.reply||{}; G.act=G.act||{};
+G_REPLY.forEach(f=>{ if(G.reply[f[0]]==null) G.reply[f[0]]=f[2]; }); G_ACT.forEach(f=>{ if(G.act[f[0]]==null) G.act[f[0]]=f[2]; });
+function saveG(){ safeSet('app_global',G); }
+function pullGlobal(r,w){ (w==='reply'?G_REPLY:G_ACT).forEach(f=>{ r[f[0]]=G[w][f[0]]; }); }
+function pushFollowers(w){ const flag=w==='reply'?'gReply':'gAct'; roles.forEach(r=>{ if(r[flag]) pullGlobal(r,w); }); saveRoles(); }
+function gSection(host,title,w,fields){ const card=el('div','ms-card'); card.innerHTML='<div class="ms-h"><span></span></div>'; card.querySelector('span').textContent=title;
+  fields.forEach(([k,l,d])=>{ const row=el('div','field-row'); row.innerHTML='<label style="width:170px"></label>'; row.firstChild.textContent=l;
+    if(typeof d==='boolean'){ const sw=el('label','switch'); sw.innerHTML='<input type="checkbox"><span class="slider"></span>'; const cb=sw.firstChild; cb.checked=!!G[w][k]; cb.addEventListener('change',()=>{ G[w][k]=cb.checked; saveG(); pushFollowers(w); }); row.appendChild(sw); }
+    else { const i=document.createElement('input'); i.type='number'; i.className='small-num'; i.value=G[w][k]; i.addEventListener('change',()=>{ G[w][k]=Math.max(0,Number(i.value)||0); saveG(); pushFollowers(w); }); row.appendChild(i); } card.appendChild(row); });
+  const flag=w==='reply'?'gReply':'gAct', bar=el('div'); bar.style.cssText='display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;'; bar.innerHTML='<button class="btn-mini">所有角色都跟随并同步</button><button class="btn-mini">所有角色取消跟随</button>';
+  bar.children[0].addEventListener('click',()=>showConfirm('让所有角色都跟随这一组全局设置，并把各自原来的设置覆盖掉？',()=>{ roles.forEach(r=>{ r[flag]=true; pullGlobal(r,w); }); saveRoles(); openGlobal(); toast('已同步给所有角色')}));
+  bar.children[1].addEventListener('click',()=>{ roles.forEach(r=>{ r[flag]=false; }); saveRoles(); openGlobal(); }); card.appendChild(bar); host.appendChild(card); }
+function openGlobal(){ const b=$('globalBody'); b.innerHTML=''; b.className='list-body sub';
+  const top=el('div','ms-card'); top.innerHTML='<div class="ms-h"><span>总控台</span></div><div class="ms-d">在这里设一次，所有“跟随全局”的角色就都用这套，不用每个角色再调第二遍。角色是否跟随，可以在这里批量改，也可以在各自的聊天设置里单独开关。</div><div class="field-row"><label style="width:auto;flex:1;">新建角色默认跟随全局</label><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>';
+  const nf=top.querySelector('input'); nf.checked=!!G.newFollow; nf.addEventListener('change',()=>{ G.newFollow=nf.checked; saveG(); }); b.appendChild(top);
+  gSection(b,'回复规则','reply',G_REPLY); gSection(b,'对方的主动行为','act',G_ACT);
+  const lc=el('div','ms-card'); lc.innerHTML='<div class="ms-h"><span>各角色是否跟随</span></div>'; if(!roles.length) lc.insertAdjacentHTML('beforeend','<div class="ms-d">还没有角色</div>');
+  roles.forEach(r=>{ const row=el('div','field-row'); row.innerHTML='<label style="width:auto;flex:1;"></label><span style="font-size:calc(var(--fs)*0.857);color:var(--sub);margin-right:4px;">回复</span><label class="switch"><input type="checkbox"><span class="slider"></span></label><span style="font-size:calc(var(--fs)*0.857);color:var(--sub);margin:0 4px 0 12px;">主动</span><label class="switch"><input type="checkbox"><span class="slider"></span></label>'; row.firstChild.textContent=r.name;
+    const cbs=row.querySelectorAll('input'); cbs[0].checked=!!r.gReply; cbs[1].checked=!!r.gAct; cbs[0].addEventListener('change',()=>{ r.gReply=cbs[0].checked; if(r.gReply) pullGlobal(r,'reply'); saveRoles(); }); cbs[1].addEventListener('change',()=>{ r.gAct=cbs[1].checked; if(r.gAct) pullGlobal(r,'act'); saveRoles(); }); lc.appendChild(row); });
+  b.appendChild(lc); show('screen-global'); }
+$('backHome7').addEventListener('click',goHome);
+function syncFollowUI(){ const r=curRole(); if(!r) return; $('gReplyToggle').checked=!!r.gReply; $('gActToggle').checked=!!r.gAct;
+  [[G_REPLY,r.gReply],[G_ACT,r.gAct]].forEach(([fs,on])=>fs.forEach(f=>{ const x=$(f[0]); if(!x) return; if(on){ if(x.type==='checkbox') x.checked=!!r[f[0]]; else x.value=r[f[0]]; } x.disabled=!!on; })); }
+$('settingsBtn').addEventListener('click',syncFollowUI);
+$('gReplyToggle').addEventListener('change',e=>{ const r=curRole(); r.gReply=e.target.checked; if(r.gReply) pullGlobal(r,'reply'); saveRoles(); syncFollowUI(); });
+$('gActToggle').addEventListener('change',e=>{ const r=curRole(); r.gAct=e.target.checked; if(r.gAct) pullGlobal(r,'act'); saveRoles(); syncFollowUI(); });
+(function(){ if(!homeLayout.some(i=>i.app==='global')){ const mu=homeLayout.find(i=>i.app==='music'), it={id:'app-global',type:'app',app:'global',w:1,h:1,x:0,y:0,p:0}; let sp=null;
+  if(mu){ it.p=mu.p||0; if(mu.y+1<ROWS&&!occupied(it,mu.x,mu.y+1,it.p)) sp=[mu.x,mu.y+1,it.p]; } if(!sp) sp=findSpot(it,0,0); it.x=sp[0]; it.y=sp[1]; it.p=sp[2]; homeLayout.push(it); saveHome(); } })();
+
+/* ===== 倒数日 / 纪念日：手动输入或滑动选择 · 公历或农历 · 每年循环或永不循环 ===== */
+const LUNAR_FMT=(()=>{ try{ return new Intl.DateTimeFormat('en-u-ca-chinese',{year:'numeric',month:'numeric',day:'numeric'}); }catch(e){ return null; } })();
+function lunarFull(dt){ if(!LUNAR_FMT) return null; try{ const o={}; LUNAR_FMT.formatToParts(dt).forEach(x=>{ o[x.type]=x.value; }); return {y:parseInt(o.relatedYear||o.year),m:parseInt(o.month),d:parseInt(o.day),leap:/\D/.test(o.month)}; }catch(e){ return null; } }
+function lunarToSolar(y,m,d,leap){ const st=new Date(y,0,12,12); for(let i=0;i<440;i++){ const dt=new Date(st.getTime()+i*86400000), l=lunarFull(dt); if(l&&l.y===y&&l.m===m&&l.d===d&&!!l.leap===!!leap) return dt; } return null; }
+function daysToLunar2(m,d,leap){ const b=new Date(); b.setHours(12,0,0,0); for(let i=0;i<440;i++){ const l=lunarFull(new Date(b.getTime()+i*86400000)); if(l&&l.m===m&&l.d===d&&!!l.leap===!!leap) return i; } return null; }
+const LMN=['正','二','三','四','五','六','七','八','九','十','冬','腊'], CN1=['一','二','三','四','五','六','七','八','九','十'];
+function lunarDayName(d){ if(d<=10) return '初'+CN1[d-1]; if(d<20) return '十'+CN1[d-11]; if(d===20) return '二十'; if(d<30) return '廿'+CN1[d-21]; return '三十'; }
+function cnToInt(s){ s=String(s||'').trim(); if(!s) return NaN; if(/^\d+$/.test(s)) return parseInt(s); const D={'零':0,'〇':0,'○':0,'一':1,'二':2,'两':2,'三':3,'四':4,'五':5,'六':6,'七':7,'八':8,'九':9};
+  if(s[0]==='初') return s.length>1?cnToInt(s.slice(1)):NaN; if(s[0]==='廿') return 20+(s.length>1?cnToInt(s.slice(1)):0); if(s[0]==='卅') return 30+(s.length>1?cnToInt(s.slice(1)):0);
+  if(s==='十') return 10; const m=s.match(/^(.)?十(.)?$/); if(m){ const a=m[1]?D[m[1]]:1, b=m[2]?D[m[2]]:0; return (a===undefined||b===undefined)?NaN:a*10+b; }
+  if(s.length===1) return s in D?D[s]:NaN; return [...s].every(c=>c in D)?parseInt([...s].map(c=>D[c]).join('')):NaN; }
+function parseDateText(txt){ let t=String(txt||'').replace(/[０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-65248)).replace(/[\s,，]+/g,''); if(!t) return null; let leap=false; if(t.indexOf('闰')>=0){ leap=true; t=t.replace('闰',''); } let y=null,m=null,d=null,r;
+  if(r=t.match(/^(\d{4})[-./年](\d{1,2})[-./月](\d{1,2})[日号]?$/)){ y=+r[1]; m=+r[2]; d=+r[3]; }
+  else if(r=t.match(/^(\d{1,2})[-./月](\d{1,2})[日号]?$/)){ m=+r[1]; d=+r[2]; }
+  else { const mm=t.match(/^(.*?)月(.*)$/); if(!mm) return null; const left=mm[1], right=mm[2].replace(/[日号]$/,''); let mon, ym=left.match(/^([零〇○一二三四五六七八九\d]{4})年?(.*)$/);
+    if(ym){ y=cnToInt(ym[1]); mon=ym[2]; } else { const yy=left.match(/^(.*)年(.*)$/); if(yy){ y=cnToInt(yy[1]); mon=yy[2]; } else mon=left; }
+    const MN={'正':1,'冬':11,'腊':12}; m=(mon in MN)?MN[mon]:cnToInt(mon); d=cnToInt(right); }
+  if(!(m>=1&&m<=12&&d>=1&&d<=31)) return null; if(y!==null&&(isNaN(y)||y<1900||y>2100)) return null; return {y,m,d,leap}; }
+function cdInfo(it){ let cal=it.cal||'solar', rep=it.rep, y=it.cy, m=it.cm, d=it.cd, leap=!!it.cl;
+  if(m==null){ if(cal==='lunar'&&it.lm){ m=it.lm; d=it.ld; rep=rep||'year'; } else if(it.date){ const a=it.date.split('-'); y=+a[0]; m=+a[1]; d=+a[2]; rep=rep||'once'; cal='solar'; } }
+  if(m==null||isNaN(m)) return null; rep=rep||'once'; const today=new Date(); today.setHours(0,0,0,0);
+  return (function(){ let n=null;
+    if(cal==='solar'){ if(rep==='once') n=Math.round((new Date(y||today.getFullYear(),m-1,d)-today)/86400000); else { for(const yy of [today.getFullYear(),today.getFullYear()+1]){ const dt=new Date(yy,m-1,d); if(dt>=today){ n=Math.round((dt-today)/86400000); break; } } } }
+    else if(rep==='once'){ const dt=lunarToSolar(y||today.getFullYear(),m,d,leap); if(dt){ dt.setHours(0,0,0,0); n=Math.round((dt-today)/86400000); } } else n=daysToLunar2(m,d,leap);
+    const mn=cal==='lunar'?(leap?'闰':'')+LMN[m-1]+'月':m+'月', dn=cal==='lunar'?lunarDayName(d):d+'日';
+    return {n,rep,cal,txt:(cal==='lunar'?'农历 ':'')+(rep==='year'?'每年 ':(y||today.getFullYear())+'年')+mn+dn}; })(); }
+function cdDays(it){ const i=cdInfo(it); return i?i.n:null; }
+function renderCountdown(it,e){ const b=e.querySelector('.hw-in'), big=(it.h||1)>=2; b.className='hw-in'+(big?' cd-big':'')+(it.bg?' cd-bg':'');
+  b.style.backgroundImage=it.bg?'linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.42)),url("'+it.bg.replace(/"/g,'%22')+'")':''; const info=cdInfo(it);
+  if(!info){ b.innerHTML='<div class="cd-t">倒数日 / 纪念日</div><div class="cd-n"><span>点一下设置</span></div>'; return; }
+  const n=info.n, past=info.rep==='once'&&n!==null&&n<0; b.innerHTML='<div class="cd-t"></div><div class="cd-n"><b></b><span>天</span></div><div class="cd-d"></div>';
+  b.querySelector('.cd-t').textContent=(it.title||'倒数日')+(n===0?' 就是今天':(past?' 已过':' 还有')); b.querySelector('b').textContent=n===null?'--':Math.abs(n); b.querySelector('.cd-d').textContent=info.txt; }
+let cdS=null;
+function cdToday(cal){ const t=new Date(); if(cal==='lunar'){ const l=lunarFull(t); if(l) return {y:l.y,m:l.m,d:l.d,leap:l.leap}; } return {y:t.getFullYear(),m:t.getMonth()+1,d:t.getDate(),leap:false}; }
+function cdTap(it){ const t=cdInfo(it)||{}; cdS={it,cal:it.cal||t.cal||'solar',mode:'type',rep:it.rep||t.rep||'year',text:''}; Object.assign(cdS,cdToday(cdS.cal)); $('cdName').value=it.title||''; renderCd(); $('cdOverlay').classList.add('open'); }
+function cdBuild(){ let y,m,d,leap=false;
+  if(cdS.mode==='type'){ const r=parseDateText(cdS.text); if(!r) return {ok:false,msg:'还没识别出日期，可以参照下面的写法'}; y=r.y; m=r.m; d=r.d; leap=r.leap; } else { y=cdS.y; m=cdS.m; d=cdS.d; leap=cdS.cal==='lunar'&&!!cdS.leap; }
+  const noYear=(y==null); if(noYear) y=new Date().getFullYear();
+  if(cdS.cal==='solar'){ const dt=new Date(y,m-1,d); if(dt.getMonth()!==m-1) return {ok:false,msg:'这个公历日期不存在'}; } else if(!lunarToSolar(y,m,d,leap)&&cdS.rep==='once') return {ok:false,msg:'这个农历日期不存在'};
+  return {ok:true,noYear,f:{cal:cdS.cal,rep:cdS.rep,cy:y,cm:m,cd:d,cl:leap}}; }
+function cdPreview(){ const r=cdBuild(), pv=$('cdPrev'); if(!r.ok){ pv.textContent=r.msg; pv.className='cd-prev bad'; return; } const i=cdInfo(r.f); pv.className='cd-prev';
+  pv.textContent='识别为：'+i.txt+(i.n===null?'':(i.n===0?' · 就是今天':(i.n>0?' · 还有 '+i.n+' 天':' · 已过 '+(-i.n)+' 天')))+(r.noYear&&cdS.rep==='once'?'（没写年份，按今年算）':''); }
+function cdWheel(items,idx,onSel){ const w=el('div','wheel'), inn=el('div','wheel-in'); items.forEach(t=>{ const i=el('div','wi'); i.textContent=t; inn.appendChild(i); }); w.appendChild(inn); requestAnimationFrame(()=>{ w.scrollTop=idx*34; }); let tm=null;
+  w.addEventListener('scroll',()=>{ clearTimeout(tm); tm=setTimeout(()=>{ onSel(Math.max(0,Math.min(items.length-1,Math.round(w.scrollTop/34)))); },90); }); return w; }
+function renderCd(){ renderSeg('cdCal',[['solar','公历'],['lunar','农历']],cdS.cal,k=>{ cdS.cal=k; Object.assign(cdS,cdToday(k)); renderCd(); });
+  renderSeg('cdMode',[['type','手动输入'],['pick','滑动选择']],cdS.mode,k=>{ cdS.mode=k; renderCd(); });
+  renderSeg('cdRep',[['year','每年循环'],['once','永不循环']],cdS.rep,k=>{ cdS.rep=k; renderCd(); });
+  const box=$('cdInputBox'); box.innerHTML='';
+  if(cdS.mode==='type'){ const i=document.createElement('input'); i.type='text'; i.className='cd-in'; i.value=cdS.text; i.placeholder=cdS.cal==='solar'?'如 2026-10-1':'如 二零二五年冬月廿三'; i.addEventListener('input',()=>{ cdS.text=i.value; cdPreview(); }); box.appendChild(i);
+    const h=el('div','cd-hint'); h.textContent=cdS.cal==='solar'?'都能识别：2026-10-1　2026.10.1　2026年10月1日　2026年10月1号　（不写年份只写 10月1日 也行）':'都能识别：2025.11.23　二零二五十一月一　二〇二六十一月一　二零二五年冬月廿三　腊月初八　闰四月十五'; box.appendChild(h); }
+  else { const yrs=[]; for(let y=1950;y<=2100;y++) yrs.push(y+'年'); const ws=el('div','wheels'); const ms=cdS.cal==='lunar'?LMN.map(x=>x+'月'):Array.from({length:12},(_,i)=>(i+1)+'月'), ds=cdS.cal==='lunar'?Array.from({length:30},(_,i)=>lunarDayName(i+1)):Array.from({length:31},(_,i)=>(i+1)+'日');
+    ws.appendChild(cdWheel(yrs,Math.max(0,cdS.y-1950),i=>{ cdS.y=1950+i; cdPreview(); })); ws.appendChild(cdWheel(ms,cdS.m-1,i=>{ cdS.m=i+1; cdPreview(); })); ws.appendChild(cdWheel(ds,cdS.d-1,i=>{ cdS.d=i+1; cdPreview(); })); box.appendChild(ws);
+    if(cdS.cal==='lunar'){ const row=el('div','field-row'); row.innerHTML='<label style="width:auto;flex:1;">闰月</label><label class="switch"><input type="checkbox"><span class="slider"></span></label>'; const cb=row.querySelector('input'); cb.checked=!!cdS.leap; cb.addEventListener('change',()=>{ cdS.leap=cb.checked; cdPreview(); }); box.appendChild(row); } }
+  cdPreview(); }
+$('cdCancel').addEventListener('click',()=>$('cdOverlay').classList.remove('open'));
+$('cdSave').addEventListener('click',()=>{ const r=cdBuild(); if(!r.ok){ toast(r.msg); return; } const it=cdS.it; it.title=$('cdName').value.trim()||it.title||'倒数日'; Object.assign(it,r.f); delete it.date; delete it.lm; delete it.ld; saveHome(); renderHome(); $('cdOverlay').classList.remove('open'); });
+
+/* ===== 恢复默认：补齐所有能更换的东西 ===== */
+function mkReset(host,fn,after){ if(!host||!host.parentNode) return null; const b=document.createElement('button'); b.className='btn-reset'; b.textContent='恢复默认'; b.addEventListener('click',fn); (after?host.parentNode:host.parentNode).insertBefore(b,host.nextSibling); return b; }
+mkReset($('theirAvatarBtn'),()=>{ const r=curRole(); upd('avatar',''); $('theirAvatarPreview').innerHTML=avatarHTML(r.name,''); renderChat(); });
+mkReset($('myAvatarBtn'),()=>{ const r=curRole(); upd('myAvatar',''); $('myAvatarPreview').innerHTML=avatarHTML(r.myName,''); renderChat(); });
+mkReset($('grpAvBtn'),()=>{ grpAvatar=''; $('grpAv').innerHTML=avatarHTML($('grpName').value||'群',''); });
+(function(){ const rst=document.createElement('button'); rst.className='btn-mini'; rst.textContent='清空自定义 CSS'; rst.addEventListener('click',()=>{ $('customCSS').value=''; upd('customCSS',''); toast('已清空自定义 CSS'); }); const row=$('customCSS').nextElementSibling; if(row) row.appendChild(rst); })();
+mkReset($('fontSizeVal'),()=>{ decor.fontSize=14; $('fontSize').value=14; $('fontSizeVal').textContent='14px'; saveDecor(); });
+function withReset(fn,reset){ const orig=showChoiceSheet; showChoiceSheet=function(b){ b.push({label:'恢复默认',onClick:reset}); showChoiceSheet=orig; orig(b); }; try{ fn(); } finally{ showChoiceSheet=orig; } }
+const _wt=widgetTap;
+widgetTap=function(it){ if(editMode) return;
+  if(it.type==='polaroid'){ withReset(()=>fancyTap(it),()=>{ delete it.img; delete it.cap; delete it.cover; saveHome(); renderHome(); }); return; }
+  if(it.type==='listen'){ withReset(()=>fancyTap(it),()=>{ ['a1','a2','n1','n2','song','dev'].forEach(k=>delete it[k]); saveHome(); renderHome(); }); return; }
+  if(it.type==='countdown'){ withReset(()=>cdMenu(it),()=>{ ['title','cal','rep','cy','cm','cd','cl','date','lm','ld','bg'].forEach(k=>delete it[k]); it.h=1; const sp=findSpot(it,it.x,it.y); it.x=sp[0]; it.y=sp[1]; it.p=sp[2]; saveHome(); renderHome(); }); return; }
+  if(it.type==='photo'){ showChoiceSheet([{label:'更换照片',onClick:()=>pickImage(u=>{ it.img=u; saveHome(); renderHome(); })},{label:'恢复默认',onClick:()=>{ delete it.img; saveHome(); renderHome(); }}]); return; }
+  _wt(it); };
+document.querySelectorAll('.btn-mini').forEach(b=>{ if(/^(恢复默认|重置)$/.test(b.textContent.trim())){ b.classList.remove('btn-mini'); b.classList.add('btn-reset'); } });
+function applyNames(){ const d={chat:'诉爱聆心',cards:'字卡',decor:'装饰',letters:'写信',music:'音乐',settings:'设置',global:'总控台'}, nmz=decor.names||{};
   document.querySelectorAll('.app-tile').forEach(t=>{ const k=t.dataset.app; t.querySelector('.app-label').textContent=nmz[k]||d[k]; });
   document.querySelector('#screen-cardapp .title').textContent=nmz.cards||d.cards; document.querySelector('#screen-decor .title').textContent=nmz.decor||d.decor; document.querySelector('#screen-letters .title').textContent=nmz.letters||d.letters; document.querySelector('#screen-music .title').textContent=nmz.music||d.music; }
 applyDecor(); applyFont(); applyNames(); applyColors(); applySB();
