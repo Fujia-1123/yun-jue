@@ -2,9 +2,9 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, interactive-widget=resizes-content">
 <meta name="color-scheme" content="light dark"><meta name="theme-color" id="themeColor" content="#ffffff"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#ffffff"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>诉爱聆心</title>
+<title>流语</title>
 <style>
 :root{
   --bg:#fff;--header-bg:rgba(248,248,250,.92);--text:#0b0b0d;--sub:#8a8a8e;
@@ -13,8 +13,8 @@
   --fs:14px;
   box-sizing:border-box;padding-top:var(--sat,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--header-bg:rgba(20,20,22,.9);--text:#f2f2f3;--sub:#8e8e93;--bubble-them:#2c2c2e;--bubble-them-text:#f2f2f3;--input-bg:#1c1c1e;--divider:#2c2c2e;--sheet-bg:#1c1c1e;}}
-:root[data-theme="dark"]{--bg:#000;--header-bg:rgba(20,20,22,.9);--text:#f2f2f3;--sub:#8e8e93;--bubble-them:#2c2c2e;--bubble-them-text:#f2f2f3;--input-bg:#1c1c1e;--divider:#2c2c2e;--sheet-bg:#1c1c1e;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--header-bg:rgba(20,20,22,.9);--text:#f2f2f3;--sub:#8e8e93;--bubble-them:#2c2c2e;--bubble-them-text:#f2f2f3;--input-bg:#2c2c2e;--divider:#2c2c2e;--sheet-bg:#1c1c1e;}}
+:root[data-theme="dark"]{--bg:#000;--header-bg:rgba(20,20,22,.9);--text:#f2f2f3;--sub:#8e8e93;--bubble-them:#2c2c2e;--bubble-them-text:#f2f2f3;--input-bg:#2c2c2e;--divider:#2c2c2e;--sheet-bg:#1c1c1e;}
 html,body{height:100%;font-size:var(--fs);}
 html{scroll-padding-top:var(--sat,0px);}
 *{margin:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
@@ -574,7 +574,7 @@ html.ic-glass .app-icon::after{content:"";position:absolute;inset:0;border-radiu
 #clearHistBtn,#deleteRoleBtn{display:block!important;width:100%!important;align-self:stretch;text-align:center!important;background:rgba(255,59,48,.1)!important;color:var(--danger)!important;border-radius:12px!important;padding:12px!important;font-weight:600;}
 #clearHistBtn::before,#deleteRoleBtn::before{display:none;}
 .p-av{cursor:pointer;}
-html{--sat:env(safe-area-inset-top,0px);} html.noavoid{--sat:0px;}
+html{--sat:env(safe-area-inset-top,0px);} 
 #settingsOverlay [style*="display:flex"],#screen-settings [style*="display:flex"],#screen-global [style*="display:flex"],.ie-row,.mu-act,.call-opt,.ctabs{flex-wrap:wrap;}
 #settingsBack{background:none;border:none;color:var(--bubble-me);font-size:calc(var(--fs)*1.07);cursor:pointer;padding:0;} #settingsOverlay .sheet-head h2{flex:1;text-align:center;} #closeSettings{font-weight:700;}
 .badge.dot{min-width:11px;width:11px;height:11px;padding:0;top:-3px;} .tab{position:relative;} .tdot{position:absolute;top:0;left:calc(50% + 6px);min-width:16px;height:16px;border-radius:8px;background:#ff3b30;color:#fff;font-style:normal;font-size:calc(var(--fs)*.714);display:flex;align-items:center;justify-content:center;padding:0 4px;} .tdot.dot{min-width:9px;width:9px;height:9px;padding:0;top:1px;}
@@ -599,6 +599,15 @@ html{--sat:env(safe-area-inset-top,0px);} html.noavoid{--sat:0px;}
 .msg-img{max-width:190px;max-height:240px;border-radius:12px;display:block;margin:3px 0;object-fit:cover;-webkit-touch-callout:none;cursor:zoom-in;}
 .img-viewer{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:120;display:none;align-items:center;justify-content:center;} .img-viewer.open{display:flex;} .img-viewer img{max-width:100%;max-height:100%;object-fit:contain;}
 .qc-n{max-width:5.2em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500!important;flex-shrink:1;min-width:0;opacity:1!important;} .me .qc-n{color:rgba(255,255,255,.72);} .them .qc-n{color:var(--sub);} .qc-t{opacity:.45!important;flex:1;white-space:nowrap;} .qc-i{opacity:.5;}
+html{--sbh:calc(max(var(--sat,0px),34px) + var(--topoff,0px));} html.nosb{--sbh:calc(var(--sat,0px) + var(--topoff,0px));}
+.statusbar{top:var(--topoff,0px);height:34px;padding:8px 22px 0;align-items:center;}
+input:not([type=range]):not([type=checkbox]):not([type=radio]):not([type=color]):not([type=file]),textarea,select{font-size:max(16px,calc(var(--fs)*1.15))!important;}
+:root{--page:#f0f0f2;--card:#fff;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--page:#000;--card:#1c1c1e;}} :root[data-theme="dark"]{--page:#000;--card:#1c1c1e;}
+#settingsOverlay .sheet{background:var(--page);} #settingsOverlay .sheet-head{background:var(--page);} #settingsOverlay .acc,.sec-card{background:var(--card);}
+.list-body.sub,#momentsPane,#minePane,#globalBody{background:var(--page);}
+.sub .mm,#momentsPane .mm,#minePane .mm{margin:10px 12px;padding:14px;background:var(--card);border:none;border-radius:16px;box-shadow:0 1px 4px rgba(0,0,0,.1);}
+.ms-card{background:var(--card);}
 </style>
 </head>
 <body>
@@ -610,20 +619,20 @@ html{--sat:env(safe-area-inset-top,0px);} html.noavoid{--sat:0px;}
   <main id="homeMain">
     <div class="apps-grid" id="homeGrid">
       <div class="vinyl-cell"><div class="vinyl-disc" id="vinylDisc"><div class="vinyl-label" id="vinylLabel"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg></div></div></div>
-      <button class="app-tile" data-app="chat"><div class="app-icon" id="iconChat"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg></div><div class="app-label">诉爱聆心</div></button>
-      <button class="app-tile" data-app="cards"><div class="app-icon" id="iconCards"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h10a2 2 0 0 1 2 2v10"/><rect x="4" y="8" width="13" height="12" rx="2"/></svg></div><div class="app-label">字卡</div></button>
-      <button class="app-tile" data-app="decor"><div class="app-icon" id="iconDecor"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 1.8-.8 1.8-1.7 0-.5-.3-.9-.5-1.3-.3-.5-.1-1.2.6-1.2H16a5 5 0 0 0 5-5c0-4.4-4-8.8-9-8.8z"/><path d="M7.5 11.5h.01M10 7.5h.01M14.5 7.5h.01M17 11h.01"/></svg></div><div class="app-label">装饰</div></button>
-      <button class="app-tile" data-app="letters"><div class="app-icon" id="iconLetters"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg></div><div class="app-label">写信</div></button>
-      <button class="app-tile" data-app="music"><div class="app-icon" id="iconMusic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg></div><div class="app-label">音乐</div></button>
-      <button class="app-tile" data-app="settings"><div class="app-icon" id="iconSettings"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div><div class="app-label">设置</div></button>
-      <button class="app-tile" data-app="global"><div class="app-icon" id="iconGlobal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></div><div class="app-label">总控台</div></button>
+      <button class="app-tile" data-app="chat"><div class="app-icon" id="iconChat"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg></div><div class="app-label">流语</div></button>
+      <button class="app-tile" data-app="cards"><div class="app-icon" id="iconCards"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h10a2 2 0 0 1 2 2v10"/><rect x="4" y="8" width="13" height="12" rx="2"/></svg></div><div class="app-label">存箴</div></button>
+      <button class="app-tile" data-app="decor"><div class="app-icon" id="iconDecor"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 1.8-.8 1.8-1.7 0-.5-.3-.9-.5-1.3-.3-.5-.1-1.2.6-1.2H16a5 5 0 0 0 5-5c0-4.4-4-8.8-9-8.8z"/><path d="M7.5 11.5h.01M10 7.5h.01M14.5 7.5h.01M17 11h.01"/></svg></div><div class="app-label">缀隅</div></button>
+      <button class="app-tile" data-app="letters"><div class="app-icon" id="iconLetters"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg></div><div class="app-label">缄书</div></button>
+      <button class="app-tile" data-app="music"><div class="app-icon" id="iconMusic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg></div><div class="app-label">闻韶</div></button>
+      <button class="app-tile" data-app="settings"><div class="app-icon" id="iconSettings"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div><div class="app-label">衡枢</div></button>
+      <button class="app-tile" data-app="global"><div class="app-icon" id="iconGlobal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></div><div class="app-label">掌枢</div></button>
     </div>
   </main>
   <div class="home-edit" id="homeEditBar" style="display:none;"><button class="btn-mini" id="addWidgetBtn">添加小组件</button><button class="btn-primary" id="doneEditBtn">完成</button></div>
 </div>
 
 <div class="screen" id="screen-contacts">
-  <header><div class="header-inner"><button class="icon-btn" id="backHome1">‹</button><div class="title" id="contactsTitle">诉爱聆心</div><button class="icon-btn" id="postBtn" style="display:none;"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></button><button class="icon-btn" id="addRoleBtn">＋</button></div></header>
+  <header><div class="header-inner"><button class="icon-btn" id="backHome1">‹</button><div class="title" id="contactsTitle">流语</div><button class="icon-btn" id="postBtn" style="display:none;"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></button><button class="icon-btn" id="addRoleBtn">＋</button></div></header>
   <div class="list-body" id="rolesList"></div>
   <div class="list-body" id="momentsPane" style="display:none;"></div>
   <div class="list-body" id="minePane" style="display:none;"></div>
@@ -682,12 +691,12 @@ html{--sat:env(safe-area-inset-top,0px);} html.noavoid{--sat:0px;}
 </div>
 
 <div class="screen" id="screen-letters">
-  <header><div class="header-inner"><button class="icon-btn" id="backHome4">‹</button><div class="title">写信</div><button class="icon-btn" id="composeBtn"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19z"/><path d="M14 7l3 3"/></svg></button></div></header>
+  <header><div class="header-inner"><button class="icon-btn" id="backHome4">‹</button><div class="title">缄书</div><button class="icon-btn" id="composeBtn"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19z"/><path d="M14 7l3 3"/></svg></button></div></header>
   <div class="list-body" id="lettersBody"></div>
 </div>
 
 <div class="screen" id="screen-settings">
-  <header><div class="header-inner"><button class="icon-btn" id="backHome5">‹</button><div class="title">设置</div></div></header>
+  <header><div class="header-inner"><button class="icon-btn" id="backHome5">‹</button><div class="title">衡枢</div></div></header>
   <div style="padding:12px 16px;display:flex;flex-direction:column;gap:10px;flex:1;overflow-y:auto;">
     <details class="acc"><summary>通知</summary>
       <div class="field-row"><label style="width:auto;flex:1;">允许通知</label><label class="switch"><input type="checkbox" id="notifyToggle"><span class="slider"></span></label></div>
@@ -714,18 +723,18 @@ html{--sat:env(safe-area-inset-top,0px);} html.noavoid{--sat:0px;}
 </div>
 
 <div class="screen" id="screen-global">
-  <header><div class="header-inner"><button class="icon-btn" id="backHome7">‹</button><div class="title">总控台</div></div></header>
+  <header><div class="header-inner"><button class="icon-btn" id="backHome7">‹</button><div class="title">掌枢</div></div></header>
   <div class="list-body" id="globalBody"></div>
 </div>
 
 <div class="screen" id="screen-music">
-  <header><div class="header-inner"><button class="icon-btn" id="backHome6">‹</button><div class="title">音乐</div><button class="icon-btn" id="addTrackBtn">＋</button></div></header>
+  <header><div class="header-inner"><button class="icon-btn" id="backHome6">‹</button><div class="title">闻韶</div><button class="icon-btn" id="addTrackBtn">＋</button></div></header>
   <div class="list-body" id="musicBody"></div>
   <div class="mini" id="musicMini"></div>
 </div>
 
 <div class="screen" id="screen-cardapp">
-  <header><div class="header-inner"><button class="icon-btn" id="backHome2">‹</button><div class="title">字卡</div></div></header>
+  <header><div class="header-inner"><button class="icon-btn" id="backHome2">‹</button><div class="title">存箴</div></div></header>
   <div style="padding:12px 16px;display:flex;flex-direction:column;gap:10px;flex:1;overflow-y:auto;">
     <input type="text" id="cardAppSearch" placeholder="搜索字卡：通用、各角色专属、拍一拍、语音都会查">
     <div id="cardAppResults" style="display:none;"></div>
@@ -749,7 +758,7 @@ html{--sat:env(safe-area-inset-top,0px);} html.noavoid{--sat:0px;}
 </div>
 
 <div class="screen" id="screen-decor">
-  <header><div class="header-inner"><button class="icon-btn" id="backHome3">‹</button><div class="title">装饰</div><button class="btn-mini" id="decorSave" style="margin-left:auto;">保存</button></div></header>
+  <header><div class="header-inner"><button class="icon-btn" id="backHome3">‹</button><div class="title">缀隅</div><button class="btn-mini" id="decorSave" style="margin-left:auto;">保存</button></div></header>
   <div style="padding:4px 16px;display:flex;flex-direction:column;gap:6px;flex:1;overflow-y:auto;">
     <div class="sheet-sub">部分图片/字体外链可能因浏览器安全策略无法加载，建议优先使用"上传"。</div>
     <div class="sec-title">桌面壁纸</div>
@@ -762,8 +771,7 @@ html{--sat:env(safe-area-inset-top,0px);} html.noavoid{--sat:0px;}
     <div class="sheet-sub">只改外圈的胶片，中间的封面图不变</div>
     <div class="sec-title">状态栏与全屏</div>
     <div class="field-row"><label>页面主题</label><div class="seg" id="themeSeg" style="flex:1;"></div></div>
-    <div class="field-row"><label style="width:auto;flex:1;">不避让手机状态栏（实验）</label><label class="switch"><input type="checkbox" id="noAvoid"><span class="slider"></span></label></div>
-    <div class="field-row"><label>显示状态栏</label><label class="switch"><input type="checkbox" id="sbToggle" checked><span class="slider"></span></label></div>
+    <div class="field-row"><label>显示状态栏</label><label class="switch"><input type="checkbox" id="sbToggle"><span class="slider"></span></label></div>
     <div class="field-row"><label>顶部避让</label><input type="range" id="topOff" min="0" max="140" step="2" value="0" style="flex:1;"><span id="topOffVal" style="width:46px;text-align:right;font-size:calc(var(--fs)*0.929);color:var(--sub);">0px</span></div>
     <div class="sheet-sub">先说原因：不是这个页面在“避让”手机状态栏。是 Claude 把页面放在它自己的状态栏下面，并且给那一条涂了底色，页面从里面碰不到那一块，所以在 Claude 里打开时，那条的颜色没法改。<br>想要状态栏直接印在页面上：用 Safari 打开这个链接，点分享 → “添加到主屏幕”，从桌面图标打开。这时页面会铺满整个屏幕，手机自己的时间、信号、电量会直接印在页面顶上（我已经在顶部加了一层很淡的暗角，保证白色的时间看得清），上面那条假的状态栏也会自动隐藏。“顶部避让”只在被标题栏挡住时用。</div>
     <button class="btn-mini" id="fsBtn" style="align-self:flex-start;">尝试进入全屏</button>
@@ -825,7 +833,7 @@ html{--sat:env(safe-area-inset-top,0px);} html.noavoid{--sat:0px;}
     </select></div>
     <div class="sec-title">回复规则</div>
     <div class="field-row"><label>跟随全局</label><label class="switch"><input type="checkbox" id="gReplyToggle"><span class="slider"></span></label></div>
-    <div class="sheet-sub">打开后使用“总控台”里的全局回复设置，各角色不用再调一遍。</div>
+    <div class="sheet-sub">打开后使用“掌枢”里的全局回复设置，各角色不用再调一遍。</div>
     <div class="field-row"><label>最短延迟(秒)</label><input type="number" id="delayMin" class="small-num" min="0"></div>
     <div class="field-row"><label>最长延迟(秒)</label><input type="number" id="delayMax" class="small-num" min="0"></div>
     <div class="field-row"><label>最少条数</label><input type="number" id="replyCountMin" class="small-num" min="1"></div>
@@ -849,7 +857,7 @@ html{--sat:env(safe-area-inset-top,0px);} html.noavoid{--sat:0px;}
     <div class="sec-title">对方主动发起</div>
     <div class="sheet-sub">对方每次回复结束后，按概率主动向你转账、提问，或给你的消息贴表情（提问从问题库里随机抽）</div>
     <div class="field-row"><label>跟随全局</label><label class="switch"><input type="checkbox" id="gActToggle"><span class="slider"></span></label></div>
-    <div class="sheet-sub">打开后使用“总控台”里的全局主动行为设置。</div>
+    <div class="sheet-sub">打开后使用“掌枢”里的全局主动行为设置。</div>
     <div class="field-row"><label>转账概率(%)</label><input type="number" id="transferChance" class="small-num" min="0" max="100"></div>
     <div class="field-row"><label>提问概率(%)</label><input type="number" id="questionChance" class="small-num" min="0" max="100"></div>
     <div class="field-row"><label>贴表情概率(%)</label><input type="number" id="reactChance" class="small-num" min="0" max="100"></div>
@@ -1158,14 +1166,14 @@ function renderDecor(){ syncSBInputs(); syncIconCtl(); renderDecorPresets(); $('
   $('fontStatus').textContent = decor.fontSrc ? '已设置自定义字体' : '默认字体';
   $('fontSize').value = decor.fontSize; $('fontSizeVal').textContent=decor.fontSize+'px';
   const wrap=$('iconEditors'); wrap.innerHTML='';
-  [['chat','诉爱聆心'],['cards','字卡'],['decor','装饰'],['letters','写信'],['music','音乐'],['settings','设置'],['global','总控台']].forEach(([key,label])=>{
+  [['chat','流语'],['cards','存箴'],['decor','缀隅'],['letters','缄书'],['music','闻韶'],['settings','衡枢'],['global','掌枢']].forEach(([key,label])=>{
     const row=document.createElement('div'); row.className='field-row';
     row.innerHTML='<label>'+label+'</label><div class="avpick"><div class="avatar small apprev" id="prev_'+key+'">'+(decor.icons[key]?'<img src="'+decor.icons[key]+'">':ICON[{chat:'chat',cards:'cards',decor:'palette',letters:'mail',music:'music',settings:'gear',global:'sliders'}[key]])+'</div><button class="btn-mini" id="btn_'+key+'">上传/更换</button></div>';
     wrap.appendChild(row);
     $('btn_'+key).addEventListener('click', ()=>pickImage(url=>{ decor.icons[key]=url; saveDecor(); renderDecor(); }));
   });
   decor.names=decor.names||{};
-  [['chat','诉爱聆心'],['cards','字卡'],['decor','装饰'],['letters','写信'],['music','音乐'],['settings','设置'],['global','总控台']].forEach(([key,label])=>{ const row=document.createElement('div'); row.className='field-row'; row.innerHTML='<label>'+label+'名称</label><input type="text" maxlength="8">';
+  [['chat','流语'],['cards','存箴'],['decor','缀隅'],['letters','缄书'],['music','闻韶'],['settings','衡枢'],['global','掌枢']].forEach(([key,label])=>{ const row=document.createElement('div'); row.className='field-row'; row.innerHTML='<label>'+label+'名称</label><input type="text" maxlength="8">';
     const inp=row.querySelector('input'); inp.value=decor.names[key]||''; inp.placeholder=label; inp.addEventListener('change',()=>{ decor.names[key]=inp.value.trim(); saveDecor(); }); wrap.appendChild(row); });
 }
 $('homeWallBtn').addEventListener('click', ()=>pickImage(url=>{ decor.wallpaper=url; saveDecor(); renderDecor(); }));
@@ -1646,7 +1654,7 @@ function copyText(t){ let ok=false; try{ const ta=document.createElement('textar
   if(ok){ toast('已复制'); } else if(navigator.clipboard){ navigator.clipboard.writeText(t).then(()=>toast('已复制'),()=>toast('复制失败，请长按文字手动复制')); } else toast('复制失败，请长按文字手动复制'); }
 
 /* ===== 类名说明 ===== */
-const CSSDOC=`【诉爱聆心 · 聊天页可用的 CSS 类名】
+const CSSDOC=`【流语 · 聊天页可用的 CSS 类名】
 把这段说明发给 AI，告诉它你想要的风格，让它写一段 CSS，再粘贴到上面的框里（默认样式较多，属性后面建议加 !important）。
 
 页面结构：
@@ -1789,7 +1797,7 @@ function renderCTab(tick){
   const nav=$('tabbar'); nav.innerHTML='';
   tabs.forEach(([k,ic,lb])=>{ const b=el('button','tab'+(k===cTab?' on':'')); b.innerHTML='<span></span><em></em>'; b.children[0].innerHTML=ICON[ic]; b.children[1].textContent=lb; b.addEventListener('click',()=>{ cTab=k; renderCTab(true); }); nav.appendChild(b); });
   $('rolesList').style.display=cTab==='msg'?'':'none'; $('momentsPane').style.display=cTab==='moments'?'':'none'; $('minePane').style.display=cTab==='mine'?'':'none';
-  $('contactsTitle').textContent=cTab==='msg'?((decor.names&&decor.names.chat)||'诉爱聆心'):{moments:'朋友圈',mine:'我的'}[cTab];
+  $('contactsTitle').textContent=cTab==='msg'?((decor.names&&decor.names.chat)||'流语'):{moments:'朋友圈',mine:'我的'}[cTab];
   $('addRoleBtn').style.display=cTab==='msg'?'':'none'; $('postBtn').style.display=cTab==='moments'?'':'none';
   if(cTab==='msg') renderRolesList(); else if(cTab==='moments'){ if(tick) tickMoments(); renderMoments(); } else renderMine();
 }
@@ -1897,7 +1905,7 @@ $('lClose').addEventListener('click',()=>$('letterOverlay').classList.remove('op
 $('letterOverlay').addEventListener('click',e=>{ if(e.target===$('letterOverlay')) $('letterOverlay').classList.remove('open'); });
 $('lReply').addEventListener('click',()=>{ const id=curLetter&&curLetter.roleId; $('letterOverlay').classList.remove('open'); openCompose(id); });
 $('lDel').addEventListener('click',()=>showConfirm('删除这封信？',()=>{ letters=letters.filter(x=>x.id!==curLetter.id); saveLetters(); $('letterOverlay').classList.remove('open'); renderLetters(); updateBadge(); }));
-function openCompose(roleId){ if(!roles.length){ toast('请先在诉爱聆心里添加角色'); return; }
+function openCompose(roleId){ if(!roles.length){ toast('请先在流语里添加角色'); return; }
   const sel=$('composeTo'); sel.innerHTML=''; roles.filter(r=>!r.isGroup).forEach(r=>{ const o=document.createElement('option'); o.value=r.id; o.textContent=r.name; sel.appendChild(o); }); if(roleId) sel.value=roleId;
   $('composeBody').value=''; composeImgs=[]; renderComposeImgs(); $('composeOverlay').classList.add('open'); }
 function renderComposeImgs(){ const g=$('composeImgs'); g.innerHTML='';
@@ -2028,7 +2036,7 @@ function refreshWidget(it,e){ if(it.type==='app'||it.type==='vinyl') return; if(
   else if(it.type==='note'){ b.innerHTML='<div class="w-note"></div>'; b.firstChild.textContent=it.text||'点一下，写点什么'; }
   else if(it.type==='photo'){ b.innerHTML=''; if(it.img){ b.style.backgroundImage='url("'+it.img.replace(/"/g,'%22')+'")'; } else { b.style.backgroundImage=''; b.innerHTML='<div class="w-sub" style="text-align:center">点一下添加照片</div>'; } }
   else if(it.type==='countdown'){ b.innerHTML='<div class="w-sub"></div><div class="w-big"></div>'; if(!it.date){ b.children[0].textContent='倒数日'; b.children[1].textContent='点一下设置'; b.children[1].style.fontSize='15px'; } else { const n=widgetDays(it.date); b.children[0].textContent=(it.title||'倒数日')+(n!==null&&n<0?' 已过':' 还有'); b.children[1].textContent=n===null?'--':Math.abs(n)+' 天'; } }
-  else if(it.type==='quote'){ const cards=sharedCards.map(c=>c.text); b.innerHTML='<div class="w-note"></div>'; const k=d.getFullYear()*372+d.getMonth()*31+d.getDate(); b.firstChild.textContent=it.cur||(cards.length?cards[k%cards.length]:'在“字卡”里添加一些话，这里会每天显示一句'); }
+  else if(it.type==='quote'){ const cards=sharedCards.map(c=>c.text); b.innerHTML='<div class="w-note"></div>'; const k=d.getFullYear()*372+d.getMonth()*31+d.getDate(); b.firstChild.textContent=it.cur||(cards.length?cards[k%cards.length]:'在“存箴”里添加一些话，这里会每天显示一句'); }
 }
 function widgetTap(it){ if(editMode) return; if(it.type==='listen'||it.type==='polaroid'){ fancyTap(it); return; } if(it.type==='countdown'){ cdMenu(it); return; } if(it.type==='date'){ it.lunar=!it.lunar; saveHome(); renderHome(); toast(it.lunar?'已显示农历':'已隐藏农历'); return; }
   if(it.type==='note') dataModal('便签','',it.text||'',false,[['保存','confirm',()=>{ it.text=$('dataText').value; saveHome(); closeData(); renderHome(); }],['取消','cancel',closeData]]);
@@ -2129,7 +2137,7 @@ $('notifyToggle').addEventListener('change',e=>{
   if(!e.target.checked){ appSet.notify=false; saveSet(); return; }
   if(!('Notification' in window)){ e.target.checked=false; toast('当前环境不支持系统通知'); return; }
   Notification.requestPermission().then(p=>{ appSet.notify=(p==='granted'); e.target.checked=appSet.notify; saveSet(); toast(appSet.notify?'已开启通知':'没有获得通知权限'); }).catch(()=>{ e.target.checked=false; toast('当前环境不支持系统通知'); }); });
-$('notifyTest').addEventListener('click',()=>{ if(!appSet.notify){ toast('先打开“允许通知”'); return; } const ok=notify('诉爱聆心','这是一条测试通知'); toast(ok?'已发送（页面在前台时系统可能不显示）':'发送失败'); });
+$('notifyTest').addEventListener('click',()=>{ if(!appSet.notify){ toast('先打开“允许通知”'); return; } const ok=notify('流语','这是一条测试通知'); toast(ok?'已发送（页面在前台时系统可能不显示）':'发送失败'); });
 const TF={key:'ttsKey',base:'ttsBase',model:'ttsModel',voice:'ttsVoice',group:'ttsGroup',app:'ttsApp',cluster:'ttsCluster'};
 function syncTts(){ $('ttsProv').value=appSet.tts.prov; Object.keys(TF).forEach(k=>{ $(TF[k]).value=appSet.tts[k]||''; }); const p=appSet.tts.prov;
   $('ttsGroupRow').style.display=p==='minimax'?'':'none'; $('ttsAppRow').style.display=p==='volc'?'':'none'; $('ttsClusterRow').style.display=p==='volc'?'':'none'; }
@@ -2150,7 +2158,7 @@ function ttsFetch(text,voiceOver){
   return fetch((base||'https://api.openai.com/v1')+'/audio/speech',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+t.key},body:JSON.stringify({model:t.model||'tts-1',voice:voice||'alloy',input:text,response_format:'mp3'})})
     .then(r=>{ if(!r.ok) throw new Error('HTTP '+r.status); return r.blob(); });
 }
-function ttsPlay(text,voiceOver,onDone){ if(!ttsReady()){ toast('还没有配置声音 API（设置软件里）'); return; }
+function ttsPlay(text,voiceOver,onDone){ if(!ttsReady()){ toast('还没有配置声音 API（衡枢里）'); return; }
   ttsFetch(text,voiceOver).then(b=>{ const u=URL.createObjectURL(b), a=new Audio(u); a.onended=()=>{ if(onDone) onDone(); }; a.play().catch(()=>toast('播放被浏览器拦截，请再点一次')); }).catch(e=>toast('语音合成失败：'+(e&&e.message?e.message:'网络请求被拦截或配置有误'))); }
 $('ttsTest').addEventListener('click',()=>{ appSet.tts.prov=$('ttsProv').value; Object.keys(TF).forEach(k=>{ appSet.tts[k]=$(TF[k]).value.trim(); }); saveSet(); ttsPlay($('ttsTestText').value.trim()||'你好呀，今天也很想你。'); });
 function bigExport(title,text,fname){ dataModal(title,'复制下面的文本保存好；之后在“导入”里粘贴，或选择保存的 .json 文件',text,true,[
@@ -2357,7 +2365,7 @@ const VOFMT={fmt:c=>c.text+(c.src?' · 有音频':''),getText:c=>c.text+((c.src&
 function voDur(v){ return v.dur||Math.max(1,Math.min(60,Math.round((v.text||'').length/4))); }
 function playVoice(v){ try{ if(curVoAudio){ curVoAudio.pause(); curVoAudio=null; } }catch(e){}
   if(v.src) trackUrl({src:v.src}).then(u=>{ curVoAudio=new Audio(u); curVoAudio.play().catch(()=>toast('播放被拦截，请再点一次')); }).catch(()=>toast('这段音频无法播放'));
-  else if(v.tts){ if(ttsReady()) ttsPlay(v.text); else toast('还没有配置声音 API（设置软件里）'); } }
+  else if(v.tts){ if(ttsReady()) ttsPlay(v.text); else toast('还没有配置声音 API（衡枢里）'); } }
 function voiceBubble(m){ const v=m.voice||{}, c=el('div','vbub'), d=voDur(v), real=!!(v.src||v.tts);
   c.innerHTML='<div class="vb-row"><span class="vb-ic"></span><span class="vb-wave"></span><span class="vb-d"></span></div><div class="vb-tx"></div>'; c.style.minWidth=Math.min(190,86+d*7)+'px';
   c.querySelector('.vb-ic').innerHTML=ICON.play; const w=c.querySelector('.vb-wave'); for(let i=0;i<10;i++){ const b=document.createElement('i'); b.style.height=(5+((i*7+d*3)%11))+'px'; w.appendChild(b); }
@@ -2451,16 +2459,16 @@ function silentWavUrl(){ const n=16000, b=new Uint8Array(44+n), dv=new DataView(
   w(0,'RIFF'); dv.setUint32(4,36+n,true); w(8,'WAVEfmt '); dv.setUint32(16,16,true); dv.setUint16(20,1,true); dv.setUint16(22,1,true); dv.setUint32(24,8000,true); dv.setUint32(28,8000,true); dv.setUint16(32,1,true); dv.setUint16(34,8,true); w(36,'data'); dv.setUint32(40,n,true);
   for(let i=0;i<n;i++) b[44+i]=128+(i%2); return URL.createObjectURL(new Blob([b],{type:'audio/wav'})); }
 function setKeepAlive(on,quiet){ appSet.keepAlive=!!on; saveSet();
-  if(on){ if(!kaEl){ kaEl=new Audio(silentWavUrl()); kaEl.loop=true; } kaEl.play().then(()=>{ try{ if(navigator.mediaSession) navigator.mediaSession.metadata=new MediaMetadata({title:'诉爱聆心',artist:'后台保活中'}); }catch(e){} if(!quiet) toast('已开启后台保活'); }).catch(()=>{ if(!quiet) toast('保活启动失败，请再点一次开关'); }); }
+  if(on){ if(!kaEl){ kaEl=new Audio(silentWavUrl()); kaEl.loop=true; } kaEl.play().then(()=>{ try{ if(navigator.mediaSession) navigator.mediaSession.metadata=new MediaMetadata({title:'流语',artist:'后台保活中'}); }catch(e){} if(!quiet) toast('已开启后台保活'); }).catch(()=>{ if(!quiet) toast('保活启动失败，请再点一次开关'); }); }
   else if(kaEl){ kaEl.pause(); if(!quiet) toast('已关闭后台保活'); } }
 $('keepToggle').checked=!!appSet.keepAlive; $('keepToggle').addEventListener('change',e=>setKeepAlive(e.target.checked));
 document.addEventListener('pointerdown',()=>{ if(appSet.keepAlive&&(!kaEl||kaEl.paused)) setKeepAlive(true,true); });
 const stripLite=t=>t.replace(/data:(?:image|audio|video)\/[a-z0-9.+-]+;base64,[A-Za-z0-9+\/=]+/g,'');
 function mkFile(text,name){ return new File([text],name,{type:'application/json'}); }
-function splitParts(text){ const id=uid(), size=900000, n=Math.ceil(text.length/size), out=[]; for(let i=0;i<n;i++) out.push(mkFile(JSON.stringify({app:'suaililingxin-backup-part',id,i:i+1,n,chunk:text.slice(i*size,(i+1)*size)}),'诉爱聆心备份-分卷'+(i+1)+'of'+n+'.json')); return out; }
+function splitParts(text){ const id=uid(), size=900000, n=Math.ceil(text.length/size), out=[]; for(let i=0;i<n;i++) out.push(mkFile(JSON.stringify({app:'suaililingxin-backup-part',id,i:i+1,n,chunk:text.slice(i*size,(i+1)*size)}),'流语备份-分卷'+(i+1)+'of'+n+'.json')); return out; }
 function dlFiles(files){ files.forEach((f,i)=>setTimeout(()=>{ try{ const a=document.createElement('a'); a.href=URL.createObjectURL(f); a.download=f.name; a.click(); }catch(e){ toast('当前环境不支持下载，请用“分享/保存为文件”'); } },i*500)); }
 function shareFiles(files){ if(navigator.canShare&&navigator.canShare({files})) navigator.share({files}).catch(e=>{ if(e&&e.name!=='AbortError') toast('分享失败，试试“下载文件”或分卷导出'); }); else dlFiles(files); }
-function backupOut(text){ if($('bkLite').checked) text=stripLite(text); const mb=(text.length/1048576).toFixed(1), fn='诉爱聆心备份.json';
+function backupOut(text){ if($('bkLite').checked) text=stripLite(text); const mb=(text.length/1048576).toFixed(1), fn='流语备份.json';
   showChoiceSheet([{label:'分享 / 保存为文件（推荐 · '+mb+'MB）',onClick:()=>shareFiles([mkFile(text,fn)])},{label:'分卷导出（每卷约 1MB，文件太大时用）',onClick:()=>shareFiles(splitParts(text))},{label:'下载文件',onClick:()=>dlFiles([mkFile(text,fn)])},{label:'复制文本'+(text.length>2e6?'（太大，不建议）':''),onClick:()=>copyText(text)}]); }
 function decDU(du){ return new TextDecoder().decode(Uint8Array.from(atob(du.split(',')[1]),c=>c.charCodeAt(0))); }
 function importTexts(arr){ try{ const objs=arr.map(t=>JSON.parse(t.trim())), parts=objs.filter(o=>o&&o.app==='suaililingxin-backup-part');
@@ -2510,8 +2518,8 @@ function renderListen(it,e){ const b=e.querySelector('.hw-in');
   HM.addEventListener('touchend',end); HM.addEventListener('touchcancel',end); })();
 
 /* ===== 状态栏开关 / 顶部避让 / 字卡全局搜索 ===== */
-function applySB(){ applyTheme(); document.documentElement.classList.toggle('noavoid',!!decor.noAvoid); const rt=document.documentElement; rt.style.setProperty('--topoff',(decor.topOff||0)+'px'); const sa=(window.navigator.standalone===true)||(window.matchMedia&&matchMedia('(display-mode: standalone)').matches); rt.classList.toggle('nosb',decor.showStatus===false||(sa&&decor.showStatus==null)); rt.classList.toggle('standalone',!!sa); }
-function syncSBInputs(){ syncThemeSeg(); $('noAvoid').checked=!!decor.noAvoid; $('sbToggle').checked=decor.showStatus!==false; $('topOff').value=decor.topOff||0; $('topOffVal').textContent=(decor.topOff||0)+'px'; }
+function applySB(){ applyTheme(); const rt=document.documentElement; rt.style.setProperty('--topoff',(decor.topOff||0)+'px'); const sa=(window.navigator.standalone===true)||(window.matchMedia&&matchMedia('(display-mode: standalone)').matches); rt.classList.toggle('nosb',decor.showStatus!==true); rt.classList.toggle('standalone',!!sa); }
+function syncSBInputs(){ syncThemeSeg(); $('sbToggle').checked=decor.showStatus===true; $('topOff').value=decor.topOff||0; $('topOffVal').textContent=(decor.topOff||0)+'px'; }
 $('sbToggle').addEventListener('change',e=>{ decor.showStatus=e.target.checked; saveDecor(); });
 $('topOff').addEventListener('input',e=>{ decor.topOff=Number(e.target.value)||0; $('topOffVal').textContent=decor.topOff+'px'; saveDecor(); });
 $('fsBtn').addEventListener('click',()=>{ const d=document.documentElement; if(d.requestFullscreen) d.requestFullscreen().catch(()=>toast('这里不允许全屏，请用“添加到主屏幕”打开')); else toast('这个浏览器不支持网页全屏，请用“添加到主屏幕”打开'); });
@@ -2585,7 +2593,7 @@ function cdMenu(it){ const o=[{label:'设置名称和日期',onClick:()=>cdTap(i
   if(it.bg) o.push({label:'清除背景图',onClick:()=>{ delete it.bg; saveHome(); renderHome(); }});
   o.push({label:(it.h>=2?'改为 2×1 小尺寸':'改为 2×2 大尺寸'),onClick:()=>{ it.h=it.h>=2?1:2; const sp=findSpot(it,it.x,it.y); it.x=sp[0]; it.y=sp[1]; it.p=sp[2]; saveHome(); renderHome(); }}); showChoiceSheet(o); }
 /* ===== 字卡：每个类型单独导入/导出，也能整体导入/导出 ===== */
-const TYPE_META={cards:'字卡',stickers:'表情包',pats:'拍一拍字卡',voices:'语音字卡'}, TYPE_FIELD={cards:'cards',stickers:'stickers',pats:'pats',voices:'voices'};
+const TYPE_META={cards:'存箴',stickers:'表情包',pats:'拍一拍字卡',voices:'语音字卡'}, TYPE_FIELD={cards:'cards',stickers:'stickers',pats:'pats',voices:'voices'};
 function sharedSnapshot(types){ const o={kind:'cards'}; if(types.indexOf('cards')>=0) o.cards=sharedCards.map(c=>c.text); if(types.indexOf('stickers')>=0) o.stickers=sharedStickers.map(x=>x.src);
   if(types.indexOf('pats')>=0) o.pats=sharedPats.map(c=>({text:c.text,suffix:c.suffix||''})); if(types.indexOf('voices')>=0) o.voices=sharedVoices.filter(c=>c.src&&c.src.indexOf('idb:')!==0).map(c=>({text:c.text,src:c.src})); return o; }
 function importSharedObj(o,only){ let n=0, sk=0; const has=(arr,t)=>arr.some(c=>c.text===t), use=f=>!only||only===f;
@@ -2618,7 +2626,7 @@ async function readZip(buf){ const u=new Uint8Array(buf), dv=new DataView(buf); 
     if(meth===8){ const d=new DecompressionStream('deflate-raw'), w=d.writable.getWriter(); w.write(data); w.close(); data=new Uint8Array(await new Response(d.readable).arrayBuffer()); } out[name]=data; }
   return out; }
 async function bkDeliver(files){ const fl=files.map(f=>new File([f.blob],f.name,{type:f.blob.type||'application/octet-stream'}));
-  try{ if(navigator.canShare&&navigator.canShare({files:fl})){ await navigator.share({files:fl,title:'诉爱聆心备份'}); return true; } }catch(e){ if(e&&e.name==='AbortError') return true; }
+  try{ if(navigator.canShare&&navigator.canShare({files:fl})){ await navigator.share({files:fl,title:'流语备份'}); return true; } }catch(e){ if(e&&e.name==='AbortError') return true; }
   try{ fl.forEach((f,i)=>setTimeout(()=>{ const a=document.createElement('a'); a.href=URL.createObjectURL(f); a.download=f.name; document.body.appendChild(a); a.click(); a.remove(); },i*600)); return true; }catch(e){ return false; } }
 const BK_G=[['chat','聊天记录',k=>/^app_msgs_/.test(k)],['roles','角色与各项设置',k=>/^app_(roles|global|pro_next|set)/.test(k)],['cards','通用字卡、表情包、拍一拍、语音',k=>/^app_shared_/.test(k)],['moments','朋友圈与“我的”资料',k=>k==='app_moments'||k==='app_me'],['letters','信件',k=>k==='app_letters'],['decor','装饰、桌面与预设',k=>/^app_(decor|home|beauty|font|css)|preset/.test(k)],['music','音乐曲库与歌单',k=>k==='app_music'],['other','其他',()=>true]];
 let bkMethod='single', bkSel={};
@@ -2642,12 +2650,12 @@ $('bkExpGo').addEventListener('click',async()=>{ const gs=bkGroups().filter(g=>b
     if(bkMethod==='zip'){ const files=[{name:'manifest.json',data:enc.encode(JSON.stringify({app:'suaililingxin-backup',v:2,ts:Date.now(),groups:gs.map(g=>g.label)}))}];
       Object.keys(data).forEach(k=>files.push({name:'data/'+k,data:enc.encode(data[k])})); Object.keys(a1).forEach(k=>files.push({name:'audio/'+k,data:new Uint8Array(null),store:true,blob:a1[k]})); Object.keys(a2).forEach(k=>files.push({name:'audio2/'+k,data:new Uint8Array(null),store:true,blob:a2[k]}));
       for(const f of files){ if(f.blob){ f.data=new Uint8Array(await f.blob.arrayBuffer()); delete f.blob; } }
-      const z=await makeZip(files); await bkDeliver([{name:'诉爱聆心备份-'+stamp+'.zip',blob:z}]); }
+      const z=await makeZip(files); await bkDeliver([{name:'流语备份-'+stamp+'.zip',blob:z}]); }
     else { const audio={}; for(const k of Object.keys(a1)) audio['i:'+k]=await blobToDataURL(a1[k]); for(const k of Object.keys(a2)) audio['a:'+k]=await blobToDataURL(a2[k]);
-      if(bkMethod==='single'){ const text=JSON.stringify({app:'suaililingxin-backup',v:2,ts:Date.now(),data,audio}); if(text.length>3e6) await bkDeliver([{name:'诉爱聆心备份-'+stamp+'.json',blob:new Blob([text],{type:'application/json'})}]); else bigExport('备份',text,'诉爱聆心备份-'+stamp+'.json'); }
+      if(bkMethod==='single'){ const text=JSON.stringify({app:'suaililingxin-backup',v:2,ts:Date.now(),data,audio}); if(text.length>3e6) await bkDeliver([{name:'流语备份-'+stamp+'.json',blob:new Blob([text],{type:'application/json'})}]); else bigExport('备份',text,'流语备份-'+stamp+'.json'); }
       else { const LIM=1500000, parts=[]; let cur={data:{},audio:{}}, sz=0; const push=()=>{ if(sz){ parts.push(cur); cur={data:{},audio:{}}; sz=0; } };
         Object.keys(data).forEach(k=>{ const l=(data[k]||'').length; if(sz+l>LIM) push(); cur.data[k]=data[k]; sz+=l; }); Object.keys(audio).forEach(k=>{ const l=audio[k].length; if(sz+l>LIM) push(); cur.audio[k]=audio[k]; sz+=l; }); push();
-        const files=parts.map((pt,i)=>({name:'诉爱聆心备份-'+stamp+'-第'+(i+1)+'卷（共'+parts.length+'卷）.json',blob:new Blob([JSON.stringify({app:'suaililingxin-backup',v:2,partial:true,part:i+1,of:parts.length,data:pt.data,audio:pt.audio})],{type:'application/json'})})); await bkDeliver(files); toast('已生成 '+files.length+' 个分卷，导入时每个都要导一遍'); } }
+        const files=parts.map((pt,i)=>({name:'流语备份-'+stamp+'-第'+(i+1)+'卷（共'+parts.length+'卷）.json',blob:new Blob([JSON.stringify({app:'suaililingxin-backup',v:2,partial:true,part:i+1,of:parts.length,data:pt.data,audio:pt.audio})],{type:'application/json'})})); await bkDeliver(files); toast('已生成 '+files.length+' 个分卷，导入时每个都要导一遍'); } }
     $('bkExpOverlay').classList.remove('open'); }catch(e){ toast('导出失败：'+(e&&e.message?e.message:'未知错误')); }
   $('bkExpGo').disabled=false; $('bkExpGo').textContent='开始导出'; });
 function mergeBackup(o){ Object.keys(o.data||{}).forEach(k=>{ try{ localStorage.setItem(k,o.data[k]); }catch(e){} }); const ks=Object.keys(o.audio||{});
@@ -2657,7 +2665,7 @@ zipIn.addEventListener('change',async()=>{ const f=(zipIn.files||[])[0]; zipIn.v
     Object.keys(z).forEach(n=>{ if(n.indexOf('data/')===0) o.data[n.slice(5)]=dec.decode(z[n]); });
     showConfirm('用这个压缩包覆盖现有的对应数据？此操作无法撤销。',async()=>{ Object.keys(o.data).forEach(k=>{ try{ localStorage.setItem(k,o.data[k]); }catch(e){} });
       for(const n of Object.keys(z)){ try{ if(n.indexOf('audio2/')===0) await auPut(n.slice(7),new Blob([z[n]])); else if(n.indexOf('audio/')===0) await idbPut(n.slice(6),new Blob([z[n]])); }catch(e){} } toast('已恢复，正在刷新…'); setTimeout(()=>location.reload(),600); }); }catch(e){ toast('这个压缩包读不了：'+(e&&e.message?e.message:'')); } });
-/* ===== 总控台：全局回复设置 / 对方主动行为 ===== */
+/* ===== 掌枢：全局回复设置 / 对方主动行为 ===== */
 const G_REPLY=[['delayMin','最短延迟(秒)',2],['delayMax','最长延迟(秒)',8],['replyCountMin','最少条数',1],['replyCountMax','最多条数',1],['mergeCards','允许合并',false],['mergeChance','合并概率(%)',50],['mergeMin','合并最少张',2],['mergeMax','合并最多张',3]];
 const G_ACT=[['transferChance','转账概率(%)',10],['questionChance','提问概率(%)',10],['reactChance','贴表情概率(%)',15],['patChance','拍一拍概率(%)',8],['avatarChance','换头像概率(%)',5],['inviteChance','邀我换头像(%)',5],['proMin','主动联系最短间隔(分)',30],['proMax','主动联系最长间隔(分)',120],['proChance','主动发消息概率(%)',0],['callChance','来电概率(%)',0],['voiceChance','对方发语音(%)',0],['letterChance','主动来信(%)',15],['letterReplyChance','回信概率(%)',80],['letterMin','回信最快(分)',1],['letterMax','回信最慢(分)',8],['momentChance','发朋友圈概率(%)',30],['likeChance','点赞我的朋友圈(%)',50],['commentChance','评论我的朋友圈(%)',30],['replyChance','回复我的评论(%)',60]];
 const G=Object.assign({reply:{},act:{},newFollow:false},safeGet('app_global',{})); G.reply=G.reply||{}; G.act=G.act||{};
@@ -2673,7 +2681,7 @@ function gSection(host,title,w,fields){ const card=el('div','ms-card'); card.inn
   bar.children[0].addEventListener('click',()=>showConfirm('让所有角色都跟随这一组全局设置，并把各自原来的设置覆盖掉？',()=>{ roles.forEach(r=>{ r[flag]=true; pullGlobal(r,w); }); saveRoles(); openGlobal(); toast('已同步给所有角色')}));
   bar.children[1].addEventListener('click',()=>{ roles.forEach(r=>{ r[flag]=false; }); saveRoles(); openGlobal(); }); card.appendChild(bar); host.appendChild(card); }
 function openGlobal(){ const b=$('globalBody'); b.innerHTML=''; b.className='list-body sub';
-  const top=el('div','ms-card'); top.innerHTML='<div class="ms-h"><span>总控台</span></div><div class="ms-d">在这里设一次，所有“跟随全局”的角色就都用这套，不用每个角色再调第二遍。角色是否跟随，可以在这里批量改，也可以在各自的聊天设置里单独开关。</div><div class="field-row"><label style="width:auto;flex:1;">新建角色默认跟随全局</label><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>';
+  const top=el('div','ms-card'); top.innerHTML='<div class="ms-h"><span>掌枢</span></div><div class="ms-d">在这里设一次，所有“跟随全局”的角色就都用这套，不用每个角色再调第二遍。角色是否跟随，可以在这里批量改，也可以在各自的聊天设置里单独开关。</div><div class="field-row"><label style="width:auto;flex:1;">新建角色默认跟随全局</label><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>';
   const nf=top.querySelector('input'); nf.checked=!!G.newFollow; nf.addEventListener('change',()=>{ G.newFollow=nf.checked; saveG(); }); b.appendChild(top);
   gSection(b,'回复规则','reply',G_REPLY); gSection(b,'对方的主动行为','act',G_ACT);
   const lc=el('div','ms-card'); lc.innerHTML='<div class="ms-h"><span>各角色是否跟随</span></div>'; if(!roles.length) lc.insertAdjacentHTML('beforeend','<div class="ms-d">还没有角色</div>');
@@ -2803,7 +2811,6 @@ function renderCountdown(it,e){ const b=e.querySelector('.hw-in'), big=(it.h||1)
   const n=info.n, past=info.rep==='once'&&n!==null&&n<0, tag=n===0?'就是今天':(past?'已过':'还有');
   b.innerHTML='<div class="cd-head"><span class="cd-t"></span><span class="cd-tag"></span></div><div class="cd-n"><b></b><span>天</span></div><div class="cd-d"></div>';
   b.querySelector('.cd-t').textContent=it.title||'倒数日'; b.querySelector('.cd-tag').textContent=tag; b.querySelector('b').textContent=n===null?'--':Math.abs(n); b.querySelector('.cd-d').textContent=info.txt; if(n===0) b.querySelector('.cd-n').classList.add('today'); }
-$('noAvoid').addEventListener('change',e=>{ decor.noAvoid=e.target.checked; saveDecor(); });
 
 G_REPLY.splice(5,0,['mergeChance','合并概率(%)',50]); if(G.reply.mergeChance==null) G.reply.mergeChance=50;
 (function(){ const row=$('customCSS').nextElementSibling; if(row) row.style.flexWrap='wrap'; })();
@@ -2820,7 +2827,17 @@ function micFail(){ toast('当前打开方式没有麦克风权限，换个方�
 function compressImg(src,max,q){ return new Promise(res=>{ if(!/^data:image/.test(src)||/^data:image\/(gif|svg)/.test(src)){ res(src); return; } const i=new Image(); i.onload=()=>{ try{ const k=Math.min(1,max/Math.max(i.width,i.height)), c=document.createElement('canvas'); c.width=Math.round(i.width*k); c.height=Math.round(i.height*k); c.getContext('2d').drawImage(i,0,0,c.width,c.height); res(c.toDataURL('image/jpeg',q)); }catch(e){ res(src); } }; i.onerror=()=>res(src); i.src=src; }); }
 function imageBubble(m){ const im=el('img','msg-img'); im.src=m.src; im.addEventListener('click',()=>{ if(lpFired){ lpFired=false; return; } let v=$('imgViewer'); if(!v){ v=document.createElement('div'); v.id='imgViewer'; v.className='img-viewer'; v.innerHTML='<img>'; v.addEventListener('click',()=>v.classList.remove('open')); document.body.appendChild(v); } v.querySelector('img').src=m.src; v.classList.add('open'); }); return im; }
 $('tileImg').addEventListener('click',()=>pickImages(async list=>{ for(const u of list){ const src=await compressImg(u,1080,.82); addMsg({who:'me',type:'image',text:'[图片]',src}); } markPending(true); }));
-function applyNames(){ const d={chat:'诉爱聆心',cards:'字卡',decor:'装饰',letters:'写信',music:'音乐',settings:'设置',global:'总控台'}, nmz=decor.names||{};
+
+/* ===== 语音功能：已撤下（界面入口全部隐藏，概率清零） ===== */
+(function(){ const hide=e=>{ if(e) e.style.display='none'; };
+  ['voRec','tileVoice','voiceSec'].forEach(i=>hide($(i)));
+  ['voiceChance','voiceTts'].forEach(i=>{ const x=$(i); if(x){ const r=x.closest('.field-row'); hide(r); let n=r&&r.nextElementSibling; while(n&&n.classList.contains('sheet-sub')){ hide(n); n=n.nextElementSibling; } } });
+  document.querySelectorAll('.sub-h').forEach(h=>{ if(h.textContent.trim()==='语音'){ let n=h; hide(n); n=h.nextElementSibling; while(n&&!n.classList.contains('sub-h')){ hide(n); n=n.nextElementSibling; } } });
+  const tabs=document.querySelectorAll('#screen-cardapp .ctabs button'), pages=document.querySelectorAll('#screen-cardapp .cpage'); tabs.forEach((t,i)=>{ if(t.textContent.indexOf('语音')>=0){ hide(t); hide(pages[i]); } });
+  roles.forEach(r=>{ r.voiceChance=0; }); G.act.voiceChance=0; const gi=G_ACT.findIndex(f=>f[0]==='voiceChance'); if(gi>=0) G_ACT.splice(gi,1); })();
+function addIconResets(){ ['chat','cards','decor','letters','music','settings','global'].forEach(k=>{ const b=$('btn_'+k); if(!b||$('rst_'+k)) return; const r=document.createElement('button'); r.className='btn-reset'; r.id='rst_'+k; r.textContent='恢复默认'; r.addEventListener('click',()=>{ delete decor.icons[k]; saveDecor(); renderDecor(); }); b.parentNode.appendChild(r); }); }
+const _rd=renderDecor; renderDecor=function(){ _rd(); addIconResets(); };
+function applyNames(){ const d={chat:'流语',cards:'存箴',decor:'缀隅',letters:'缄书',music:'闻韶',settings:'衡枢',global:'掌枢'}, nmz=decor.names||{};
   document.querySelectorAll('.app-tile').forEach(t=>{ const k=t.dataset.app; t.querySelector('.app-label').textContent=nmz[k]||d[k]; });
   document.querySelector('#screen-cardapp .title').textContent=nmz.cards||d.cards; document.querySelector('#screen-decor .title').textContent=nmz.decor||d.decor; document.querySelector('#screen-letters .title').textContent=nmz.letters||d.letters; document.querySelector('#screen-music .title').textContent=nmz.music||d.music; }
 applyDecor(); applyFont(); applyNames(); applyColors(); applySB();
